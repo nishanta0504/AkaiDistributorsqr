@@ -22,143 +22,140 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;b
 .brand-sub{font-size:10px;color:rgba(255,255,255,.4);font-weight:500;margin-top:1px}
 .topbar-right{display:flex;align-items:center;gap:10px}
 .dealer-chip{display:none;align-items:center;gap:6px;background:rgba(13,158,143,.18);border:1px solid rgba(13,158,143,.3);color:var(--teal2);font-size:12px;font-weight:700;padding:5px 12px;border-radius:20px}
-
-/* TABS */
 .tabs{display:flex;gap:4px;background:rgba(255,255,255,.08);border-radius:10px;padding:4px}
-.tab-btn{height:34px;padding:0 18px;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;background:transparent;color:rgba(255,255,255,.55);transition:background .15s,color .15s;display:flex;align-items:center;gap:6px}
+.tab-btn{height:34px;padding:0 16px;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;background:transparent;color:rgba(255,255,255,.55);transition:background .15s,color .15s;display:flex;align-items:center;gap:6px;white-space:nowrap}
 .tab-btn.active{background:var(--teal);color:#fff;box-shadow:0 2px 8px rgba(13,158,143,.4)}
 .tab-btn:hover:not(.active){background:rgba(255,255,255,.1);color:rgba(255,255,255,.85)}
-.tab-btn:disabled{opacity:.35;cursor:not-allowed}
+.tab-btn:disabled{opacity:.3;cursor:not-allowed;pointer-events:none}
 
 /* PAGES */
 .page{display:none}.page.active{display:block}
 
-/* LOGIN SCREEN */
+/* ── LOGIN ── */
 .login-wrap{min-height:calc(100vh - 64px);display:flex;align-items:center;justify-content:center;padding:40px 20px}
 .login-card{background:var(--white);border-radius:20px;width:100%;max-width:420px;box-shadow:0 8px 40px rgba(0,0,0,.1);overflow:hidden}
-.login-accent{height:4px;background:linear-gradient(90deg,var(--teal),var(--teal2))}
-.login-body{padding:40px 36px 36px}
-.login-icon{width:64px;height:64px;background:var(--teal-lt);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 20px;border:2px solid var(--teal-md)}
-.login-title{text-align:center;font-size:22px;font-weight:800;color:var(--navy);margin-bottom:6px}
-.login-sub{text-align:center;font-size:13px;color:var(--muted);margin-bottom:28px;line-height:1.5}
-.login-label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin-bottom:7px;display:block}
-.login-input-wrap{position:relative;margin-bottom:8px}
-.login-input-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:16px}
-.login-input{width:100%;height:50px;padding:0 14px 0 44px;border:1.5px solid var(--border);border-radius:11px;font-size:16px;font-weight:700;color:var(--navy);background:var(--bg2);outline:none;letter-spacing:2px;text-transform:uppercase;transition:border-color .15s,box-shadow .15s}
-.login-input:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,158,143,.1);background:#fff}
-.login-input.err{border-color:var(--red);box-shadow:0 0 0 3px rgba(239,68,68,.1)}
-.login-err{font-size:12px;color:var(--red);margin-bottom:12px;display:none;text-align:center}
-.login-err.show{display:block}
-.login-hint{font-size:11px;color:var(--muted);margin-bottom:20px;text-align:center}
+.l-accent{height:4px;background:linear-gradient(90deg,var(--teal),var(--teal2))}
+.l-body{padding:40px 36px 36px}
+.l-icon{width:64px;height:64px;background:var(--teal-lt);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 20px;border:2px solid var(--teal-md)}
+.l-title{text-align:center;font-size:22px;font-weight:800;color:var(--navy);margin-bottom:6px}
+.l-sub{text-align:center;font-size:13px;color:var(--muted);margin-bottom:28px;line-height:1.5}
+.l-label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin-bottom:7px;display:block}
+.l-iw{position:relative;margin-bottom:8px}
+.l-icon2{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:16px}
+.l-input{width:100%;height:50px;padding:0 14px 0 44px;border:1.5px solid var(--border);border-radius:11px;font-size:18px;font-weight:700;color:var(--navy);background:var(--bg2);outline:none;letter-spacing:2px;text-transform:uppercase;transition:border-color .15s,box-shadow .15s}
+.l-input:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,158,143,.1);background:#fff}
+.l-input.err{border-color:var(--red);box-shadow:0 0 0 3px rgba(239,68,68,.1)}
+.l-err{font-size:12px;color:var(--red);margin-bottom:12px;display:none;text-align:center}
+.l-err.show{display:block}
+.l-hint{font-size:11px;color:var(--muted);margin-bottom:20px;text-align:center}
 .btn-login{width:100%;height:50px;background:var(--teal);color:#fff;border:none;border-radius:11px;font-size:15px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 16px rgba(13,158,143,.35);transition:background .15s,transform .1s}
-.btn-login:hover{background:var(--teal2)}
-.btn-login:active{transform:scale(.98)}
+.btn-login:hover{background:var(--teal2)}.btn-login:active{transform:scale(.98)}
 @keyframes spin{to{transform:rotate(360deg)}}
 .spin-sm{width:18px;height:18px;border:2.5px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;display:none}
-.btn-login.loading .btn-login-text{display:none}
-.btn-login.loading .spin-sm{display:block}
+.btn-login.loading .lt{display:none}.btn-login.loading .spin-sm{display:block}
 
-/* QR PAGE */
-.qr-page-wrap{max-width:500px;margin:40px auto;padding:0 24px 60px}
-.qr-dealer-card{background:var(--white);border-radius:20px;box-shadow:0 4px 24px rgba(0,0,0,.08);overflow:hidden;border:1px solid var(--border)}
-.qr-card-top{background:linear-gradient(135deg,#0d9e8f,#0a8a7d);padding:22px 24px 18px}
-.qr-card-top .did{font-size:11px;font-weight:700;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px}
-.qr-card-top .dname{font-size:20px;font-weight:800;color:#fff}
-.qr-card-body{padding:28px 24px 20px;display:flex;flex-direction:column;align-items:center}
+/* ── QR PAGE ── */
+.qr-wrap{max-width:500px;margin:40px auto;padding:0 24px 60px}
+.qr-card{background:var(--white);border-radius:20px;box-shadow:0 4px 24px rgba(0,0,0,.08);overflow:hidden;border:1px solid var(--border)}
+.qr-top{background:linear-gradient(135deg,#0d9e8f,#0a8a7d);padding:22px 24px 18px}
+.qr-top .did{font-size:11px;font-weight:700;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px}
+.qr-top .dname{font-size:20px;font-weight:800;color:#fff}
+.qr-body{padding:28px 24px 20px;display:flex;flex-direction:column;align-items:center}
 .qr-frame{background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;padding:16px;display:inline-flex;margin-bottom:20px}
 .qr-frame canvas,.qr-frame img{display:block;border-radius:4px}
 .qr-actions{display:flex;gap:10px;width:100%}
-.btn-dl,.btn-print{flex:1;height:44px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:opacity .15s,transform .1s}
+.btn-dl,.btn-pr{flex:1;height:44px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:opacity .15s,transform .1s}
 .btn-dl{background:var(--teal-lt);color:var(--teal);border:1.5px solid var(--teal-md)}
-.btn-print{background:#fff7ed;color:#b45309;border:1.5px solid #fcd9a0}
-.btn-dl:hover{background:var(--teal-md)}.btn-print:hover{background:#fde8c0}
-.btn-dl:active,.btn-print:active{transform:scale(.97)}
-.qr-url-hint{font-size:11px;color:var(--muted);margin-top:14px;word-break:break-all;text-align:center;padding:8px 12px;background:var(--bg2);border-radius:8px;border:1px solid var(--border)}
+.btn-pr{background:#fff7ed;color:#b45309;border:1.5px solid #fcd9a0}
+.btn-dl:hover{background:var(--teal-md)}.btn-pr:hover{background:#fde8c0}
+.btn-dl:active,.btn-pr:active{transform:scale(.97)}
+.qr-hint{font-size:11px;color:var(--muted);margin-top:14px;word-break:break-all;text-align:center;padding:8px 12px;background:var(--bg2);border-radius:8px;border:1px solid var(--border)}
 
-/* BROADCAST PAGE */
-.bc-wrap{max-width:680px;margin:32px auto;padding:0 24px 60px}
-.bc-header{margin-bottom:20px}
-.bc-header h1{font-size:20px;font-weight:800;color:var(--navy);margin-bottom:4px}
-.bc-header p{font-size:13px;color:var(--muted)}
+/* ── BROADCAST PAGE ── */
+.bc-wrap{max-width:700px;margin:28px auto;padding:0 24px 60px}
+.bc-hd{margin-bottom:18px}
+.bc-hd h1{font-size:20px;font-weight:800;color:var(--navy);margin-bottom:3px}
+.bc-hd p{font-size:13px;color:var(--muted)}
 
-.bc-card{background:var(--white);border-radius:16px;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.05);overflow:hidden;margin-bottom:16px}
-.bc-head{background:linear-gradient(135deg,var(--navy),var(--navy2));padding:16px 20px;display:flex;align-items:center;gap:10px}
-.bc-head .ico{width:36px;height:36px;border-radius:9px;background:rgba(13,158,143,.2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.bc-head h2{font-size:14px;font-weight:700;color:#fff;margin-bottom:1px}
-.bc-head p{font-size:11px;color:rgba(255,255,255,.45)}
-.bc-body{padding:20px}
+.bc-card{background:var(--white);border-radius:16px;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.05);overflow:hidden;margin-bottom:14px}
+.bc-th{background:linear-gradient(135deg,var(--navy),var(--navy2));padding:14px 18px;display:flex;align-items:center;gap:10px}
+.bc-th .ico{width:34px;height:34px;border-radius:8px;background:rgba(13,158,143,.2);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.bc-th h2{font-size:14px;font-weight:700;color:#fff;margin-bottom:1px}
+.bc-th p{font-size:11px;color:rgba(255,255,255,.45)}
+.bc-bd{padding:18px}
 
-/* API config */
-.api-config-card{background:var(--bg2);border:1.5px solid var(--border);border-radius:12px;padding:16px;margin-bottom:16px}
-.api-config-title{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin-bottom:12px}
-.api-row{display:flex;gap:8px;margin-bottom:10px;align-items:center}
-.api-row:last-of-type{margin-bottom:0}
-.api-row input{flex:1;height:38px;padding:0 12px;border:1.5px solid var(--border);border-radius:8px;font-size:12px;color:var(--text);background:#fff;outline:none;font-family:monospace;transition:border-color .15s}
-.api-row input:focus{border-color:var(--teal)}
-.api-row label{font-size:11px;color:var(--muted);width:80px;flex-shrink:0;font-weight:600}
-.btn-save{height:38px;padding:0 14px;background:var(--navy);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;transition:background .15s}
-.btn-save:hover{background:var(--navy2)}
-.api-status{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-top:10px}
-.api-status.ok{background:#ecfdf5;color:#065f46}
-.api-status.warn{background:#fef3c7;color:#92400e}
+/* contacts section */
+.contacts-info{background:var(--teal-lt);border:1.5px solid var(--teal-md);border-radius:10px;padding:12px 16px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.contacts-info-left strong{font-size:15px;font-weight:800;color:var(--navy)}
+.contacts-info-left span{font-size:12px;color:var(--muted);display:block;margin-top:1px}
+.btn-build{height:38px;padding:0 18px;background:var(--teal);color:#fff;border:none;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;transition:background .15s,transform .1s;white-space:nowrap}
+.btn-build:hover{background:var(--teal2)}.btn-build:active{transform:scale(.97)}
+.btn-build.loading .bt{display:none}.btn-build.loading .bsp{display:block}
+.bsp{width:15px;height:15px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;display:none}
 
-/* Upload */
-.upload-zone{border:2px dashed var(--border);border-radius:12px;padding:28px 16px;text-align:center;background:var(--bg2);cursor:pointer;transition:border-color .2s,background .2s;position:relative}
+.contact-list{max-height:180px;overflow-y:auto;border:1.5px solid var(--border);border-radius:10px;background:var(--bg2);margin-bottom:12px}
+.contact-item{display:flex;align-items:center;gap:10px;padding:8px 14px;border-bottom:1px solid var(--border)}
+.contact-item:last-child{border-bottom:none}
+.contact-name{font-size:13px;font-weight:600;color:var(--text);flex:1}
+.contact-phone{font-size:11px;color:var(--muted);font-family:monospace}
+.contact-badge{font-size:10px;color:var(--teal);background:var(--teal-lt);padding:2px 7px;border-radius:10px;font-weight:600}
+
+/* image upload */
+.upload-zone{border:2px dashed var(--border);border-radius:12px;padding:26px 16px;text-align:center;background:var(--bg2);cursor:pointer;transition:border-color .2s,background .2s;position:relative}
 .upload-zone:hover,.upload-zone.drag{border-color:var(--teal);background:var(--teal-lt)}
 .upload-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.upload-icon{font-size:32px;margin-bottom:8px;opacity:.5}
+.upload-icon{font-size:30px;margin-bottom:8px;opacity:.5}
 .upload-zone p{font-size:13px;color:var(--muted);line-height:1.5}
 .upload-zone strong{color:var(--teal)}
 .preview-wrap{margin-top:14px;display:none}
-.preview-wrap img{width:100%;max-height:220px;object-fit:contain;border-radius:10px;border:1.5px solid var(--border);background:var(--bg2)}
+.preview-wrap img{width:100%;max-height:200px;object-fit:contain;border-radius:10px;border:1.5px solid var(--border);background:var(--bg2)}
 .preview-meta{font-size:11px;color:var(--muted);margin-top:5px;text-align:center}
-textarea.caption{width:100%;margin-top:14px;padding:10px 13px;border:1.5px solid var(--border);border-radius:10px;font-size:13px;color:var(--text);background:var(--bg2);resize:vertical;outline:none;min-height:70px;font-family:inherit;transition:border-color .15s,box-shadow .15s}
+textarea.caption{width:100%;margin-top:12px;padding:10px 13px;border:1.5px solid var(--border);border-radius:10px;font-size:13px;color:var(--text);background:var(--bg2);resize:vertical;outline:none;min-height:60px;font-family:inherit;transition:border-color .15s,box-shadow .15s}
 textarea.caption:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,158,143,.1);background:#fff}
 textarea.caption::placeholder{color:#c0c8d4}
 
-/* Contacts */
-.recip-list{max-height:200px;overflow-y:auto;border:1.5px solid var(--border);border-radius:10px;background:var(--bg2);margin-bottom:12px}
-.recip-item{display:flex;align-items:center;gap:10px;padding:9px 14px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .1s}
-.recip-item:last-child{border-bottom:none}
-.recip-item:hover{background:var(--teal-lt)}
-.recip-item input[type=checkbox]{accent-color:var(--teal);width:15px;height:15px;flex-shrink:0}
-.recip-name{font-size:13px;font-weight:600;color:var(--text);flex:1}
-.recip-phone{font-size:11px;color:var(--muted)}
-.sel-row{display:flex;gap:8px;margin-bottom:10px;align-items:center}
-.btn-sel{height:30px;padding:0 12px;border-radius:7px;border:1.5px solid var(--border);background:var(--white);font-size:12px;font-weight:600;color:var(--muted);cursor:pointer;transition:border-color .15s,color .15s}
-.btn-sel.all:hover{border-color:var(--teal);color:var(--teal)}
-.btn-sel.none:hover{border-color:var(--red);color:var(--red)}
-.sel-count{margin-left:auto;font-size:12px;color:var(--muted)}
-.sel-count span{color:var(--teal);font-weight:700}
+/* SEND button */
+.btn-send-wa{width:100%;height:54px;background:#25d366;color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 4px 18px rgba(37,211,102,.35);transition:background .15s,transform .1s;margin-top:16px}
+.btn-send-wa:hover{background:#1ebe5d}.btn-send-wa:active{transform:scale(.98)}
+.btn-send-wa:disabled{background:#c8d0de;box-shadow:none;cursor:not-allowed;color:#8a94a6}
+.wa-icon{font-size:22px}
 
-.btn-send{width:100%;height:50px;background:var(--teal);color:#fff;border:none;border-radius:11px;font-size:15px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 16px rgba(13,158,143,.35);transition:background .15s,transform .1s;margin-top:16px}
-.btn-send:hover{background:var(--teal2)}
-.btn-send:active{transform:scale(.98)}
-.btn-send:disabled{background:#c8d0de;box-shadow:none;cursor:not-allowed;color:#8a94a6}
+/* queue display */
+.queue-wrap{margin-top:14px;display:none}
+.queue-title{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px}
+.queue-progress{background:var(--border);border-radius:99px;height:6px;margin-bottom:6px;overflow:hidden}
+.queue-bar{height:100%;background:#25d366;border-radius:99px;width:0;transition:width .4s}
+.queue-txt{font-size:12px;color:var(--muted);text-align:center;margin-bottom:8px}
+.queue-log{max-height:120px;overflow-y:auto;border:1.5px solid var(--border);border-radius:9px;background:var(--bg2)}
+.qlog-item{display:flex;align-items:center;gap:8px;padding:6px 12px;border-bottom:1px solid var(--border);font-size:12px}
+.qlog-item:last-child{border-bottom:none}
+.qok{color:#25d366;font-size:14px}.qwait{color:var(--muted);font-size:14px}
 
-.progress-wrap{margin-top:14px;display:none}
-.progress-bar-bg{height:8px;background:var(--border);border-radius:99px;overflow:hidden;margin-bottom:7px}
-.progress-bar{height:100%;background:var(--teal);border-radius:99px;width:0;transition:width .3s}
-.progress-txt{font-size:12px;color:var(--muted);text-align:center}
-.send-log{margin-top:12px;max-height:140px;overflow-y:auto;border:1.5px solid var(--border);border-radius:10px;background:var(--bg2);display:none}
-.log-item{display:flex;align-items:center;gap:8px;padding:7px 12px;border-bottom:1px solid var(--border);font-size:12px}
-.log-item:last-child{border-bottom:none}
-.lok{color:var(--teal);font-size:14px}.lfail{color:var(--red);font-size:14px}
+/* how it works */
+.how-steps{display:flex;flex-direction:column;gap:10px}
+.h-step{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:10px;background:var(--bg2);border:1.5px solid var(--border)}
+.h-num{width:26px;height:26px;border-radius:50%;background:var(--teal);color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.h-body h3{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:2px}
+.h-body p{font-size:12px;color:var(--muted);line-height:1.5}
+.h-body code{background:var(--navy);color:var(--teal2);padding:1px 6px;border-radius:4px;font-size:11px;font-family:monospace}
 
-.btn-refresh{height:36px;padding:0 16px;background:var(--bg2);color:var(--navy);border:1.5px solid var(--border);border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;transition:border-color .15s,background .15s;display:flex;align-items:center;gap:5px}
-.btn-refresh:hover{border-color:var(--teal);background:var(--teal-lt);color:var(--teal)}
+/* WATI config */
+.wati-card{background:var(--bg2);border:1.5px solid var(--border);border-radius:11px;padding:14px;margin-bottom:14px}
+.wati-title{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px}
+.wati-row{display:flex;gap:8px;margin-bottom:8px;align-items:center}
+.wati-row:last-of-type{margin-bottom:0}
+.wati-row label{font-size:11px;color:var(--muted);width:76px;flex-shrink:0;font-weight:600}
+.wati-row input{flex:1;height:36px;padding:0 10px;border:1.5px solid var(--border);border-radius:8px;font-size:12px;color:var(--text);background:#fff;outline:none;font-family:monospace;transition:border-color .15s}
+.wati-row input:focus{border-color:var(--teal)}
+.btn-wsave{height:36px;padding:0 12px;background:var(--navy);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;transition:background .15s}
+.btn-wsave:hover{background:var(--navy2)}
+.w-status{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-top:8px}
+.w-ok{background:#ecfdf5;color:#065f46}.w-warn{background:#fef3c7;color:#92400e}
 
-/* SETUP GUIDE */
-.setup-steps{display:flex;flex-direction:column;gap:12px}
-.setup-step{display:flex;gap:14px;align-items:flex-start;padding:14px;border-radius:10px;background:var(--bg2);border:1.5px solid var(--border)}
-.snum{width:28px;height:28px;border-radius:50%;background:var(--teal);color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-.sbody h3{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:3px}
-.sbody p{font-size:12px;color:var(--muted);line-height:1.55}
-.sbody a{color:var(--teal);font-weight:600;text-decoration:none}
-.sbody a:hover{text-decoration:underline}
-.sbody code{background:var(--border);padding:1px 5px;border-radius:4px;font-size:11px;font-family:monospace}
+.info-box{background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:10px;padding:12px 14px;font-size:12px;color:#1e40af;line-height:1.6;margin-top:10px}
+.info-box strong{font-weight:700}
 
-@media(max-width:600px){.topbar{padding:0 16px}.qr-page-wrap,.bc-wrap{padding:0 14px 40px;margin-top:24px}.tabs .tab-btn{padding:0 12px;font-size:12px}}
+@media(max-width:600px){.topbar{padding:0 14px}.qr-wrap,.bc-wrap{padding:0 12px 40px;margin-top:20px}.tabs .tab-btn{padding:0 10px;font-size:12px}}
 </style>
 </head>
 <body>
@@ -172,30 +169,30 @@ textarea.caption::placeholder{color:#c0c8d4}
   <div class="topbar-right">
     <div class="dealer-chip" id="dealerChip">🏪 <span id="chipName"></span></div>
     <div class="tabs">
-      <button class="tab-btn active" id="tabQR" onclick="switchTab('qr',this)" disabled>🔲 My QR Code</button>
+      <button class="tab-btn active" id="tabQR" onclick="switchTab('qr',this)" disabled>🔲 My QR</button>
       <button class="tab-btn"        id="tabBC" onclick="switchTab('bc',this)" disabled>📤 Broadcast</button>
     </div>
   </div>
 </div>
 
-<!-- ══ LOGIN ══════════════════════════════════════════════════════ -->
+<!-- ══ LOGIN ══ -->
 <div class="page active" id="page-login">
   <div class="login-wrap">
     <div class="login-card">
-      <div class="login-accent"></div>
-      <div class="login-body">
-        <div class="login-icon">🏪</div>
-        <div class="login-title">Dealer Login</div>
-        <div class="login-sub">Enter your unique dealer code to access your QR code and broadcast tools</div>
-        <label class="login-label">Your Dealer Code</label>
-        <div class="login-input-wrap">
-          <span class="login-input-icon">🔑</span>
-          <input class="login-input" type="text" id="dealerCodeInput" placeholder="e.g. D001" maxlength="20" autocomplete="off" spellcheck="false">
+      <div class="l-accent"></div>
+      <div class="l-body">
+        <div class="l-icon">🏪</div>
+        <div class="l-title">Dealer Login</div>
+        <div class="l-sub">Enter your dealer code to access your QR and broadcast tools</div>
+        <label class="l-label">Dealer Code</label>
+        <div class="l-iw">
+          <span class="l-icon2">🔑</span>
+          <input class="l-input" type="text" id="codeInput" placeholder="e.g. D001" maxlength="20" autocomplete="off" spellcheck="false">
         </div>
-        <div class="login-err" id="loginErr">❌ Dealer code not found. Please check and try again.</div>
-        <div class="login-hint">Your dealer code was provided by AKAI Distributors</div>
+        <div class="l-err" id="loginErr">❌ Dealer code not found. Please check and try again.</div>
+        <div class="l-hint">Your dealer code was provided by AKAI Distributors</div>
         <button class="btn-login" id="loginBtn" onclick="doLogin()">
-          <span class="btn-login-text">Access My Portal →</span>
+          <span class="lt">Access My Portal →</span>
           <div class="spin-sm"></div>
         </button>
       </div>
@@ -203,154 +200,151 @@ textarea.caption::placeholder{color:#c0c8d4}
   </div>
 </div>
 
-<!-- ══ QR CODE PAGE ════════════════════════════════════════════════ -->
+<!-- ══ QR PAGE ══ -->
 <div class="page" id="page-qr">
-  <div class="qr-page-wrap">
-    <div class="qr-dealer-card">
-      <div class="qr-card-top">
-        <div class="did" id="qrDealerId"></div>
-        <div class="dname" id="qrDealerName"></div>
+  <div class="qr-wrap">
+    <div class="qr-card">
+      <div class="qr-top">
+        <div class="did" id="qrId"></div>
+        <div class="dname" id="qrName"></div>
       </div>
-      <div class="qr-card-body">
+      <div class="qr-body">
         <div class="qr-frame" id="qrFrame"></div>
         <div class="qr-actions">
-          <button class="btn-dl"    onclick="downloadQR()">⬇ Download A4</button>
-          <button class="btn-print" onclick="printQR()">🖨 Print</button>
+          <button class="btn-dl" onclick="downloadQR()">⬇ Download A4</button>
+          <button class="btn-pr" onclick="printQR()">🖨 Print</button>
         </div>
-        <div class="qr-url-hint" id="qrUrlHint"></div>
+        <div class="qr-hint" id="qrHint"></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ══ BROADCAST PAGE ══════════════════════════════════════════════ -->
+<!-- ══ BROADCAST PAGE ══ -->
 <div class="page" id="page-bc">
   <div class="bc-wrap">
-    <div class="bc-header">
+    <div class="bc-hd">
       <h1>📤 Send to Your Customers</h1>
-      <p>Upload a photo or type a message — send it to all registered customers in one click</p>
+      <p>Upload a photo → click Send → WhatsApp opens pre-filled for each number automatically</p>
     </div>
 
-    <!-- API CONFIG -->
+    <!-- STEP 1: CONTACTS -->
     <div class="bc-card">
-      <div class="bc-head">
-        <div class="ico">🔗</div>
-        <div><h2>WhatsApp API (WATI)</h2><p>Configured per dealer — saved automatically</p></div>
+      <div class="bc-th">
+        <div class="ico">👥</div>
+        <div><h2>Step 1 — Your Customer List</h2><p>Auto-built from registrations with your dealer code</p></div>
       </div>
-      <div class="bc-body">
-        <div class="api-config-card">
-          <div class="api-config-title">Your WATI Credentials</div>
-          <div class="api-row">
-            <label>API Token</label>
-            <input type="password" id="watiToken" placeholder="Bearer token from WATI dashboard">
-            <button class="btn-save" onclick="saveApiConfig()">Save</button>
+      <div class="bc-bd">
+        <div class="contacts-info">
+          <div class="contacts-info-left">
+            <strong id="contactCount">0 contacts</strong>
+            <span id="contactSubtext">Click the button to load your customers</span>
           </div>
-          <div class="api-row">
-            <label>Server URL</label>
-            <input type="text" id="watiEndpoint" placeholder="https://live-mt-server-XXXXX.wati.io">
+          <button class="btn-build" id="buildBtn" onclick="buildContactList()">
+            <span class="bt">📋 Build / Refresh Contact List</span>
+            <div class="bsp"></div>
+          </button>
+        </div>
+        <div class="contact-list" id="contactList">
+          <div style="padding:20px;text-align:center;color:var(--muted);font-size:13px">
+            Click "Build / Refresh Contact List" above to load your customers from Google Sheets
           </div>
-          <div id="apiStatus" class="api-status warn">⚠ Not configured yet</div>
+        </div>
+        <div class="info-box">
+          <strong>How it works:</strong> Clicking the button fetches all registrations with your dealer code from the Google Sheet. New registrations are automatically added next time you click. Your list is also saved on this device so it works offline.
         </div>
       </div>
     </div>
 
-    <!-- COMPOSE -->
+    <!-- STEP 2: UPLOAD -->
     <div class="bc-card">
-      <div class="bc-head">
+      <div class="bc-th">
         <div class="ico">🖼️</div>
-        <div><h2>Photo / Message</h2><p>Choose from gallery or take a photo</p></div>
+        <div><h2>Step 2 — Upload Your Photo or Offer</h2><p>Full quality image from your gallery or camera</p></div>
       </div>
-      <div class="bc-body">
+      <div class="bc-bd">
         <div class="upload-zone" id="uploadZone">
           <input type="file" id="imgInput" accept="image/*" onchange="onImgSelect(this)">
           <div class="upload-icon">📷</div>
-          <p><strong>Tap to choose photo</strong> from gallery<br>or drag & drop here<br><small>Full quality · JPG PNG WEBP</small></p>
+          <p><strong>Tap to choose photo</strong> from gallery or camera<br>Full quality · JPG PNG WEBP</p>
         </div>
         <div class="preview-wrap" id="previewWrap">
           <img id="previewImg" src="" alt="Preview">
           <div class="preview-meta" id="previewMeta"></div>
         </div>
-        <textarea class="caption" id="caption" placeholder="Add a caption or message (optional)…"></textarea>
+        <textarea class="caption" id="caption" placeholder="Add a caption or offer message (optional)…"></textarea>
       </div>
     </div>
 
-    <!-- RECIPIENTS -->
+    <!-- STEP 3: SEND -->
     <div class="bc-card">
-      <div class="bc-head">
-        <div class="ico">👥</div>
-        <div><h2>Recipients</h2><p>Customers who registered via your QR code</p></div>
+      <div class="bc-th">
+        <div class="ico">📤</div>
+        <div><h2>Step 3 — Send via WhatsApp</h2><p>Opens WhatsApp for each number with your image ready to send</p></div>
       </div>
-      <div class="bc-body">
-        <div class="sel-row">
-          <button class="btn-sel all"  onclick="selAll(true)">✓ All</button>
-          <button class="btn-sel none" onclick="selAll(false)">✕ None</button>
-          <button class="btn-refresh" onclick="refreshContacts()">🔄 Refresh</button>
-          <span class="sel-count"><span id="selCount">0</span> selected</span>
+      <div class="bc-bd">
+
+        <div class="info-box" style="margin-bottom:14px">
+          <strong>How sending works:</strong> When you click Send, WhatsApp opens automatically for each customer number with your caption pre-filled. You just press <strong>Send</strong> in WhatsApp — one tap per person. The app then moves to the next number automatically after a short pause.
         </div>
-        <div class="recip-list" id="recipList">
-          <div style="padding:20px;text-align:center;color:var(--muted);font-size:13px">Click Refresh to load your customers</div>
+
+        <button class="btn-send-wa" id="sendBtn" onclick="startWhatsAppSend()" disabled>
+          <span class="wa-icon">📱</span> Send to All Customers via WhatsApp
+        </button>
+
+        <div class="queue-wrap" id="queueWrap">
+          <div class="queue-title">Sending Progress</div>
+          <div class="queue-progress"><div class="queue-bar" id="qBar"></div></div>
+          <div class="queue-txt" id="qTxt"></div>
+          <div class="queue-log" id="qLog"></div>
         </div>
-        <button class="btn-send" id="sendBtn" onclick="startSend()" disabled>📤 Send to Selected Customers</button>
-        <div class="progress-wrap" id="progressWrap">
-          <div class="progress-bar-bg"><div class="progress-bar" id="progressBar"></div></div>
-          <div class="progress-txt" id="progressTxt">Preparing…</div>
-        </div>
-        <div class="send-log" id="sendLog"></div>
+
+        <!-- WATI OPTION (optional, for API sending) -->
+        <details style="margin-top:16px">
+          <summary style="font-size:12px;font-weight:700;color:var(--muted);cursor:pointer;padding:8px 0;user-select:none">
+            ⚙ Advanced: Auto-send via WATI API (no manual tapping required)
+          </summary>
+          <div style="margin-top:12px">
+            <div class="wati-card">
+              <div class="wati-title">WATI Credentials (saved per dealer)</div>
+              <div class="wati-row">
+                <label>Token</label>
+                <input type="password" id="watiToken" placeholder="Bearer token from WATI">
+                <button class="btn-wsave" onclick="saveWati()">Save</button>
+              </div>
+              <div class="wati-row">
+                <label>Server URL</label>
+                <input type="text" id="watiEp" placeholder="https://live-mt-server-XXXX.wati.io">
+              </div>
+              <div id="watiStatus" class="w-status w-warn">⚠ Not configured</div>
+            </div>
+            <button class="btn-send-wa" id="watiSendBtn" onclick="startWatiSend()" disabled style="background:var(--teal);box-shadow:0 4px 16px rgba(13,158,143,.35)">
+              <span class="wa-icon">🚀</span> Auto-Send via WATI API (fully automatic)
+            </button>
+            <div class="queue-wrap" id="watiQueueWrap">
+              <div class="queue-title">WATI Progress</div>
+              <div class="queue-progress"><div class="queue-bar" id="wBar"></div></div>
+              <div class="queue-txt" id="wTxt"></div>
+              <div class="queue-log" id="wLog"></div>
+            </div>
+          </div>
+        </details>
       </div>
     </div>
 
     <!-- SETUP GUIDE -->
     <div class="bc-card">
-      <div class="bc-head">
+      <div class="bc-th">
         <div class="ico">📋</div>
-        <div><h2>Setup Guide — WhatsApp API</h2><p>One-time setup, follow these steps</p></div>
+        <div><h2>Setup Guide</h2><p>One-time setup steps</p></div>
       </div>
-      <div class="bc-body">
-        <div class="setup-steps">
-          <div class="setup-step">
-            <div class="snum">1</div>
-            <div class="sbody">
-              <h3>Sign up on WATI</h3>
-              <p>Go to <a href="https://www.wati.io" target="_blank">wati.io</a> → Start Free Trial → connect your WhatsApp Business number. Takes ~15 minutes. Cost: approx ₹2,500–4,000/month.</p>
-            </div>
-          </div>
-          <div class="setup-step">
-            <div class="snum">2</div>
-            <div class="sbody">
-              <h3>Copy your API Token & Server URL</h3>
-              <p>In WATI dashboard → <strong>Settings → API</strong> → copy your <strong>Bearer Token</strong> and your <strong>Server URL</strong> (e.g. <code>https://live-mt-server-XXXXX.wati.io</code>). Paste both in the boxes above and click Save.</p>
-            </div>
-          </div>
-          <div class="setup-step">
-            <div class="snum">3</div>
-            <div class="sbody">
-              <h3>Load your customers</h3>
-              <p>Click the <strong>Refresh</strong> button in Recipients. Your registered customers will load from Google Sheets automatically. (Requires the doGet function in your Apps Script — see below.)</p>
-            </div>
-          </div>
-          <div class="setup-step">
-            <div class="snum">4</div>
-            <div class="sbody">
-              <h3>Send your broadcast</h3>
-              <p>Upload a photo, add a caption, select recipients, click <strong>Send</strong>. Each message is sent individually at full quality. The log shows status per number.</p>
-            </div>
-          </div>
-          <div class="setup-step">
-            <div class="snum">⚙</div>
-            <div class="sbody">
-              <h3>Add this code to your Google Apps Script</h3>
-              <p>Open Apps Script → paste this as a new function, then redeploy:</p>
-              <p style="margin-top:8px;background:#1e2d3d;color:#0bb8a6;padding:10px;border-radius:8px;font-family:monospace;font-size:11px;line-height:1.6;word-break:break-all">
-              function doGet(e) {<br>
-              &nbsp;&nbsp;const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Registrations");<br>
-              &nbsp;&nbsp;const rows = sheet.getDataRange().getValues();<br>
-              &nbsp;&nbsp;const contacts = rows.slice(1).map(r => ({name:r[1],phone:r[2],dealer:r[4]}));<br>
-              &nbsp;&nbsp;return ContentService.createTextOutput(JSON.stringify({contacts}))<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;.setMimeType(ContentService.MimeType.JSON);<br>
-              }
-              </p>
-            </div>
-          </div>
+      <div class="bc-bd">
+        <div class="how-steps">
+          <div class="h-step"><div class="h-num">1</div><div class="h-body"><h3>Add dealers to Google Sheet</h3><p>In your Google Sheet create a tab called <code>Dealers</code>. Column A = dealer code (D001), Column B = dealer name. Each row is one dealer.</p></div></div>
+          <div class="h-step"><div class="h-num">2</div><div class="h-body"><h3>Paste the Apps Script code</h3><p>Open your Google Sheet → Extensions → Apps Script → paste the provided <code>google_apps_script.js</code> → Deploy as Web App → Execute as: Me → Anyone. Copy the URL.</p></div></div>
+          <div class="h-step"><div class="h-num">3</div><div class="h-body"><h3>Update the script URL in this file</h3><p>Open <code>qr_code_generator.html</code> in a text editor. Find <code>SHEET_API_URL</code> and replace with your new Web App URL. The registration URL is already set.</p></div></div>
+          <div class="h-step"><div class="h-num">4</div><div class="h-body"><h3>Login & use</h3><p>Dealers type their code → see QR → go to Broadcast → click Build List → upload photo → click Send. WhatsApp opens for each number automatically.</p></div></div>
+          <div class="h-step"><div class="h-num">★</div><div class="h-body"><h3>For fully automatic sending (no tapping): WATI</h3><p>Sign up at <a href="https://wati.io" target="_blank">wati.io</a> (~₹3,000/month) → connect WhatsApp Business number → copy Bearer Token + Server URL → paste in the Advanced section above → use Auto-Send button. No manual tapping needed.</p></div></div>
         </div>
       </div>
     </div>
@@ -360,95 +354,72 @@ textarea.caption::placeholder{color:#c0c8d4}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
-// ══════════════════════════════════════════════════════════
-//  CONFIG
-// ══════════════════════════════════════════════════════════
-const BASE_REG_URL   = 'https://nishanta0504.github.io/AkaiDistributorsDATA/';
-const SHEET_API_URL  = 'https://script.google.com/macros/s/AKfycbx5XyxvD9WRwvEkd0DWako4Oubvnsn5PjpVVw-EDNEPlj2FD1E4d7m-ixywtbD5PkJpXA/exec';
+// ═══════════════════════════════════════════════════
+//  CONFIG — update SHEET_API_URL after deploying Apps Script
+// ═══════════════════════════════════════════════════
+const BASE_REG_URL  = 'https://nishanta0504.github.io/AkaiDistributorsDATA/';
+const SHEET_API_URL = 'https://script.google.com/macros/s/AKfycbx5XyxvD9WRwvEkd0DWako4Oubvnsn5PjpVVw-EDNEPlj2FD1E4d7m-ixywtbD5PkJpXA/exec';
 
-let currentDealer = null; // { id, name }
-let recipients    = [];
-let selectedFile  = null;
+let dealer = null;   // { id, name }
+let contacts = [];   // [{ name, phone }]
+let imgFile  = null;
 
-// ── Tab switch ───────────────────────────────────────────
-function switchTab(tab, el) {
-  if (el.disabled) return;
+// ── Tabs ────────────────────────────────────────────
+function switchTab(t, el) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('page-' + tab).classList.add('active');
+  document.getElementById('page-' + t).classList.add('active');
   el.classList.add('active');
+  if (t === 'bc') { loadWatiConfig(); }
 }
 
-// ── LOGIN ────────────────────────────────────────────────
+// ── LOGIN ────────────────────────────────────────────
 async function doLogin() {
-  const code = document.getElementById('dealerCodeInput').value.trim().toUpperCase();
+  const code = document.getElementById('codeInput').value.trim().toUpperCase();
   if (!code) return;
   const btn = document.getElementById('loginBtn');
   btn.classList.add('loading'); btn.disabled = true;
   document.getElementById('loginErr').classList.remove('show');
-
   try {
     const r = await fetch(SHEET_API_URL + '?action=getDealer&code=' + encodeURIComponent(code));
-    const data = await r.json();
-    if (data && data.dealer) {
-      currentDealer = data.dealer;
-      onLoginSuccess();
-    } else {
-      document.getElementById('loginErr').classList.add('show');
-      document.getElementById('dealerCodeInput').classList.add('err');
-    }
+    const d = await r.json();
+    if (d && d.dealer) { dealer = d.dealer; afterLogin(); }
+    else { document.getElementById('loginErr').classList.add('show'); document.getElementById('codeInput').classList.add('err'); }
   } catch(e) {
-    // If CORS/network issue, try reading from sheet directly isn't possible
-    // Show error
-    document.getElementById('loginErr').textContent = '⚠ Network error: ' + e.message;
+    document.getElementById('loginErr').textContent = '⚠ Network error — check connection.';
     document.getElementById('loginErr').classList.add('show');
   }
   btn.classList.remove('loading'); btn.disabled = false;
 }
 
-function onLoginSuccess() {
-  const d = currentDealer;
-  // Show dealer chip in topbar
-  document.getElementById('chipName').textContent = d.name;
+function afterLogin() {
+  document.getElementById('chipName').textContent = dealer.name;
   document.getElementById('dealerChip').style.display = 'flex';
-  // Enable tabs
-  document.getElementById('tabQR').disabled = false;
-  document.getElementById('tabBC').disabled = false;
-  // Build QR
+  ['tabQR','tabBC'].forEach(id => document.getElementById(id).disabled = false);
   buildQRPage();
-  // Switch to QR tab
   switchTab('qr', document.getElementById('tabQR'));
-  // Load saved API config for this dealer
-  loadApiConfig();
-  // Load saved recipients
-  const saved = localStorage.getItem('recip_' + d.id);
-  if (saved) { try { recipients = JSON.parse(saved); renderRecipients(); } catch(e){} }
+  // Load saved contacts
+  const saved = localStorage.getItem('contacts_' + dealer.id);
+  if (saved) { try { contacts = JSON.parse(saved); renderContacts(); } catch(e){} }
 }
 
-function buildQRPage() {
-  const d = currentDealer;
-  document.getElementById('qrDealerId').textContent = d.id;
-  document.getElementById('qrDealerName').textContent = d.name;
-  const url = BASE_REG_URL + '?dealer=' + encodeURIComponent(d.id) + '&name=' + encodeURIComponent(d.name);
-  document.getElementById('qrUrlHint').textContent = url;
-  // Clear old QR
-  const frame = document.getElementById('qrFrame');
-  frame.innerHTML = '';
-  new QRCode(frame, {
-    text: url, width: 200, height: 200,
-    colorDark: '#1e2d3d', colorLight: '#ffffff',
-    correctLevel: QRCode.CorrectLevel.H
-  });
-}
-
-// Enter key on login
-document.getElementById('dealerCodeInput').addEventListener('keydown', e => { if (e.key==='Enter') doLogin(); });
-document.getElementById('dealerCodeInput').addEventListener('input', function() {
+document.getElementById('codeInput').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
+document.getElementById('codeInput').addEventListener('input', function() {
   this.classList.remove('err');
   document.getElementById('loginErr').classList.remove('show');
 });
 
-// ── QR DOWNLOAD / PRINT ──────────────────────────────────
+// ── QR PAGE ──────────────────────────────────────────
+function buildQRPage() {
+  document.getElementById('qrId').textContent = dealer.id;
+  document.getElementById('qrName').textContent = dealer.name;
+  const url = BASE_REG_URL + '?dealer=' + encodeURIComponent(dealer.id) + '&name=' + encodeURIComponent(dealer.name);
+  document.getElementById('qrHint').textContent = url;
+  const frame = document.getElementById('qrFrame');
+  frame.innerHTML = '';
+  new QRCode(frame, { text: url, width: 200, height: 200, colorDark: '#1e2d3d', colorLight: '#fff', correctLevel: QRCode.CorrectLevel.H });
+}
+
 function getQRSrc() {
   const w = document.getElementById('qrFrame');
   const c = w.querySelector('canvas'), im = w.querySelector('img');
@@ -456,194 +427,227 @@ function getQRSrc() {
 }
 
 function downloadQR() {
-  const src = getQRSrc();
-  if (!src || !currentDealer) return;
-  const name = currentDealer.name;
-  const canvas = document.createElement('canvas');
-  canvas.width = 1240; canvas.height = 1754;
-  const ctx = canvas.getContext('2d');
-  ctx.fillStyle = '#fff'; ctx.fillRect(0,0,1240,1754);
-  ctx.fillStyle = '#0d9e8f'; ctx.fillRect(0,0,1240,220);
-  ctx.fillStyle = '#0d9e8f'; ctx.fillRect(0,1634,1240,120);
-  ctx.fillStyle = '#f5a623'; ctx.fillRect(0,220,1240,7);
-  ctx.fillStyle = '#f5a623'; ctx.fillRect(0,1627,1240,7);
-  ctx.fillStyle = 'rgba(255,255,255,0.6)'; ctx.font='bold 32px Arial'; ctx.textAlign='center';
-  ctx.fillText('DEALER NAME', 620, 100);
-  ctx.fillStyle = '#fff'; ctx.font='bold 72px Arial'; ctx.fillText(name, 620, 190);
-  const qi = new Image();
-  qi.onload = () => {
-    const bz=680, bx=(1240-bz)/2, by=320;
+  const src = getQRSrc(); if (!src) return;
+  const name = dealer.name;
+  const cv = document.createElement('canvas'); cv.width=1240; cv.height=1754;
+  const ctx = cv.getContext('2d');
+  ctx.fillStyle='#fff'; ctx.fillRect(0,0,1240,1754);
+  ctx.fillStyle='#0d9e8f'; ctx.fillRect(0,0,1240,220); ctx.fillRect(0,1634,1240,120);
+  ctx.fillStyle='#f5a623'; ctx.fillRect(0,220,1240,7); ctx.fillRect(0,1627,1240,7);
+  ctx.fillStyle='rgba(255,255,255,.6)'; ctx.font='bold 32px Arial'; ctx.textAlign='center'; ctx.fillText('DEALER NAME',620,100);
+  ctx.fillStyle='#fff'; ctx.font='bold 72px Arial'; ctx.fillText(name,620,190);
+  const qi=new Image(); qi.onload=()=>{
+    const bz=680,bx=280,by=320;
     function rr(x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath();}
     ctx.fillStyle='#f0f4f8'; rr(bx-30,by-30,bz+60,bz+60,28); ctx.fill();
     ctx.strokeStyle='#e2e8f0'; ctx.lineWidth=4; rr(bx-30,by-30,bz+60,bz+60,28); ctx.stroke();
     ctx.drawImage(qi,bx,by,bz,bz);
     ctx.fillStyle='#1e2d3d'; ctx.font='bold 56px Arial'; ctx.fillText('SCAN FOR EXCITING OFFERS',620,1160);
-    ctx.fillStyle='#8a94a6'; ctx.font='32px Arial'; ctx.fillText('Point your phone camera at the QR code above',620,1215);
-    ctx.strokeStyle='#e2e8f0'; ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(120,1270); ctx.lineTo(1120,1270); ctx.stroke();
+    ctx.fillStyle='#8a94a6'; ctx.font='32px Arial'; ctx.fillText('Point your phone camera at the QR code above',620,1210);
     ctx.fillStyle='#fff'; ctx.font='bold 40px Arial'; ctx.fillText('AKAI DISTRIBUTORS',620,1700);
-    const a=document.createElement('a'); a.download='QR_'+name.replace(/\s+/g,'_')+'_A4.png'; a.href=canvas.toDataURL('image/png'); a.click();
-  };
-  qi.src = src;
+    const a=document.createElement('a'); a.download='QR_'+name.replace(/\s+/g,'_')+'_A4.png'; a.href=cv.toDataURL('image/png'); a.click();
+  }; qi.src=src;
 }
 
 function printQR() {
-  const src = getQRSrc(); if (!src || !currentDealer) return;
-  const name = currentDealer.name;
-  const w = window.open('','_blank');
-  w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>QR–'+name+'</title><style>*{margin:0;padding:0;box-sizing:border-box;}body{font-family:-apple-system,sans-serif;background:#f0f4f8;display:flex;align-items:center;justify-content:center;min-height:100vh;}.slip{width:360px;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.15);}.bar{height:5px;background:linear-gradient(90deg,#0d9e8f,#0bb8a6);}.head{background:linear-gradient(135deg,#0d9e8f,#0a8a7d);padding:22px 20px 18px;text-align:center;}.lbl{font-size:10px;font-weight:700;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:5px;}.nm{font-size:22px;font-weight:800;color:#fff;}.body{padding:22px;text-align:center;}.box{background:#f0f4f8;border:1.5px solid #e2e8f0;border-radius:12px;padding:14px;display:inline-block;}.box img{width:200px;height:200px;display:block;}.foot{padding:16px 20px 22px;text-align:center;background:#f7f9fc;border-top:1px solid #e2e8f0;}.sm{font-size:14px;font-weight:800;color:#1e2d3d;text-transform:uppercase;letter-spacing:.6px;margin-bottom:3px;}.ss{font-size:11px;color:#8a94a6;}</style></head><body><div class="slip"><div class="bar"></div><div class="head"><div class="lbl">Dealer Name</div><div class="nm">'+name+'</div></div><div class="body"><div class="box"><img src="'+src+'"></div></div><div class="foot"><div class="sm">Scan for Exciting Offers</div><div class="ss">Point your camera at the code</div></div><div class="bar"></div></div><script>window.onload=function(){setTimeout(function(){window.print();},400);};<\/script></body></html>');
+  const src=getQRSrc(); if(!src) return;
+  const name=dealer.name;
+  const w=window.open('','_blank');
+  w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>QR</title><style>*{margin:0;padding:0;box-sizing:border-box;}body{font-family:sans-serif;background:#f0f4f8;display:flex;align-items:center;justify-content:center;min-height:100vh;}.s{width:340px;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.15);}.b{height:5px;background:linear-gradient(90deg,#0d9e8f,#0bb8a6);}.h{background:linear-gradient(135deg,#0d9e8f,#0a8a7d);padding:20px;text-align:center;}.l{font-size:10px;font-weight:700;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;}.n{font-size:20px;font-weight:800;color:#fff;}.bd{padding:20px;text-align:center;}.bx{background:#f0f4f8;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px;display:inline-block;}.bx img{width:190px;height:190px;display:block;}.ft{padding:14px 20px 18px;text-align:center;background:#f7f9fc;border-top:1px solid #e2e8f0;}.sm{font-size:13px;font-weight:800;color:#1e2d3d;text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px;}.ss{font-size:11px;color:#8a94a6;}</style></head><body><div class="s"><div class="b"></div><div class="h"><div class="l">Dealer Name</div><div class="n">'+name+'</div></div><div class="bd"><div class="bx"><img src="'+src+'"></div></div><div class="ft"><div class="sm">Scan for Exciting Offers</div><div class="ss">Point your phone camera at the code</div></div><div class="b"></div></div><script>window.onload=function(){setTimeout(function(){window.print();},400);};<\/script></body></html>');
   w.document.close();
 }
 
-// ── API CONFIG (per dealer) ──────────────────────────────
-function apiKey() { return 'wati_' + (currentDealer ? currentDealer.id : '_'); }
-
-function loadApiConfig() {
-  const k = apiKey();
-  const tok = localStorage.getItem(k + '_token');
-  const ep  = localStorage.getItem(k + '_ep');
-  if (tok) document.getElementById('watiToken').value    = tok;
-  else     document.getElementById('watiToken').value    = '';
-  if (ep)  document.getElementById('watiEndpoint').value = ep;
-  else     document.getElementById('watiEndpoint').value = '';
-  updateApiStatus();
+// ── BUILD CONTACT LIST ───────────────────────────────
+async function buildContactList() {
+  const btn = document.getElementById('buildBtn');
+  btn.classList.add('loading'); btn.disabled = true;
+  try {
+    // Fetch contacts filtered by THIS dealer's code
+    const r = await fetch(SHEET_API_URL + '?action=getContacts&dealer=' + encodeURIComponent(dealer.id));
+    const d = await r.json();
+    if (d && Array.isArray(d.contacts)) {
+      // Merge with existing — add new numbers, don't duplicate
+      const existing = new Set(contacts.map(c => c.phone));
+      let added = 0;
+      d.contacts.forEach(c => {
+        if (c.phone && !existing.has(c.phone)) {
+          contacts.push(c); existing.add(c.phone); added++;
+        }
+      });
+      localStorage.setItem('contacts_' + dealer.id, JSON.stringify(contacts));
+      renderContacts();
+      const msg = added > 0
+        ? '✅ ' + added + ' new contact(s) added. Total: ' + contacts.length
+        : '✅ List is up to date. ' + contacts.length + ' contacts.';
+      document.getElementById('contactSubtext').textContent = msg;
+    } else {
+      alert('Could not load contacts. Check your Apps Script deployment.');
+    }
+  } catch(e) {
+    alert('Network error: ' + e.message);
+  }
+  btn.classList.remove('loading'); btn.disabled = false;
 }
 
-function saveApiConfig() {
-  const k   = apiKey();
-  const tok = document.getElementById('watiToken').value.trim();
-  const ep  = document.getElementById('watiEndpoint').value.trim();
-  if (tok) localStorage.setItem(k + '_token', tok);
-  if (ep)  localStorage.setItem(k + '_ep',    ep);
-  updateApiStatus();
-  // Flash confirmation
-  const btn = event.target;
-  const orig = btn.textContent; btn.textContent = '✓ Saved!'; btn.style.background='#065f46';
-  setTimeout(() => { btn.textContent = orig; btn.style.background=''; }, 1500);
+function renderContacts() {
+  const list = document.getElementById('contactList');
+  const count = contacts.length;
+  document.getElementById('contactCount').textContent = count + ' contact' + (count===1?'':'s');
+  if (!count) {
+    list.innerHTML='<div style="padding:18px;text-align:center;color:var(--muted);font-size:13px">No contacts yet for your dealer code.</div>';
+    return;
+  }
+  list.innerHTML='';
+  contacts.forEach(c => {
+    const item=document.createElement('div'); item.className='contact-item';
+    item.innerHTML='<span class="contact-name">'+(c.name||'Unknown')+'</span><span class="contact-phone">'+c.phone+'</span>';
+    list.appendChild(item);
+  });
+  updateSendBtn();
 }
 
-function updateApiStatus() {
-  const k   = apiKey();
-  const tok = localStorage.getItem(k + '_token');
-  const ep  = localStorage.getItem(k + '_ep');
-  const el  = document.getElementById('apiStatus');
-  if (tok && ep) { el.className='api-status ok'; el.textContent='✓ WATI configured & ready'; }
-  else            { el.className='api-status warn'; el.textContent='⚠ Enter your token and server URL above'; }
+function updateSendBtn() {
+  const hasContacts = contacts.length > 0;
+  document.getElementById('sendBtn').disabled = !hasContacts;
+  const wb = document.getElementById('watiSendBtn');
+  if (wb) wb.disabled = !hasContacts;
 }
 
-// ── IMAGE UPLOAD ─────────────────────────────────────────
+// ── IMAGE UPLOAD ─────────────────────────────────────
 function onImgSelect(input) {
   if (!input.files || !input.files[0]) return;
-  selectedFile = input.files[0];
+  imgFile = input.files[0];
   const reader = new FileReader();
   reader.onload = e => {
     document.getElementById('previewImg').src = e.target.result;
-    document.getElementById('previewWrap').style.display = 'block';
-    document.getElementById('previewMeta').textContent = selectedFile.name + ' · ' + (selectedFile.size/1024).toFixed(0) + ' KB';
+    document.getElementById('previewWrap').style.display='block';
+    document.getElementById('previewMeta').textContent = imgFile.name+' · '+(imgFile.size/1024).toFixed(0)+' KB';
   };
-  reader.readAsDataURL(selectedFile);
-  document.getElementById('sendBtn').disabled = false;
+  reader.readAsDataURL(imgFile);
+  updateSendBtn();
 }
 
 const zone = document.getElementById('uploadZone');
-zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag'); });
-zone.addEventListener('dragleave', () => zone.classList.remove('drag'));
-zone.addEventListener('drop', e => {
-  e.preventDefault(); zone.classList.remove('drag');
-  const f = e.dataTransfer.files[0];
-  if (f && f.type.startsWith('image/')) { document.getElementById('imgInput').files = e.dataTransfer.files; onImgSelect(document.getElementById('imgInput')); }
-});
+zone.addEventListener('dragover', e=>{e.preventDefault();zone.classList.add('drag');});
+zone.addEventListener('dragleave',()=>zone.classList.remove('drag'));
+zone.addEventListener('drop',e=>{e.preventDefault();zone.classList.remove('drag');const f=e.dataTransfer.files[0];if(f&&f.type.startsWith('image/')){document.getElementById('imgInput').files=e.dataTransfer.files;onImgSelect(document.getElementById('imgInput'));}});
 
-// ── CONTACTS ─────────────────────────────────────────────
-async function refreshContacts() {
-  const btn = document.querySelector('.btn-refresh');
-  const orig = btn.innerHTML; btn.innerHTML = '⏳ Loading…'; btn.disabled = true;
-  try {
-    const r = await fetch(SHEET_API_URL + '?action=getContacts&dealer=' + encodeURIComponent(currentDealer.id));
-    const data = await r.json();
-    if (data && Array.isArray(data.contacts)) {
-      recipients = data.contacts;
-      localStorage.setItem('recip_' + currentDealer.id, JSON.stringify(recipients));
-      renderRecipients();
-    } else {
-      alert('Could not load contacts. Check your Apps Script.');
-    }
-  } catch(e) { alert('Network error: ' + e.message); }
-  btn.innerHTML = orig; btn.disabled = false;
-}
-
-function renderRecipients() {
-  const list = document.getElementById('recipList');
-  if (!recipients.length) {
-    list.innerHTML = '<div style="padding:20px;text-align:center;color:var(--muted);font-size:13px">No contacts yet.</div>';
-    updateSelCount(); return;
-  }
-  list.innerHTML = '';
-  recipients.forEach((r, i) => {
-    const item = document.createElement('label');
-    item.className = 'recip-item';
-    item.innerHTML = '<input type="checkbox" class="rcb" data-i="'+i+'" checked onchange="updateSelCount()">' +
-      '<span class="recip-name">' + (r.name||'Unknown') + '</span>' +
-      '<span class="recip-phone">' + (r.phone||'—') + '</span>';
-    list.appendChild(item);
-  });
-  updateSelCount();
-}
-
-function selAll(v) { document.querySelectorAll('.rcb').forEach(c => c.checked=v); updateSelCount(); }
-function updateSelCount() { document.getElementById('selCount').textContent = document.querySelectorAll('.rcb:checked').length; }
-function getSelected() { const s=[]; document.querySelectorAll('.rcb:checked').forEach(c => s.push(recipients[+c.dataset.i])); return s; }
-
-// ── SEND ─────────────────────────────────────────────────
-async function startSend() {
-  const k   = apiKey();
-  const tok = localStorage.getItem(k+'_token');
-  const ep  = localStorage.getItem(k+'_ep');
-  const sel = getSelected();
+// ── WHATSAPP SEND (wa.me method — works without API) ──
+// Opens WhatsApp for each number with caption pre-filled.
+// User just presses Send in WhatsApp. Auto-advances to next after delay.
+async function startWhatsAppSend() {
+  if (!contacts.length) { alert('Build your contact list first.'); return; }
   const caption = document.getElementById('caption').value.trim();
-  if (!tok||!ep)        { alert('Please save your WATI Token and Server URL first.'); return; }
-  if (!sel.length)      { alert('Select at least one recipient.'); return; }
-  if (!selectedFile && !caption) { alert('Upload an image or write a message.'); return; }
 
-  const btn = document.getElementById('sendBtn');
-  btn.disabled = true;
-  document.getElementById('progressWrap').style.display = 'block';
-  document.getElementById('sendLog').style.display = 'block';
-  document.getElementById('sendLog').innerHTML = '';
-  const bar = document.getElementById('progressBar'), txt = document.getElementById('progressTxt'), log = document.getElementById('sendLog');
-  let done=0; const total=sel.length;
+  const qw = document.getElementById('queueWrap');
+  const qBar = document.getElementById('qBar');
+  const qTxt = document.getElementById('qTxt');
+  const qLog = document.getElementById('qLog');
+  qw.style.display='block'; qLog.innerHTML='';
 
-  for (const recip of sel) {
-    const phone = String(recip.phone||''). replace(/\D/g,'');
-    let ok=false, err='';
+  const msg = caption || 'Check out our latest offer from AKAI Distributors! 🎁';
+  const total = contacts.length;
+
+  // If image is selected, show instructions
+  if (imgFile) {
+    alert('📎 IMAGE SENDING:\n\n1. WhatsApp will open for each customer\n2. Attach your image manually in WhatsApp\n3. The caption is pre-filled\n4. Press Send\n\nFor fully automatic image sending, use the WATI option below.\n\nReady to start? Click OK to begin.');
+  }
+
+  for (let i = 0; i < contacts.length; i++) {
+    const c = contacts[i];
+    let phone = String(c.phone||'').replace(/\D/g,'');
+    // Ensure country code
+    if (phone.length === 10) phone = '91' + phone;
+    if (phone.startsWith('+')) phone = phone.slice(1);
+
+    qBar.style.width = Math.round((i+1)/total*100)+'%';
+    qTxt.textContent = (i+1)+' / '+total+' — Opening WhatsApp for '+( c.name||phone)+'…';
+
+    // Open WhatsApp with pre-filled message
+    const waUrl = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(msg);
+    window.open(waUrl, '_blank');
+
+    // Log entry
+    const li = document.createElement('div'); li.className='qlog-item';
+    li.innerHTML = '<span class="qok">✓</span><span><strong>'+(c.name||phone)+'</strong> · +'+phone+' — WhatsApp opened</span>';
+    qLog.appendChild(li); qLog.scrollTop=qLog.scrollHeight;
+
+    // Wait 4 seconds before opening next (gives time to send in WhatsApp)
+    if (i < contacts.length - 1) {
+      await new Promise(r => setTimeout(r, 4000));
+    }
+  }
+  qTxt.textContent = '✅ Done! Opened WhatsApp for all '+total+' contacts.';
+}
+
+// ── WATI API SEND (fully automatic) ─────────────────
+function apiKey(s) { return 'wati_' + (dealer ? dealer.id : '_') + '_' + s; }
+
+function loadWatiConfig() {
+  const tok = localStorage.getItem(apiKey('tok'));
+  const ep  = localStorage.getItem(apiKey('ep'));
+  if (tok) document.getElementById('watiToken').value = tok;
+  if (ep)  document.getElementById('watiEp').value   = ep;
+  updateWatiStatus();
+}
+
+function saveWati() {
+  const tok = document.getElementById('watiToken').value.trim();
+  const ep  = document.getElementById('watiEp').value.trim();
+  if (tok) localStorage.setItem(apiKey('tok'), tok);
+  if (ep)  localStorage.setItem(apiKey('ep'),  ep);
+  updateWatiStatus();
+  const b=event.target; const o=b.textContent; b.textContent='✓ Saved!'; b.style.background='#065f46';
+  setTimeout(()=>{b.textContent=o;b.style.background='';},1500);
+}
+
+function updateWatiStatus() {
+  const tok = localStorage.getItem(apiKey('tok'));
+  const ep  = localStorage.getItem(apiKey('ep'));
+  const el  = document.getElementById('watiStatus');
+  if(tok&&ep){el.className='w-status w-ok';el.textContent='✓ WATI configured & ready';}
+  else{el.className='w-status w-warn';el.textContent='⚠ Enter token and server URL';}
+  const wb = document.getElementById('watiSendBtn');
+  if(wb) wb.disabled = !(tok && ep && contacts.length > 0);
+}
+
+async function startWatiSend() {
+  const tok = localStorage.getItem(apiKey('tok'));
+  const ep  = localStorage.getItem(apiKey('ep'));
+  if (!tok||!ep) { alert('Save your WATI credentials first.'); return; }
+  if (!contacts.length) { alert('Build contact list first.'); return; }
+  if (!imgFile && !document.getElementById('caption').value.trim()) { alert('Upload an image or write a message.'); return; }
+
+  const ww=document.getElementById('watiQueueWrap'); ww.style.display='block';
+  const wBar=document.getElementById('wBar'),wTxt=document.getElementById('wTxt'),wLog=document.getElementById('wLog');
+  wLog.innerHTML='';
+  const caption=document.getElementById('caption').value.trim();
+  const total=contacts.length; let done=0;
+
+  for (const c of contacts) {
+    let phone=String(c.phone||'').replace(/\D/g,'');
+    if(phone.length===10) phone='91'+phone;
+    if(phone.startsWith('+')) phone=phone.slice(1);
+    let ok=false,err='';
     try {
-      if (selectedFile) {
-        const fd = new FormData();
-        fd.append('file', selectedFile, selectedFile.name);
-        fd.append('caption', caption);
-        const res = await fetch(ep+'/api/v1/sendSessionFile/'+phone, {
-          method:'POST', headers:{'Authorization':'Bearer '+tok}, body:fd
-        });
+      if (imgFile) {
+        const fd=new FormData(); fd.append('file',imgFile,imgFile.name); fd.append('caption',caption);
+        const res=await fetch(ep+'/api/v1/sendSessionFile/'+phone,{method:'POST',headers:{'Authorization':'Bearer '+tok},body:fd});
         ok=res.ok; if(!ok) err='HTTP '+res.status;
       } else {
-        const res = await fetch(ep+'/api/v1/sendSessionMessage/'+phone, {
-          method:'POST', headers:{'Authorization':'Bearer '+tok,'Content-Type':'application/json'},
-          body:JSON.stringify({messageText:caption})
-        });
+        const res=await fetch(ep+'/api/v1/sendSessionMessage/'+phone,{method:'POST',headers:{'Authorization':'Bearer '+tok,'Content-Type':'application/json'},body:JSON.stringify({messageText:caption})});
         ok=res.ok; if(!ok) err='HTTP '+res.status;
       }
-    } catch(e){ err=e.message; }
-
+    } catch(e){err=e.message;}
     done++;
-    bar.style.width = Math.round(done/total*100)+'%';
-    txt.textContent = done+' / '+total+' sent';
-    const li=document.createElement('div'); li.className='log-item';
-    li.innerHTML=(ok?'<span class="lok">✓</span>':'<span class="lfail">✗</span>')+
-      '<span><strong>'+(recip.name||phone)+'</strong> · '+phone+(ok?'':' — '+err)+'</span>';
-    log.appendChild(li); log.scrollTop=log.scrollHeight;
-    await new Promise(r=>setTimeout(r,350));
+    wBar.style.width=Math.round(done/total*100)+'%';
+    wTxt.textContent=done+' / '+total+' sent';
+    const li=document.createElement('div');li.className='qlog-item';
+    li.innerHTML=(ok?'<span class="qok">✓</span>':'<span class="qwait">✗</span>')+'<span><strong>'+(c.name||phone)+'</strong> · +'+phone+(ok?'':' — '+err)+'</span>';
+    wLog.appendChild(li);wLog.scrollTop=wLog.scrollHeight;
+    await new Promise(r=>setTimeout(r,400));
   }
-  txt.textContent='✅ Done! '+done+' messages sent.';
-  btn.disabled=false;
+  wTxt.textContent='✅ Done! '+done+' messages sent via WATI.';
 }
 </script>
 </body>
