@@ -2,55 +2,532 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Dealer QR Code Generator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dealer QR Manager</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f0f2f5; min-height: 100vh; padding: 32px 20px; }
-  h1 { text-align: center; color: #1a1a2e; margin-bottom: 6px; }
-  .subtitle { text-align: center; color: #6b7280; font-size: 14px; margin-bottom: 32px; }
-  .container { max-width: 900px; margin: 0 auto; }
-  .top-form { background: #fff; border-radius: 14px; padding: 24px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,.08); }
-  label { font-size: 13px; font-weight: 600; color: #374151; display: block; margin-bottom: 5px; }
-  input { width: 100%; padding: 10px 12px; border: 1.5px solid #e5e7eb; border-radius: 8px; font-size: 14px; margin-bottom: 14px; outline: none; }
-  input:focus { border-color: #0f3460; }
-  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  button { background: #0f3460; color: #fff; border: none; border-radius: 8px; padding: 11px 20px; font-size: 14px; font-weight: 600; cursor: pointer; }
-  button:hover { background: #16213e; }
-  .btn-add { background: #065f46; width: 100%; }
-  .btn-add:hover { background: #064e3b; }
-  .dealers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; }
-  .dealer-card { background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 2px 12px rgba(0,0,0,.08); text-align: center; }
-  .dealer-card h3 { font-size: 15px; color: #1a1a2e; margin-bottom: 4px; }
-  .dealer-card p { font-size: 12px; color: #6b7280; margin-bottom: 14px; }
-  .qr-wrap { background: #f9fafb; border-radius: 8px; padding: 12px; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; min-height: 160px; }
-  .btn-row { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-  .btn-dl { font-size: 12px; padding: 7px 14px; background: #1a1a2e; }
-  .btn-print { font-size: 12px; padding: 7px 14px; background: #065f46; }
-  .tag { display: inline-block; background: #eff6ff; color: #1d4ed8; font-size: 11px; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; }
-  .empty { text-align: center; color: #9ca3af; font-size: 14px; padding: 40px; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal:    #0d9e8f;
+    --teal2:   #0bb8a6;
+    --teal-lt: #e6f7f5;
+    --teal-md: #b2e8e3;
+    --navy:    #1a2744;
+    --navy2:   #243358;
+    --gold:    #f5a623;
+    --white:   #ffffff;
+    --bg:      #f0f4f8;
+    --bg2:     #f7f9fc;
+    --muted:   #8a94a6;
+    --text:    #1e293b;
+    --border:  #e2e8f0;
+    --red:     #ef4444;
+    --sidebar: #1e2d3d;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    min-height: 100vh;
+    display: flex;
+    color: var(--text);
+    font-size: 14px;
+  }
+
+  /* ═══════════════════════════ SIDEBAR ═══════════════════════════ */
+  .sidebar {
+    width: 220px;
+    background: var(--sidebar);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .sidebar-logo {
+    padding: 22px 20px 18px;
+    border-bottom: 1px solid rgba(255,255,255,.07);
+  }
+  .logo-mark {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--teal);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .logo-text {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+  }
+  .logo-sub {
+    font-size: 10px;
+    color: rgba(255,255,255,.4);
+    font-weight: 400;
+    margin-top: 1px;
+  }
+
+  .sidebar-section {
+    padding: 20px 14px 10px;
+  }
+  .sidebar-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: rgba(255,255,255,.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0 8px;
+    margin-bottom: 6px;
+  }
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 10px;
+    border-radius: 9px;
+    color: rgba(255,255,255,.55);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background .15s, color .15s;
+    margin-bottom: 2px;
+  }
+  .nav-item:hover { background: rgba(255,255,255,.06); color: rgba(255,255,255,.85); }
+  .nav-item.active { background: var(--teal); color: #fff; }
+  .nav-icon { font-size: 16px; width: 20px; text-align: center; }
+
+  .sidebar-stats {
+    margin-top: auto;
+    padding: 16px 14px 20px;
+    border-top: 1px solid rgba(255,255,255,.07);
+  }
+  .stat-pill {
+    background: rgba(13,158,143,.18);
+    border: 1px solid rgba(13,158,143,.3);
+    border-radius: 10px;
+    padding: 12px 14px;
+    text-align: center;
+  }
+  .stat-num {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--teal2);
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+  .stat-lbl {
+    font-size: 11px;
+    color: rgba(255,255,255,.45);
+    font-weight: 500;
+  }
+
+  /* ═══════════════════════════ MAIN ═══════════════════════════════ */
+  .main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  /* TOP BAR */
+  .topbar {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 0 28px;
+    height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .topbar-left {
+    display: flex;
+    flex-direction: column;
+  }
+  .topbar-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  .topbar-sub {
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* ADD FORM INLINE TOP BAR */
+  .add-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .add-row input {
+    height: 36px;
+    padding: 0 12px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--text);
+    background: var(--bg2);
+    outline: none;
+    width: 160px;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .add-row input:focus {
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(13,158,143,.1);
+    background: #fff;
+  }
+  .add-row input::placeholder { color: #b8c2ce; }
+
+  .btn-add {
+    height: 36px;
+    padding: 0 16px;
+    background: var(--teal);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+    transition: background .15s, transform .1s;
+    flex-shrink: 0;
+  }
+  .btn-add:hover { background: var(--teal2); }
+  .btn-add:active { transform: scale(.97); }
+
+  /* CONTENT AREA */
+  .content {
+    padding: 24px 28px 40px;
+    flex: 1;
+  }
+
+  /* SEARCH / FILTER ROW */
+  .filter-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+  .search-wrap {
+    position: relative;
+    flex: 1;
+    max-width: 280px;
+  }
+  .search-icon {
+    position: absolute;
+    left: 11px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    font-size: 13px;
+    pointer-events: none;
+  }
+  .search-wrap input {
+    width: 100%;
+    height: 36px;
+    padding: 0 12px 0 32px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-size: 13px;
+    background: var(--white);
+    color: var(--text);
+    outline: none;
+    transition: border-color .2s;
+  }
+  .search-wrap input:focus { border-color: var(--teal); }
+
+  .filter-chips {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .chip {
+    height: 30px;
+    padding: 0 12px;
+    border-radius: 20px;
+    border: 1.5px solid var(--border);
+    background: var(--white);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: all .15s;
+  }
+  .chip:hover { border-color: var(--teal); color: var(--teal); }
+  .chip.active { background: var(--teal-lt); border-color: var(--teal); color: var(--teal); }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+
+  /* GRID */
+  .dealers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 18px;
+  }
+
+  /* DEALER CARD */
+  .dealer-card {
+    background: var(--white);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow .2s, transform .2s;
+    box-shadow: 0 1px 6px rgba(0,0,0,.04);
+  }
+  .dealer-card:hover {
+    box-shadow: 0 8px 28px rgba(0,0,0,.1);
+    transform: translateY(-2px);
+  }
+
+  .card-top {
+    background: linear-gradient(135deg, var(--teal) 0%, #0a8a7d 100%);
+    padding: 14px 16px 12px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .card-id-badge {
+    background: rgba(255,255,255,.18);
+    color: rgba(255,255,255,.9);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    padding: 3px 8px;
+    border-radius: 6px;
+    text-transform: uppercase;
+  }
+  .btn-x {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.25);
+    background: rgba(255,255,255,.1);
+    color: rgba(255,255,255,.7);
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .15s, color .15s;
+    flex-shrink: 0;
+  }
+  .btn-x:hover { background: var(--red); border-color: var(--red); color: #fff; }
+
+  .card-name-row {
+    padding: 14px 16px 0;
+  }
+  .card-dealer-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 2px;
+  }
+  .card-url-hint {
+    font-size: 10px;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .card-qr {
+    padding: 14px 16px 10px;
+    display: flex;
+    justify-content: center;
+  }
+  .qr-frame {
+    background: var(--bg2);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .qr-frame canvas, .qr-frame img { display: block; border-radius: 4px; }
+
+  .card-actions {
+    padding: 0 14px 14px;
+    display: flex;
+    gap: 8px;
+  }
+  .btn-dl, .btn-print {
+    flex: 1;
+    height: 34px;
+    border: none;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    transition: opacity .15s, transform .1s;
+  }
+  .btn-dl {
+    background: var(--teal-lt);
+    color: var(--teal);
+    border: 1.5px solid var(--teal-md);
+  }
+  .btn-dl:hover { background: var(--teal-md); }
+  .btn-print {
+    background: #fff7ed;
+    color: #c07a10;
+    border: 1.5px solid #fcd9a0;
+  }
+  .btn-print:hover { background: #fde8c0; }
+  .btn-dl:active, .btn-print:active { transform: scale(.97); }
+
+  /* EMPTY */
+  .empty-state {
+    grid-column: 1/-1;
+    background: var(--white);
+    border-radius: 14px;
+    border: 2px dashed var(--border);
+    padding: 60px 20px;
+    text-align: center;
+  }
+  .empty-state .e-icon { font-size: 40px; opacity: .3; margin-bottom: 12px; }
+  .empty-state p { color: var(--muted); font-size: 14px; line-height: 1.6; }
+
+  /* RESPONSIVE */
+  @media (max-width: 860px) {
+    .sidebar { display: none; }
+    .add-row input { width: 120px; }
+    .topbar { padding: 0 16px; }
+    .content { padding: 16px; }
+  }
+  @media (max-width: 520px) {
+    .topbar { flex-wrap: wrap; height: auto; padding: 12px 16px; gap: 10px; }
+    .add-row { flex-wrap: wrap; }
+    .add-row input { width: 100%; }
+  }
 </style>
 </head>
 <body>
-<div class="container">
-  <h1>🔲 Dealer QR Code Generator</h1>
-  <p class="subtitle">Generate unique QR codes for each dealer. Users who scan are linked to that dealer.</p>
 
-  <div class="top-form">
-    <div class="row">
+<!-- ═══ SIDEBAR ═══════════════════════════════════════════════════ -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-mark">
+      <div class="logo-icon">🔲</div>
       <div>
-        <label>Dealer ID</label>
-        <input type="text" id="newId" placeholder="e.g. D001">
-      </div>
-      <div>
-        <label>Dealer Name / Shop Name</label>
-        <input type="text" id="newName" placeholder="e.g. Sharma Electronics">
+        <div class="logo-text">QR Manager</div>
+        <div class="logo-sub">Dealer Portal</div>
       </div>
     </div>
-    <button class="btn-add" onclick="addDealer()">+ Add Dealer & Generate QR</button>
   </div>
 
-  <div class="dealers-grid" id="dealersGrid">
-    <div class="empty" id="emptyMsg">Add your first dealer above ↑</div>
+  <div class="sidebar-section">
+    <div class="sidebar-label">Navigation</div>
+    <div class="nav-item active">
+      <span class="nav-icon">🏠</span> Dashboard
+    </div>
+    <div class="nav-item">
+      <span class="nav-icon">🔲</span> QR Codes
+    </div>
+    <div class="nav-item">
+      <span class="nav-icon">👥</span> Dealers
+    </div>
+    <div class="nav-item">
+      <span class="nav-icon">📊</span> Analytics
+    </div>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-label">Settings</div>
+    <div class="nav-item">
+      <span class="nav-icon">⚙️</span> Configuration
+    </div>
+    <div class="nav-item">
+      <span class="nav-icon">🔗</span> Integrations
+    </div>
+  </div>
+
+  <div class="sidebar-stats">
+    <div class="stat-pill">
+      <div class="stat-num" id="sidebarCount">0</div>
+      <div class="stat-lbl">Active Dealers</div>
+    </div>
+  </div>
+</aside>
+
+<!-- ═══ MAIN ═══════════════════════════════════════════════════════ -->
+<div class="main">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <div class="topbar-title">Dealer QR Codes</div>
+      <div class="topbar-sub">Generate & manage unique QR codes per dealer</div>
+    </div>
+    <div class="topbar-right">
+      <div class="add-row">
+        <input type="text" id="newId"   placeholder="Dealer ID (e.g. D001)" maxlength="20">
+        <input type="text" id="newName" placeholder="Shop Name" maxlength="60">
+        <button class="btn-add" onclick="addDealer()">
+          <span style="font-size:15px;line-height:1">+</span> Add Dealer
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- FILTER ROW -->
+    <div class="filter-row">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Search dealers..." oninput="renderDealers()">
+      </div>
+      <div class="filter-chips">
+        <div class="chip active" onclick="setFilter('all', this)"><span class="dot"></span>All</div>
+        <div class="chip" onclick="setFilter('recent', this)"><span class="dot"></span>Recent</div>
+      </div>
+    </div>
+
+    <!-- GRID -->
+    <div class="dealers-grid" id="dealersGrid">
+      <div class="empty-state">
+        <div class="e-icon">🔲</div>
+        <p>No dealers yet.<br>Add your first dealer using the form above.</p>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -60,20 +537,55 @@
   // ════════════════════════════════════════════
   //  PASTE YOUR REGISTRATION FORM URL HERE ↓
   // ════════════════════════════════════════════
-  const BASE_URL = 'https://nishanta0504.github.io/AkaiDistributorsDATA/';
+  const BASE_URL = ' https://nishanta0504.github.io/AkaiDistributorsDATA/';
   // ════════════════════════════════════════════
 
-  const dealers = [];
+  let dealers = [];
+  let filterMode = 'all';
+
+  try {
+    const saved = localStorage.getItem('qr_dealers_v2');
+    if (saved) dealers = JSON.parse(saved);
+  } catch(e) { dealers = []; }
+
+  function save() {
+    try { localStorage.setItem('qr_dealers_v2', JSON.stringify(dealers)); } catch(e) {}
+  }
+
+  function setFilter(mode, el) {
+    filterMode = mode;
+    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+    renderDealers();
+  }
 
   function addDealer() {
     const id   = document.getElementById('newId').value.trim();
     const name = document.getElementById('newName').value.trim();
     if (!id || !name) { alert('Please enter both Dealer ID and Shop Name'); return; }
-    if (dealers.find(d => d.id === id)) { alert('Dealer ID already exists — use a different one'); return; }
-    dealers.push({ id, name });
+    if (dealers.find(d => d.id === id)) { alert('Dealer ID "' + id + '" already exists'); return; }
+    dealers.unshift({ id, name, added: Date.now() });
+    save();
     document.getElementById('newId').value   = '';
     document.getElementById('newName').value = '';
     renderDealers();
+  }
+
+  function removeDealer(index) {
+    const d = filteredDealers()[index];
+    if (!d) return;
+    if (!confirm('Remove dealer "' + d.name + '"?\nThis cannot be undone.')) return;
+    dealers = dealers.filter(x => x.id !== d.id);
+    save();
+    renderDealers();
+  }
+
+  function filteredDealers() {
+    const q = (document.getElementById('searchInput')?.value || '').toLowerCase();
+    let list = dealers;
+    if (filterMode === 'recent') list = dealers.slice(0, 10);
+    if (q) list = list.filter(d => d.name.toLowerCase().includes(q) || d.id.toLowerCase().includes(q));
+    return list;
   }
 
   function buildURL(dealer) {
@@ -81,67 +593,119 @@
   }
 
   function renderDealers() {
-    const grid = document.getElementById('dealersGrid');
-    if (!dealers.length) {
-      grid.innerHTML = '<div class="empty">Add your first dealer above ↑</div>';
+    const grid  = document.getElementById('dealersGrid');
+    const list  = filteredDealers();
+    const count = dealers.length;
+
+    document.getElementById('sidebarCount').textContent = count;
+
+    if (!list.length) {
+      grid.innerHTML = `
+        <div class="empty-state">
+          <div class="e-icon">🔲</div>
+          <p>${dealers.length ? 'No dealers match your search.' : 'No dealers yet.<br>Add your first dealer using the form above.'}</p>
+        </div>`;
       return;
     }
+
     grid.innerHTML = '';
-    dealers.forEach((dealer, i) => {
+    list.forEach((dealer, i) => {
       const card = document.createElement('div');
       card.className = 'dealer-card';
+      const shortURL = buildURL(dealer).replace('https://', '').substring(0, 36) + '…';
       card.innerHTML = `
-        <span class="tag">${dealer.id}</span>
-        <h3>${dealer.name}</h3>
-        <p>Unique QR for this dealer</p>
-        <div class="qr-wrap" id="qr-${i}"></div>
-        <div class="btn-row">
-          <button class="btn-dl" onclick="downloadQR(${i}, '${dealer.name}')">⬇ Download</button>
-          <button class="btn-print" onclick="printQR(${i}, '${dealer.name}')">🖨 Print</button>
+        <div class="card-top">
+          <span class="card-id-badge">${dealer.id}</span>
+          <button class="btn-x" onclick="removeDealer(${i})" title="Remove">✕</button>
+        </div>
+        <div class="card-name-row">
+          <div class="card-dealer-name">${dealer.name}</div>
+          <div class="card-url-hint">${shortURL}</div>
+        </div>
+        <div class="card-qr">
+          <div class="qr-frame" id="qr-${i}"></div>
+        </div>
+        <div class="card-actions">
+          <button class="btn-dl" onclick="downloadQR(${i},'${dealer.name.replace(/'/g,"\\'")}')">⬇ Download</button>
+          <button class="btn-print" onclick="printQR(${i},'${dealer.id}','${dealer.name.replace(/'/g,"\\'")}')">🖨 Print</button>
         </div>
       `;
       grid.appendChild(card);
+
       setTimeout(() => {
-        new QRCode(document.getElementById('qr-' + i), {
-          text:   buildURL(dealer),
-          width:  140,
-          height: 140,
-          colorDark:  '#1a1a2e',
+        const el = document.getElementById('qr-' + i);
+        if (!el) return;
+        new QRCode(el, {
+          text: buildURL(dealer),
+          width: 148, height: 148,
+          colorDark: '#1e2d3d',
           colorLight: '#ffffff',
           correctLevel: QRCode.CorrectLevel.H
         });
-      }, 50);
+      }, 60 * (i + 1));
     });
   }
 
+  function getQRSrc(index) {
+    const wrap = document.getElementById('qr-' + index);
+    if (!wrap) return null;
+    const c = wrap.querySelector('canvas');
+    const im = wrap.querySelector('img');
+    return c ? c.toDataURL('image/png') : im ? im.src : null;
+  }
+
   function downloadQR(index, name) {
-    const wrap = document.getElementById('qr-' + index);
-    const img  = wrap.querySelector('img') || wrap.querySelector('canvas');
-    if (!img) return;
-    const src = img.tagName === 'CANVAS' ? img.toDataURL() : img.src;
-    const a   = document.createElement('a');
+    const src = getQRSrc(index);
+    if (!src) return;
+    const a = document.createElement('a');
     a.download = `QR_${name.replace(/\s+/g,'_')}.png`;
-    a.href = src;
-    a.click();
+    a.href = src; a.click();
   }
 
-  function printQR(index, name) {
-    const wrap = document.getElementById('qr-' + index);
-    const img  = wrap.querySelector('img') || wrap.querySelector('canvas');
-    if (!img) return;
-    const src = img.tagName === 'CANVAS' ? img.toDataURL() : img.src;
+  function printQR(index, id, name) {
+    const src = getQRSrc(index);
+    if (!src) { alert('QR not ready yet. Wait a moment and try again.'); return; }
     const w = window.open('', '_blank');
-    w.document.write(`
-      <html><body style="text-align:center;padding:40px;font-family:sans-serif">
-      <h2 style="color:#1a1a2e">${name}</h2>
-      <p style="color:#6b7280;margin-bottom:20px">Scan to get exclusive deals on WhatsApp</p>
-      <img src="${src}" style="width:200px;height:200px">
-      <p style="margin-top:20px;font-size:13px;color:#9ca3af">Scan with your phone camera</p>
-      <script>window.print();<\/script>
-      </body></html>
-    `);
+    w.document.write(`<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>QR – ${name}</title>
+<style>
+  * { margin:0;padding:0;box-sizing:border-box; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; background:#f0f4f8; display:flex; align-items:center; justify-content:center; min-height:100vh; }
+  .slip { width:300px; background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,.15); }
+  .slip-head { background:linear-gradient(135deg,#0d9e8f,#0a8a7d); padding:20px; text-align:center; }
+  .dealer-label { font-size:10px; font-weight:700; color:rgba(255,255,255,.6); text-transform:uppercase; letter-spacing:1.2px; margin-bottom:5px; }
+  .dealer-name { font-size:19px; font-weight:800; color:#fff; line-height:1.2; }
+  .teal-bar { height:4px; background:linear-gradient(90deg,#0d9e8f,#0bb8a6); }
+  .slip-body { padding:20px; text-align:center; background:#fff; }
+  .qr-box { background:#f7f9fc; border:1.5px solid #e2e8f0; border-radius:12px; padding:14px; display:inline-block; }
+  .qr-box img { width:168px;height:168px;display:block;border-radius:4px; }
+  .slip-foot { padding:14px 20px 20px; text-align:center; background:#f7f9fc; border-top:1px solid #e2e8f0; }
+  .scan-main { font-size:13px; font-weight:800; color:#1e2d3d; text-transform:uppercase; letter-spacing:.6px; margin-bottom:3px; }
+  .scan-sub { font-size:11px; color:#8a94a6; }
+</style></head>
+<body>
+<div class="slip">
+  <div class="teal-bar"></div>
+  <div class="slip-head">
+    <div class="dealer-label">Dealer Name</div>
+    <div class="dealer-name">${name}</div>
+  </div>
+  <div class="slip-body">
+    <div class="qr-box"><img src="${src}"></div>
+  </div>
+  <div class="slip-foot">
+    <div class="scan-main">Scan to get exclusive offers</div>
+    <div class="scan-sub">Point your phone camera at the code</div>
+  </div>
+  <div class="teal-bar"></div>
+</div>
+<script>window.onload=function(){setTimeout(function(){window.print();},400);};<\/script>
+</body></html>`);
+    w.document.close();
   }
 
+  document.addEventListener('keydown', e => { if (e.key === 'Enter') addDealer(); });
+  renderDealers();
 </script>
 </body>
 </html>
