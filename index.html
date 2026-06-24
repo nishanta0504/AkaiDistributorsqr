@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dealer QR Code Generator</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f0f2f5; min-height: 100vh; padding: 32px 20px; }
+  h1 { text-align: center; color: #1a1a2e; margin-bottom: 6px; }
+  .subtitle { text-align: center; color: #6b7280; font-size: 14px; margin-bottom: 32px; }
+  .container { max-width: 900px; margin: 0 auto; }
+  .top-form { background: #fff; border-radius: 14px; padding: 24px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,.08); }
+  label { font-size: 13px; font-weight: 600; color: #374151; display: block; margin-bottom: 5px; }
+  input { width: 100%; padding: 10px 12px; border: 1.5px solid #e5e7eb; border-radius: 8px; font-size: 14px; margin-bottom: 14px; outline: none; }
+  input:focus { border-color: #0f3460; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  button { background: #0f3460; color: #fff; border: none; border-radius: 8px; padding: 11px 20px; font-size: 14px; font-weight: 600; cursor: pointer; }
+  button:hover { background: #16213e; }
+  .btn-add { background: #065f46; width: 100%; }
+  .btn-add:hover { background: #064e3b; }
+  .dealers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; }
+  .dealer-card { background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 2px 12px rgba(0,0,0,.08); text-align: center; }
+  .dealer-card h3 { font-size: 15px; color: #1a1a2e; margin-bottom: 4px; }
+  .dealer-card p { font-size: 12px; color: #6b7280; margin-bottom: 14px; }
+  .qr-wrap { background: #f9fafb; border-radius: 8px; padding: 12px; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; min-height: 160px; }
+  .btn-row { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .btn-dl { font-size: 12px; padding: 7px 14px; background: #1a1a2e; }
+  .btn-print { font-size: 12px; padding: 7px 14px; background: #065f46; }
+  .tag { display: inline-block; background: #eff6ff; color: #1d4ed8; font-size: 11px; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; }
+  .empty { text-align: center; color: #9ca3af; font-size: 14px; padding: 40px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🔲 Dealer QR Code Generator</h1>
+  <p class="subtitle">Generate unique QR codes for each dealer. Users who scan are linked to that dealer.</p>
+
+  <div class="top-form">
+    <div class="row">
+      <div>
+        <label>Dealer ID</label>
+        <input type="text" id="newId" placeholder="e.g. D001">
+      </div>
+      <div>
+        <label>Dealer Name / Shop Name</label>
+        <input type="text" id="newName" placeholder="e.g. Sharma Electronics">
+      </div>
+    </div>
+    <button class="btn-add" onclick="addDealer()">+ Add Dealer & Generate QR</button>
+  </div>
+
+  <div class="dealers-grid" id="dealersGrid">
+    <div class="empty" id="emptyMsg">Add your first dealer above ↑</div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+
+  // ════════════════════════════════════════════
+  //  PASTE YOUR REGISTRATION FORM URL HERE ↓
+  // ════════════════════════════════════════════
+  const BASE_URL = 'https://nishanta0504.github.io/AkaiDistributorsDATA/';
+  // ════════════════════════════════════════════
+
+  const dealers = [];
+
+  function addDealer() {
+    const id   = document.getElementById('newId').value.trim();
+    const name = document.getElementById('newName').value.trim();
+    if (!id || !name) { alert('Please enter both Dealer ID and Shop Name'); return; }
+    if (dealers.find(d => d.id === id)) { alert('Dealer ID already exists — use a different one'); return; }
+    dealers.push({ id, name });
+    document.getElementById('newId').value   = '';
+    document.getElementById('newName').value = '';
+    renderDealers();
+  }
+
+  function buildURL(dealer) {
+    return `${BASE_URL}?dealer=${encodeURIComponent(dealer.id)}&name=${encodeURIComponent(dealer.name)}`;
+  }
+
+  function renderDealers() {
+    const grid = document.getElementById('dealersGrid');
+    if (!dealers.length) {
+      grid.innerHTML = '<div class="empty">Add your first dealer above ↑</div>';
+      return;
+    }
+    grid.innerHTML = '';
+    dealers.forEach((dealer, i) => {
+      const card = document.createElement('div');
+      card.className = 'dealer-card';
+      card.innerHTML = `
+        <span class="tag">${dealer.id}</span>
+        <h3>${dealer.name}</h3>
+        <p>Unique QR for this dealer</p>
+        <div class="qr-wrap" id="qr-${i}"></div>
+        <div class="btn-row">
+          <button class="btn-dl" onclick="downloadQR(${i}, '${dealer.name}')">⬇ Download</button>
+          <button class="btn-print" onclick="printQR(${i}, '${dealer.name}')">🖨 Print</button>
+        </div>
+      `;
+      grid.appendChild(card);
+      setTimeout(() => {
+        new QRCode(document.getElementById('qr-' + i), {
+          text:   buildURL(dealer),
+          width:  140,
+          height: 140,
+          colorDark:  '#1a1a2e',
+          colorLight: '#ffffff',
+          correctLevel: QRCode.CorrectLevel.H
+        });
+      }, 50);
+    });
+  }
+
+  function downloadQR(index, name) {
+    const wrap = document.getElementById('qr-' + index);
+    const img  = wrap.querySelector('img') || wrap.querySelector('canvas');
+    if (!img) return;
+    const src = img.tagName === 'CANVAS' ? img.toDataURL() : img.src;
+    const a   = document.createElement('a');
+    a.download = `QR_${name.replace(/\s+/g,'_')}.png`;
+    a.href = src;
+    a.click();
+  }
+
+  function printQR(index, name) {
+    const wrap = document.getElementById('qr-' + index);
+    const img  = wrap.querySelector('img') || wrap.querySelector('canvas');
+    if (!img) return;
+    const src = img.tagName === 'CANVAS' ? img.toDataURL() : img.src;
+    const w = window.open('', '_blank');
+    w.document.write(`
+      <html><body style="text-align:center;padding:40px;font-family:sans-serif">
+      <h2 style="color:#1a1a2e">${name}</h2>
+      <p style="color:#6b7280;margin-bottom:20px">Scan to get exclusive deals on WhatsApp</p>
+      <img src="${src}" style="width:200px;height:200px">
+      <p style="margin-top:20px;font-size:13px;color:#9ca3af">Scan with your phone camera</p>
+      <script>window.print();<\/script>
+      </body></html>
+    `);
+  }
+
+</script>
+</body>
+</html>
