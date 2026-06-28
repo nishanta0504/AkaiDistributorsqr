@@ -43,12 +43,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 .l-ii{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:15px}
 .l-input{width:100%;height:46px;padding:0 12px 0 40px;border:1.5px solid var(--border);border-radius:10px;font-size:18px;font-weight:700;color:var(--navy);background:var(--bg2);outline:none;letter-spacing:2px;text-transform:uppercase;-webkit-appearance:none}
 .l-input:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,158,143,.1);background:#fff}
-.l-input.err{border-color:var(--red)}
-.l-err{font-size:13px;font-weight:700;color:#fff;background:var(--red);border-radius:9px;padding:10px 13px;margin-bottom:10px;display:none;text-align:center;line-height:1.5;animation:shake .4s ease}
+.l-input.err{border-color:var(--red);background:#fff5f5}
+.l-err{font-size:12px;color:var(--red);margin-bottom:8px;display:none;text-align:left;font-weight:600;padding:8px 10px;background:#fef2f2;border-radius:7px;border:1px solid #fecaca}
 .l-err.show{display:block}
-@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
 .l-hint{font-size:11px;color:var(--muted);margin-bottom:16px}
-.btn-login{width:100%;height:46px;background:var(--teal);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 14px rgba(13,158,143,.3);-webkit-appearance:none}
+.btn-login{width:100%;height:46px;background:var(--teal);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 14px rgba(13,158,143,.3)}
 .btn-login:active{transform:scale(.98)}
 .sp{width:17px;height:17px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;display:none}
 .btn-login.ld .lt{display:none}.btn-login.ld .sp{display:block}
@@ -63,9 +62,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 .qr-frame{background:var(--bg2);border:1.5px solid var(--border);border-radius:11px;padding:12px;display:inline-flex;margin-bottom:16px}
 .qr-frame canvas,.qr-frame img{display:block;border-radius:3px}
 .qr-acts{display:flex;gap:8px;width:100%}
-.btn-sm{flex:1;height:40px;border-radius:9px;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;-webkit-appearance:none;border:none}
-.btn-dl{background:var(--teal-lt);color:var(--teal);border:1.5px solid var(--teal-md)!important}
-.btn-pr{background:#fff7ed;color:#b45309;border:1.5px solid #fcd9a0!important}
+.btn-sm{flex:1;height:40px;border-radius:9px;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;border:none;-webkit-appearance:none}
+.btn-dl{background:var(--teal-lt);color:var(--teal);border:1.5px solid var(--teal-md) !important}
+.btn-pr{background:#fff7ed;color:#b45309;border:1.5px solid #fcd9a0 !important}
 .btn-sm:active{transform:scale(.97)}
 .qr-url{font-size:10px;color:var(--muted);margin-top:10px;word-break:break-all;text-align:center;padding:6px 10px;background:var(--bg2);border-radius:7px;border:1px solid var(--border);width:100%}
 
@@ -74,7 +73,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 .bc-hd{margin-bottom:12px}
 .bc-hd h1{font-size:16px;font-weight:800;color:var(--navy);margin-bottom:2px}
 .bc-hd p{font-size:11px;color:var(--muted)}
-
 .bc-card{background:var(--white);border-radius:13px;border:1px solid var(--border);box-shadow:0 2px 8px rgba(0,0,0,.04);overflow:hidden;margin-bottom:11px}
 .bc-th{background:linear-gradient(135deg,var(--navy),var(--navy2));padding:11px 14px;display:flex;align-items:center;gap:8px}
 .bc-ico{width:30px;height:30px;border-radius:7px;background:rgba(13,158,143,.2);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
@@ -86,46 +84,26 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 .c-top{background:var(--teal-lt);border:1.5px solid var(--teal-md);border-radius:9px;padding:9px 11px;margin-bottom:9px;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
 .c-top strong{font-size:13px;font-weight:800;color:var(--navy)}
 .c-top span{font-size:10px;color:var(--muted);display:block;margin-top:1px}
-.btn-load{height:34px;padding:0 12px;background:var(--teal);color:#fff;border:none;border-radius:7px;font-size:11px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap;flex-shrink:0;-webkit-appearance:none}
+.btn-load{height:34px;padding:0 12px;background:var(--teal);color:#fff;border:none;border-radius:7px;font-size:11px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap;flex-shrink:0}
 .btn-load:active{transform:scale(.97)}
 .btn-load.ld .bt{display:none}.btn-load.ld .bsp{display:block}
 .bsp{width:13px;height:13px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;display:none}
-
 .c-list{max-height:150px;overflow-y:auto;border:1.5px solid var(--border);border-radius:8px;background:var(--bg2);-webkit-overflow-scrolling:touch}
 .c-item{display:flex;align-items:center;gap:7px;padding:6px 11px;border-bottom:1px solid var(--border)}
 .c-item:last-child{border-bottom:none}
 .c-name{font-size:11px;font-weight:600;color:var(--text);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .c-phone{font-size:10px;color:var(--muted);font-family:monospace;flex-shrink:0}
 
-/* BIG SEND BUTTON */
-.send-section{display:flex;flex-direction:column;gap:9px}
-.btn-big{width:100%;height:56px;border:none;border-radius:12px;font-size:15px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;-webkit-appearance:none;transition:transform .1s,box-shadow .15s}
-.btn-big:active{transform:scale(.97)}
-.btn-big:disabled{opacity:.45;cursor:not-allowed}
+/* send steps */
+.step-label{font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:7px;display:flex;align-items:center;gap:6px}
+.step-num{background:var(--teal);color:#fff;padding:2px 8px;border-radius:12px;font-size:9px;font-weight:800}
+.step-block{margin-bottom:14px}
+.step-or{text-align:center;font-size:11px;color:var(--muted);margin:6px 0}
+.chk-row{display:flex;align-items:flex-start;gap:8px;font-size:11px;line-height:1.5;margin-bottom:5px}
+.chk-row:last-child{margin-bottom:0}
 
-.btn-wa{background:var(--green);color:#fff;box-shadow:0 4px 16px rgba(37,211,102,.35)}
-.btn-dl-csv{background:var(--navy);color:#fff;box-shadow:0 4px 14px rgba(30,45,61,.3)}
-.btn-vcf{background:#7c3aed;color:#fff;box-shadow:0 4px 14px rgba(124,58,237,.3)}
-
-/* info boxes */
-.info{border-radius:9px;padding:10px 12px;font-size:11px;line-height:1.6}
-.info strong{font-weight:700;display:block;margin-bottom:2px}
-.info.green{background:#f0fdf4;border:1.5px solid #bbf7d0;color:#14532d}
-.info.blue{background:#eff6ff;border:1.5px solid #bfdbfe;color:#1e40af}
-.info.amber{background:#fffbeb;border:1.5px solid #fde68a;color:#78350f}
-.info.teal{background:var(--teal-lt);border:1.5px solid var(--teal-md);color:#065f46}
-
-/* HOW TO STEPS */
-.how{display:flex;flex-direction:column;gap:8px}
-.how-step{display:flex;gap:10px;align-items:flex-start;padding:10px 11px;border-radius:9px;background:var(--bg2);border:1.5px solid var(--border)}
-.hn{width:26px;height:26px;min-width:26px;border-radius:50%;background:var(--green);color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
-.hn.t{background:var(--teal)}
-.hb h3{font-size:12px;font-weight:700;color:var(--navy);margin-bottom:2px}
-.hb p{font-size:11px;color:var(--muted);line-height:1.5}
-.hb a{color:var(--teal);font-weight:700;text-decoration:none}
-
-/* image upload */
-.upload-zone{border:2px dashed var(--border);border-radius:11px;padding:20px 12px;text-align:center;background:var(--bg2);cursor:pointer;position:relative;transition:border-color .2s,background .2s;margin-bottom:9px}
+/* upload */
+.upload-zone{border:2px dashed var(--border);border-radius:11px;padding:20px 12px;text-align:center;background:var(--bg2);cursor:pointer;position:relative;transition:border-color .2s,background .2s}
 .upload-zone:active,.upload-zone.drag{border-color:var(--teal);background:var(--teal-lt)}
 .upload-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
 .u-icon{font-size:26px;margin-bottom:5px;opacity:.5}
@@ -134,28 +112,54 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 .prev-wrap{display:none;margin-bottom:9px;text-align:center}
 .prev-wrap img{max-width:100%;max-height:160px;object-fit:contain;border-radius:9px;border:1.5px solid var(--border)}
 .prev-meta{font-size:10px;color:var(--muted);margin-top:4px}
-
-textarea.msg{width:100%;height:60px;padding:9px 11px;border:1.5px solid var(--border);border-radius:9px;font-size:13px;color:var(--text);background:var(--bg2);resize:none;outline:none;font-family:inherit;-webkit-appearance:none;margin-bottom:9px}
+textarea.msg{width:100%;height:60px;padding:9px 11px;border:1.5px solid var(--border);border-radius:9px;font-size:13px;color:var(--text);background:var(--bg2);resize:none;outline:none;font-family:inherit;-webkit-appearance:none}
 textarea.msg:focus{border-color:var(--teal);background:#fff}
 textarea.msg::placeholder{color:#c0c8d4}
 
-/* send steps */
-.send-step{margin-bottom:12px}
-.step-label{font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:7px;display:flex;align-items:center;gap:6px}
-.step-num{background:var(--teal);color:#fff;padding:2px 8px;border-radius:12px;font-size:9px;font-weight:800;letter-spacing:.5px}
-.step-or{text-align:center;font-size:11px;color:var(--muted);margin:8px 0}
-.chk-row{display:flex;align-items:flex-start;gap:8px;font-size:11px;line-height:1.4}
-.chk-ico{font-size:14px;flex-shrink:0;margin-top:1px}
+/* buttons */
+.btn-big{width:100%;height:50px;border:none;border-radius:11px;font-size:14px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:8px;-webkit-appearance:none}
+.btn-big:last-child{margin-bottom:0}
+.btn-big:active{transform:scale(.98)}
+.btn-big:disabled{opacity:.45;cursor:not-allowed}
+.btn-wa{background:var(--green);color:#fff;box-shadow:0 4px 14px rgba(37,211,102,.3)}
+.btn-navy{background:var(--navy);color:#fff;box-shadow:0 4px 14px rgba(30,45,61,.2)}
+.btn-purple{background:#7c3aed;color:#fff;box-shadow:0 4px 14px rgba(124,58,237,.2)}
+
+/* err banner */
+.err-banner{display:none;background:#fef2f2;border:1.5px solid #fecaca;border-radius:9px;padding:10px 12px;font-size:12px;color:#b91c1c;font-weight:600;margin-bottom:10px}
 
 /* progress */
-.prog{display:none;margin-top:9px}
-.prog-bar-bg{height:7px;background:var(--border);border-radius:99px;overflow:hidden;margin-bottom:6px}
+.prog{display:none;margin-top:10px}
+.prog-bg{height:7px;background:var(--border);border-radius:99px;overflow:hidden;margin-bottom:6px}
 .prog-bar{height:100%;background:var(--green);border-radius:99px;width:0;transition:width .3s}
 .prog-txt{font-size:11px;color:var(--muted);text-align:center;margin-bottom:6px}
 .prog-log{max-height:110px;overflow-y:auto;border:1.5px solid var(--border);border-radius:8px;background:var(--bg2)}
 .pli{display:flex;align-items:center;gap:6px;padding:5px 10px;border-bottom:1px solid var(--border);font-size:10px}
 .pli:last-child{border-bottom:none}
 .lok{color:var(--green)}.lfail{color:var(--red)}
+
+/* info boxes */
+.info{border-radius:9px;padding:10px 12px;font-size:11px;line-height:1.6;margin-bottom:8px}
+.info:last-child{margin-bottom:0}
+.info strong{font-weight:700;display:block;margin-bottom:1px}
+.info.green{background:#f0fdf4;border:1.5px solid #bbf7d0;color:#14532d}
+.info.blue{background:#eff6ff;border:1.5px solid #bfdbfe;color:#1e40af}
+.info.amber{background:#fffbeb;border:1.5px solid #fde68a;color:#78350f}
+.info.teal{background:var(--teal-lt);border:1.5px solid var(--teal-md);color:#065f46}
+.info.red{background:#fef2f2;border:1.5px solid #fecaca;color:#b91c1c}
+
+/* how-to steps */
+.how{display:flex;flex-direction:column;gap:8px}
+.how-step{display:flex;gap:10px;align-items:flex-start;padding:10px 11px;border-radius:9px;background:var(--bg2);border:1.5px solid var(--border)}
+.hn{width:26px;height:26px;min-width:26px;border-radius:50%;color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px;background:var(--teal)}
+.hb h3{font-size:12px;font-weight:700;color:var(--navy);margin-bottom:2px}
+.hb p{font-size:11px;color:var(--muted);line-height:1.5}
+
+/* phone tabs */
+.phone-tabs{display:flex;gap:8px;margin-bottom:12px}
+.ptab{flex:1;height:42px;border-radius:9px;font-size:13px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;border:2px solid var(--border);background:var(--bg2);color:var(--muted);transition:all .15s}
+.ptab.active-android{border-color:#25d366;background:#f0fdf4;color:#14532d}
+.ptab.active-iphone{border-color:#3b82f6;background:#eff6ff;color:#1e40af}
 </style>
 </head>
 <body>
@@ -175,7 +179,7 @@ textarea.msg::placeholder{color:#c0c8d4}
   </div>
 </div>
 
-<!-- LOGIN -->
+<!-- ═══ LOGIN ═══ -->
 <div class="page active" id="page-login">
   <div class="login-wrap">
     <div class="login-card">
@@ -183,13 +187,14 @@ textarea.msg::placeholder{color:#c0c8d4}
       <div class="l-body">
         <div class="l-icon">🏪</div>
         <div class="l-title">Dealer Login</div>
-        <div class="l-sub">Enter your dealer code to access your QR and send offers to customers</div>
+        <div class="l-sub">Enter your dealer code to access your QR code and send offers to customers</div>
         <label class="l-label">Dealer Code</label>
         <div class="l-iw">
           <span class="l-ii">🔑</span>
-          <input class="l-input" type="text" id="codeInput" placeholder="D001" maxlength="20" autocomplete="off" spellcheck="false" autocapitalize="characters">
+          <input class="l-input" type="text" id="codeInput" placeholder="e.g. D001" maxlength="20"
+            autocomplete="off" spellcheck="false" autocapitalize="characters">
         </div>
-        <div class="l-err" id="loginErr">❌ Code not found. Please check and try again.</div>
+        <div class="l-err" id="loginErr"></div>
         <div class="l-hint">Your dealer code was provided by AKAI Distributors</div>
         <button class="btn-login" id="loginBtn" onclick="doLogin()">
           <span class="lt">Access My Portal →</span>
@@ -200,7 +205,7 @@ textarea.msg::placeholder{color:#c0c8d4}
   </div>
 </div>
 
-<!-- QR PAGE -->
+<!-- ═══ QR PAGE ═══ -->
 <div class="page" id="page-qr">
   <div class="qr-page">
     <div class="qr-card">
@@ -220,26 +225,26 @@ textarea.msg::placeholder{color:#c0c8d4}
   </div>
 </div>
 
-<!-- BROADCAST PAGE -->
+<!-- ═══ BROADCAST PAGE ═══ -->
 <div class="page" id="page-bc">
   <div class="bc-page">
 
     <div class="bc-hd">
-      <h1>📤 Send Offers to Your Customers</h1>
-      <p>Free · works on any phone · no extra apps needed</p>
+      <h1>📤 Send Offers to Customers</h1>
+      <p>Follow the steps below — free, works on any phone</p>
     </div>
 
-    <!-- LOAD CONTACTS -->
+    <!-- STEP 1: LOAD CONTACTS -->
     <div class="bc-card">
       <div class="bc-th">
         <div class="bc-ico">👥</div>
-        <div><h2>Your Registered Customers</h2><p>Only customers registered with your dealer code</p></div>
+        <div><h2>STEP 1 — Load Your Customers</h2><p>Only customers registered with your dealer code</p></div>
       </div>
       <div class="bc-bd">
         <div class="c-top">
           <div>
             <strong id="cCount">0 contacts</strong>
-            <span id="cSub">Tap to load your customers</span>
+            <span id="cSub">Tap to load your registered customers</span>
           </div>
           <button class="btn-load" id="loadBtn" onclick="loadContacts()">
             <span class="bt">🔄 Load / Refresh</span>
@@ -247,216 +252,164 @@ textarea.msg::placeholder{color:#c0c8d4}
           </button>
         </div>
         <div class="c-list" id="cList">
-          <div style="padding:14px;text-align:center;color:var(--muted);font-size:11px">Tap Load to see your registered customers</div>
+          <div style="padding:14px;text-align:center;color:var(--muted);font-size:11px">
+            Tap "Load / Refresh" to see your registered customers
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- SEND OPTIONS -->
+    <!-- STEP 2: UPLOAD IMAGE -->
     <div class="bc-card">
       <div class="bc-th">
-        <div class="bc-ico">🚀</div>
-        <div><h2>Send Your Offer — Step by Step</h2><p>Follow each step in order</p></div>
+        <div class="bc-ico">🖼️</div>
+        <div><h2>STEP 2 — Choose Image or Message</h2><p>Upload an image OR type a message (or both)</p></div>
       </div>
       <div class="bc-bd">
 
-        <!-- ── STEP A: Image ── -->
-        <div class="send-step" id="stepA">
-          <div class="step-label"><span class="step-num">STEP 1</span> Upload Your Offer Image</div>
+        <div class="step-block">
+          <div class="step-label"><span class="step-num">IMAGE</span> Select from gallery or camera</div>
           <div class="upload-zone" id="upZone">
             <input type="file" id="imgInp" accept="image/*" onchange="onImg(this)">
             <div class="u-icon">📷</div>
-            <p><strong>Tap here to choose your offer image</strong><br>from gallery or take a photo</p>
+            <p><strong>Tap here to choose offer image</strong><br>from gallery or take a photo</p>
           </div>
           <div class="prev-wrap" id="prevWrap">
             <img id="prevImg" src="" alt="">
             <div class="prev-meta" id="prevMeta"></div>
-            <div class="info green" style="margin-top:6px">
-              ✅ Image selected. <strong>Long-press the image above → tap Save to Gallery</strong> so you can attach it in WhatsApp.
-            </div>
-          </div>
-          <div class="step-or">── or ──</div>
-          <textarea class="msg" id="msgTxt" placeholder="Type a text message here (only if NOT sending an image)…" oninput="updateChecks()"></textarea>
-        </div>
-
-        <!-- ── STEP B: Check ── -->
-        <div class="send-step">
-          <div class="step-label"><span class="step-num">STEP 2</span> Confirm Before Sending</div>
-          <div id="preCheckBox" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:9px;padding:10px 12px">
-            <div class="chk-row" id="chk-contacts"><span class="chk-ico">⬜</span><span id="chk-contacts-txt">Contacts not loaded yet — tap Load / Refresh above</span></div>
-            <div class="chk-row" id="chk-content" style="margin-top:6px"><span class="chk-ico">⬜</span><span id="chk-content-txt">No image or message selected</span></div>
-            <div class="chk-row" id="chk-save" style="margin-top:6px;display:none"><span class="chk-ico">⚠️</span><span>Save the image to your gallery first (long-press preview → Save to Gallery)</span></div>
           </div>
         </div>
 
-        <!-- ── STEP C: Send ── -->
-        <div class="send-step">
-          <div class="step-label"><span class="step-num">STEP 3</span> Send</div>
-          <div id="stepErrBanner" style="display:none;background:#fef2f2;border:1.5px solid #fecaca;border-radius:9px;padding:10px 12px;font-size:12px;color:#b91c1c;font-weight:600;margin-bottom:8px"></div>
-          <button class="btn-big btn-wa" id="btnWA" onclick="sendViaWA()" disabled>
-            📱 Send via WhatsApp — Opens for Each Contact
-          </button>
-          <div style="height:8px"></div>
-          <button class="btn-big btn-dl-csv" id="btnCSV" onclick="downloadCSV()" disabled>
-            📥 Download Contact List (for bulk sender app)
-          </button>
-          <div style="height:8px"></div>
-          <button class="btn-big btn-vcf" id="btnVCF" onclick="downloadVCF()" disabled>
-            📇 Save All Contacts to Phone (vCard)
-          </button>
-        </div>
+        <div class="step-or">── or add a message ──</div>
 
-        <!-- Progress -->
-        <div id="progWrap" class="prog">
-          <div class="prog-bar-bg"><div class="prog-bar" id="progBar"></div></div>
-          <div class="prog-txt" id="progTxt"></div>
-          <div class="prog-log" id="progLog"></div>
-        </div>
-
-        <!-- Info note -->
-        <div class="info teal" style="margin-top:10px">
-          <strong>📌 How image sending works:</strong><br>
-          1. Upload image above (Step 1)<br>
-          2. <strong>Long-press the preview → Save to Gallery</strong> on your phone<br>
-          3. Tap "Send via WhatsApp" — WhatsApp opens for each contact with your message pre-typed<br>
-          4. In WhatsApp tap 📎 → Gallery → select the saved image → press Send<br>
-          5. After sending, come back to the portal — it auto-opens the next contact<br><br>
-          <strong>For 100+ contacts:</strong> Use <strong>"📇 Save Contacts to Phone (vCard)"</strong> → import to phone → open WhatsApp Business → create a Broadcast List → send image once to the list. Completely free. See full guide below.
+        <div class="step-block">
+          <div class="step-label"><span class="step-num">MESSAGE</span> Type your offer text (optional)</div>
+          <textarea class="msg" id="msgTxt" placeholder="Type offer message here… (leave blank if sending image only)"></textarea>
         </div>
 
       </div>
     </div>
 
-    <!-- FREE BULK SENDER GUIDE -->
+    <!-- STEP 3: SEND -->
     <div class="bc-card">
       <div class="bc-th">
-        <div class="bc-ico">⚡</div>
-        <div><h2>Free Bulk Sending Guide</h2><p>Choose your phone type below</p></div>
+        <div class="bc-ico">🚀</div>
+        <div><h2>STEP 3 — Send to Everyone</h2><p>Checklist confirms everything is ready</p></div>
       </div>
       <div class="bc-bd">
 
-        <!-- PHONE TYPE TABS -->
-        <div style="display:flex;gap:8px;margin-bottom:12px">
-          <button id="tab-android" onclick="showPhone('android')"
-            style="flex:1;height:42px;border-radius:9px;border:2px solid #25d366;background:#f0fdf4;color:#14532d;font-size:13px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px">
-            🤖 Android
-          </button>
-          <button id="tab-iphone" onclick="showPhone('iphone')"
-            style="flex:1;height:42px;border-radius:9px;border:2px solid var(--border);background:var(--bg2);color:var(--muted);font-size:13px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px">
-            🍎 iPhone
-          </button>
+        <!-- live checklist -->
+        <div style="background:var(--bg2);border:1.5px solid var(--border);border-radius:9px;padding:10px 12px;margin-bottom:10px">
+          <div class="chk-row" id="chk1"><span id="chk1i">⬜</span><span id="chk1t" style="color:var(--muted)">Contacts not loaded — tap Load / Refresh in Step 1</span></div>
+          <div class="chk-row" id="chk2"><span id="chk2i">⬜</span><span id="chk2t" style="color:var(--muted)">No image or message selected — complete Step 2</span></div>
         </div>
 
-        <!-- ANDROID GUIDE -->
+        <!-- error banner -->
+        <div class="err-banner" id="errBanner"></div>
+
+        <!-- send button -->
+        <button class="btn-big btn-wa" id="btnSend" onclick="doSend()" disabled>
+          📱 Open WhatsApp for Each Contact
+        </button>
+
+        <!-- vCard button - always available once contacts loaded -->
+        <button class="btn-big btn-purple" id="btnVCF" onclick="downloadVCF()" disabled>
+          📇 Save All Contacts to Phone (vCard)
+        </button>
+
+        <!-- progress -->
+        <div class="prog" id="progWrap">
+          <div class="prog-bg"><div class="prog-bar" id="progBar"></div></div>
+          <div class="prog-txt" id="progTxt"></div>
+          <div class="prog-log" id="progLog"></div>
+        </div>
+
+        <div class="info teal" style="margin-top:10px">
+          <strong>📌 What happens when you tap Send:</strong>
+          WhatsApp opens for each contact one by one with your message pre-typed.
+          For image — long-press the preview above, save to gallery, then attach it in WhatsApp when it opens.
+          For 100+ contacts use the vCard button below and send via WhatsApp Business Broadcast List (see guide below — free).
+        </div>
+
+      </div>
+    </div>
+
+    <!-- HOW TO SEND FREE - BOTH PHONES -->
+    <div class="bc-card">
+      <div class="bc-th">
+        <div class="bc-ico">⚡</div>
+        <div><h2>Free Bulk Sending Guide</h2><p>100% free · works for unlimited contacts</p></div>
+      </div>
+      <div class="bc-bd">
+
+        <div class="phone-tabs">
+          <button class="ptab active-android" id="ptab-android" onclick="showPhone('android')">🤖 Android</button>
+          <button class="ptab" id="ptab-iphone" onclick="showPhone('iphone')">🍎 iPhone</button>
+        </div>
+
+        <!-- ANDROID -->
         <div id="guide-android">
-          <div class="info green" style="margin-bottom:10px">
-            <strong>📱 Android — WhatsApp Business + vCard (100% Free)</strong><br>
-            No third-party apps needed. Works for unlimited contacts. Uses your existing WhatsApp.
+          <div class="info green">
+            <strong>WhatsApp Business + vCard — 100% Free, Unlimited Contacts</strong>
+            Same official WhatsApp app, no third-party apps, no payment needed.
           </div>
           <div class="how">
-
-            <div class="how-step">
-              <div class="hn t">1</div>
-              <div class="hb">
-                <h3>Install WhatsApp Business from Play Store</h3>
-                <p>Open Play Store → search <strong>WhatsApp Business</strong> → Install (free). Set it up with your dealer phone number. Takes 2 minutes.</p>
-              </div>
-            </div>
-
-            <div class="how-step">
-              <div class="hn t">2</div>
-              <div class="hb">
-                <h3>Save your customers to phone contacts</h3>
-                <p>In this portal → Send tab → Load contacts → tap <strong>"📇 Save Contacts to Phone (vCard)"</strong> → a .vcf file downloads → tap it → tap <strong>"Import all contacts"</strong>.<br><br>
-                All customers save as <strong>"AKAI D001 – Name"</strong> in your phone contacts.</p>
-              </div>
-            </div>
-
-            <div class="how-step">
-              <div class="hn t">3</div>
-              <div class="hb">
-                <h3>Create a Broadcast List in WhatsApp Business</h3>
-                <p>Open WhatsApp Business → tap ⋮ (3 dots top right) → tap <strong>New Broadcast</strong> → in search bar type <strong>AKAI D001</strong> → all your customers appear → select all of them → tap the green tick → list is created.<br><br>
-                <strong>Maximum 256 per list.</strong> If you have 500 contacts, create 2 lists. 1000 contacts = 4 lists.</p>
-              </div>
-            </div>
-
-            <div class="how-step">
-              <div class="hn t">4</div>
-              <div class="hb">
-                <h3>Send image to everyone — 1 tap per list</h3>
-                <p>Open WhatsApp Business → tap your <strong>Broadcast List</strong> → tap 📎 (attach) → tap <strong>Gallery</strong> → select your offer image → tap <strong>Send</strong>.<br><br>
-                Everyone in the list receives it as a <strong>private message</strong> — not a group. They cannot see each other.</p>
-              </div>
-            </div>
-
-            <div class="how-step">
-              <div class="hn">🔄</div>
-              <div class="hb">
-                <h3>When new customers register — update the list</h3>
-                <p>Come back here → Load / Refresh → Save Contacts to Phone (vCard) again → import (duplicates skipped automatically) → open WhatsApp Business → tap and hold your Broadcast List → tap <strong>Edit</strong> → add new contacts → save. Done.</p>
-              </div>
-            </div>
-
+            <div class="how-step"><div class="hn">1</div><div class="hb">
+              <h3>Install WhatsApp Business (Play Store, free)</h3>
+              <p>Open Play Store → search <strong>WhatsApp Business</strong> → Install. It is the official app by WhatsApp LLC (green icon with a B). Set it up with your phone number.</p>
+            </div></div>
+            <div class="how-step"><div class="hn">2</div><div class="hb">
+              <h3>Download vCard from this portal</h3>
+              <p>Tap <strong>"📇 Save All Contacts to Phone (vCard)"</strong> above → a .vcf file downloads → tap it → tap <strong>"Import all contacts"</strong> → all customers save as "AKAI D001 – Name" in your contacts.</p>
+            </div></div>
+            <div class="how-step"><div class="hn">3</div><div class="hb">
+              <h3>Create Broadcast List in WhatsApp Business</h3>
+              <p>Open WhatsApp Business → tap ⋮ (3 dots, top right) → <strong>New Broadcast</strong> → search <strong>AKAI D001</strong> → all your customers appear → select all → tap green tick → list created.<br><br>Max 256 per list. 500 contacts = 2 lists. 1000 contacts = 4 lists.</p>
+            </div></div>
+            <div class="how-step"><div class="hn">4</div><div class="hb">
+              <h3>Send image — 1 tap per list</h3>
+              <p>Open WhatsApp Business → tap your <strong>Broadcast List</strong> → tap 📎 → Gallery → select your offer image → tap <strong>Send</strong>. Everyone receives it as a private message.</p>
+            </div></div>
+            <div class="how-step"><div class="hn">🔄</div><div class="hb">
+              <h3>New customers registered?</h3>
+              <p>Portal → Load / Refresh → Save vCard again → import to phone (duplicates skipped) → WhatsApp Business → hold Broadcast List → Edit → add new contacts → Save.</p>
+            </div></div>
           </div>
-
-          <div class="info blue" style="margin-top:10px">
-            <strong>⚠ Important:</strong> Customers must have YOUR number saved in their contacts for the broadcast to deliver to them. When they first register, send them one message so they save your number. After that all broadcasts deliver normally.
-          </div>
-
-          <div class="info green" style="margin-top:8px">
-            <strong>✅ 100% free · unlimited contacts · no third-party app · works on all Android phones</strong>
+          <div class="info blue" style="margin-top:8px">
+            <strong>⚠ Important:</strong> Customers must have YOUR number saved in their contacts for the broadcast to deliver. When they first scan the QR, send them one WhatsApp saying "Save this number — AKAI Deals". After that all broadcasts deliver automatically.
           </div>
         </div>
 
-        <!-- IPHONE GUIDE -->
+        <!-- IPHONE -->
         <div id="guide-iphone" style="display:none">
-          <div class="info blue" style="margin-bottom:10px">
-            <strong>🍎 iPhone — WhatsApp Business Broadcast List (Free)</strong><br>
-            iPhone does not allow third-party apps to control WhatsApp. The best free method is WhatsApp Business broadcast lists. One-time setup, then sending takes 1 tap per list.
+          <div class="info green">
+            <strong>WhatsApp Business Broadcast List — 100% Free on iPhone</strong>
+            The official method. No third-party apps. Works for unlimited contacts.
           </div>
           <div class="how">
-            <div class="how-step">
-              <div class="hn" style="background:#1d4ed8">1</div>
-              <div class="hb">
-                <h3>Install WhatsApp Business from App Store</h3>
-                <p>App Store → search <strong>WhatsApp Business</strong> → Install (free). Set it up with your dealer WhatsApp number.</p>
-              </div>
-            </div>
-            <div class="how-step">
-              <div class="hn" style="background:#1d4ed8">2</div>
-              <div class="hb">
-                <h3>Save contacts to your phone (tap button above)</h3>
-                <p>Tap <strong>"📇 Save Contacts to Phone (vCard)"</strong> above → a .vcf file downloads → tap it → tap <strong>"Add All Contacts"</strong>. All customers save as "AKAI D001 – Name" in your iPhone contacts.</p>
-              </div>
-            </div>
-            <div class="how-step">
-              <div class="hn" style="background:#1d4ed8">3</div>
-              <div class="hb">
-                <h3>Create Broadcast List in WhatsApp Business</h3>
-                <p>Open WhatsApp Business → tap <strong>Broadcast Lists</strong> (top of chats screen) → <strong>New List</strong> → search "AKAI D001" → all your customers appear → select all → tap <strong>Create</strong>. Name it "My Customers". Make one list per 256 contacts.</p>
-              </div>
-            </div>
-            <div class="how-step">
-              <div class="hn" style="background:#1d4ed8">4</div>
-              <div class="hb">
-                <h3>Send image to everyone — 1 tap per list</h3>
-                <p>Open WhatsApp Business → tap your Broadcast List → tap 📎 → choose your offer image → tap <strong>Send</strong>. Everyone receives it as a private message instantly.</p>
-              </div>
-            </div>
-            <div class="how-step">
-              <div class="hn" style="background:#1d4ed8">🔄</div>
-              <div class="hb">
-                <h3>When new contacts register</h3>
-                <p>Come back here → Load / Refresh → Save Contacts to Phone → import vCard again (duplicates skipped automatically) → open WhatsApp Business → edit broadcast list → add new names. Takes 2 minutes.</p>
-              </div>
-            </div>
+            <div class="how-step"><div class="hn">1</div><div class="hb">
+              <h3>Install WhatsApp Business (App Store, free)</h3>
+              <p>Open App Store → search <strong>WhatsApp Business</strong> → Install. Official app by WhatsApp LLC. Set it up with your dealer number.</p>
+            </div></div>
+            <div class="how-step"><div class="hn">2</div><div class="hb">
+              <h3>Save contacts to iPhone</h3>
+              <p>In this portal → tap <strong>"📇 Save All Contacts to Phone (vCard)"</strong> → file downloads → tap it → tap <strong>"Add All X Contacts"</strong>. All customers save as "AKAI D001 – Name".</p>
+            </div></div>
+            <div class="how-step"><div class="hn">3</div><div class="hb">
+              <h3>Create Broadcast List</h3>
+              <p>Open WhatsApp Business → top of screen tap <strong>Broadcast Lists</strong> → <strong>New List</strong> → search <strong>AKAI D001</strong> → select all contacts → tap <strong>Create</strong>. Max 256 per list.</p>
+            </div></div>
+            <div class="how-step"><div class="hn">4</div><div class="hb">
+              <h3>Send your offer image</h3>
+              <p>Open WhatsApp Business → tap your Broadcast List → tap 📎 → Photo & Video Library → choose your offer image → tap <strong>Send</strong>. Done. Everyone gets it privately.</p>
+            </div></div>
+            <div class="how-step"><div class="hn">🔄</div><div class="hb">
+              <h3>When new customers register</h3>
+              <p>Portal → Load / Refresh → Save vCard → open file → Add contacts → WhatsApp Business → Edit broadcast list → add new names → Done.</p>
+            </div></div>
           </div>
-          <div class="info" style="background:#f5f3ff;border:1.5px solid #ddd6fe;color:#5b21b6;margin-top:10px">
-            <strong>⚠ Important for iPhone broadcast lists:</strong> Customers must have YOUR number saved in their contacts for the broadcast to deliver. When they register via QR, send them one WhatsApp message asking them to save your number. After that, all broadcasts deliver normally.
-          </div>
-          <div class="info green" style="margin-top:8px">
-            <strong>✅ 100% free · works on iPhone · no third-party app needed · just WhatsApp Business</strong>
+          <div class="info blue" style="margin-top:8px">
+            <strong>⚠ Important:</strong> Customers must have your number saved to receive broadcasts. Ask them to save your number when they first register.
           </div>
         </div>
 
@@ -475,103 +428,120 @@ let dealer   = null;
 let contacts = [];
 let imgFile  = null;
 
-// TABS
-function switchTab(t,el){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('page-'+t).classList.add('active');
+// ── TABS ──────────────────────────────────────────────
+function switchTab(t, el) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + t).classList.add('active');
   el.classList.add('active');
 }
 
-// LOGIN
-async function doLogin(){
-  const code=document.getElementById('codeInput').value.trim().toUpperCase();
-  const errEl=document.getElementById('loginErr');
+// ── LOGIN ─────────────────────────────────────────────
+async function doLogin() {
+  const raw  = document.getElementById('codeInput').value.trim();
+  const code = raw.toUpperCase();
+  const err  = document.getElementById('loginErr');
+  const inp  = document.getElementById('codeInput');
 
   // Empty check
-  if(!code){
-    errEl.textContent='⚠ Please enter your dealer code first.';
-    errEl.classList.add('show');
-    document.getElementById('codeInput').classList.add('err');
+  if (!code) {
+    err.textContent = '⚠ Please enter your dealer code first.';
+    err.classList.add('show');
+    inp.classList.add('err');
+    inp.focus();
     return;
   }
 
-  const btn=document.getElementById('loginBtn');
-  btn.classList.add('ld'); btn.disabled=true;
-  errEl.classList.remove('show');
+  const btn = document.getElementById('loginBtn');
+  btn.classList.add('ld'); btn.disabled = true;
+  err.classList.remove('show'); inp.classList.remove('err');
 
-  // Cache check — instant on repeat login
-  const cached=localStorage.getItem('dc_'+code);
-  if(cached){
-    try{
-      dealer=JSON.parse(cached);
+  // Cache — instant on repeat login
+  const cached = localStorage.getItem('dc_' + code);
+  if (cached) {
+    try {
+      dealer = JSON.parse(cached);
       afterLogin();
-      btn.classList.remove('ld'); btn.disabled=false;
+      btn.classList.remove('ld'); btn.disabled = false;
       return;
-    }catch(e){ localStorage.removeItem('dc_'+code); }
+    } catch(e) { localStorage.removeItem('dc_' + code); }
   }
 
-  try{
-    const ac=new AbortController();
-    const t=setTimeout(()=>ac.abort(),18000);
-    const r=await fetch(SHEET_API_URL+'?action=getDealer&code='+encodeURIComponent(code),{signal:ac.signal});
+  try {
+    const ac = new AbortController();
+    const t  = setTimeout(() => ac.abort(), 18000);
+    const r  = await fetch(SHEET_API_URL + '?action=getDealer&code=' + encodeURIComponent(code), { signal: ac.signal });
     clearTimeout(t);
-    const d=await r.json();
-    if(d&&d.dealer){
-      dealer=d.dealer;
-      localStorage.setItem('dc_'+code,JSON.stringify(dealer));
+    const d  = await r.json();
+
+    if (d && d.dealer) {
+      dealer = d.dealer;
+      localStorage.setItem('dc_' + code, JSON.stringify(dealer));
       afterLogin();
     } else {
-      // Code not found — clear, loud, unmissable
-      errEl.textContent='❌ Dealer code "'+code+'" not found. Please check your code and try again.';
-      errEl.classList.add('show');
-      document.getElementById('codeInput').classList.add('err');
-      document.getElementById('codeInput').value='';
-      document.getElementById('codeInput').focus();
+      // DEALER NOT FOUND — clear, unmissable error
+      err.textContent = '❌ Dealer code "' + code + '" was not found. Please check your code and try again.';
+      err.classList.add('show');
+      inp.classList.add('err');
+      inp.value = '';
+      inp.focus();
     }
-  }catch(e){
-    if(e.name==='AbortError'){
-      errEl.textContent='⚠ Connection timed out. Please check your internet and try again.';
+  } catch(e) {
+    if (e.name === 'AbortError') {
+      err.textContent = '⚠ Connection timed out. Check your internet and try again.';
     } else {
-      errEl.textContent='⚠ Network error: '+e.message+'. Please try again.';
+      err.textContent = '⚠ Network error. Please check your internet and try again.';
     }
-    errEl.classList.add('show');
+    err.classList.add('show');
   }
-  btn.classList.remove('ld'); btn.disabled=false;
+
+  btn.classList.remove('ld'); btn.disabled = false;
 }
-function afterLogin(){
-  ['tQR','tBC'].forEach(id=>document.getElementById(id).disabled=false);
+
+function afterLogin() {
+  ['tQR','tBC'].forEach(id => document.getElementById(id).disabled = false);
   buildQR();
-  switchTab('qr',document.getElementById('tQR'));
-  const s=localStorage.getItem('cts_'+dealer.id);
-  if(s){ try{ contacts=JSON.parse(s); renderContacts(); }catch(e){} }
+  switchTab('qr', document.getElementById('tQR'));
+  const s = localStorage.getItem('cts_' + dealer.id);
+  if (s) { try { contacts = JSON.parse(s); renderContacts(); } catch(e) {} }
 }
-document.getElementById('codeInput').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
-document.getElementById('codeInput').addEventListener('input',function(){
+
+document.getElementById('codeInput').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+document.getElementById('codeInput').addEventListener('input', function() {
   this.classList.remove('err');
   document.getElementById('loginErr').classList.remove('show');
 });
 
-// QR
-function buildQR(){
-  document.getElementById('qrId').textContent=dealer.id;
-  document.getElementById('qrName').textContent=dealer.name;
-  const url=BASE_URL+'?dealer='+encodeURIComponent(dealer.id)+'&name='+encodeURIComponent(dealer.name);
-  document.getElementById('qrHint').textContent=url;
-  const f=document.getElementById('qrFrame'); f.innerHTML='';
-  new QRCode(f,{text:url,width:180,height:180,colorDark:'#1e2d3d',colorLight:'#fff',correctLevel:QRCode.CorrectLevel.H});
+// ── QR ────────────────────────────────────────────────
+function buildQR() {
+  document.getElementById('qrId').textContent   = dealer.id;
+  document.getElementById('qrName').textContent = dealer.name;
+  const url = BASE_URL + '?dealer=' + encodeURIComponent(dealer.id) + '&name=' + encodeURIComponent(dealer.name);
+  document.getElementById('qrHint').textContent = url;
+  const f = document.getElementById('qrFrame');
+  f.innerHTML = '';
+  new QRCode(f, { text: url, width: 180, height: 180, colorDark: '#1e2d3d', colorLight: '#fff', correctLevel: QRCode.CorrectLevel.H });
 }
-function getQRSrc(){ const f=document.getElementById('qrFrame'); const c=f.querySelector('canvas'),i=f.querySelector('img'); return c?c.toDataURL('image/png'):i?i.src:null; }
-function downloadQR(){
-  const src=getQRSrc(); if(!src) return; const nm=dealer.name;
-  const cv=document.createElement('canvas'); cv.width=1240; cv.height=1754;
-  const ctx=cv.getContext('2d');
-  ctx.fillStyle='#fff'; ctx.fillRect(0,0,1240,1754);
-  ctx.fillStyle='#0d9e8f'; ctx.fillRect(0,0,1240,220); ctx.fillRect(0,1634,1240,120);
-  ctx.fillStyle='#f5a623'; ctx.fillRect(0,220,1240,7); ctx.fillRect(0,1627,1240,7);
-  ctx.fillStyle='rgba(255,255,255,.6)'; ctx.font='bold 30px Arial'; ctx.textAlign='center'; ctx.fillText('DEALER NAME',620,96);
-  ctx.fillStyle='#fff'; ctx.font='bold 66px Arial'; ctx.fillText(nm,620,180);
-  const qi=new Image(); qi.onload=()=>{
+
+function getQRSrc() {
+  const f = document.getElementById('qrFrame');
+  const c = f.querySelector('canvas'), i = f.querySelector('img');
+  return c ? c.toDataURL('image/png') : i ? i.src : null;
+}
+
+function downloadQR() {
+  const src = getQRSrc(); if (!src) return;
+  const nm  = dealer.name;
+  const cv  = document.createElement('canvas'); cv.width = 1240; cv.height = 1754;
+  const ctx = cv.getContext('2d');
+  ctx.fillStyle = '#fff'; ctx.fillRect(0,0,1240,1754);
+  ctx.fillStyle = '#0d9e8f'; ctx.fillRect(0,0,1240,220); ctx.fillRect(0,1634,1240,120);
+  ctx.fillStyle = '#f5a623'; ctx.fillRect(0,220,1240,7); ctx.fillRect(0,1627,1240,7);
+  ctx.fillStyle = 'rgba(255,255,255,.6)'; ctx.font = 'bold 30px Arial'; ctx.textAlign = 'center';
+  ctx.fillText('DEALER NAME', 620, 96);
+  ctx.fillStyle = '#fff'; ctx.font = 'bold 66px Arial'; ctx.fillText(nm, 620, 180);
+  const qi = new Image();
+  qi.onload = () => {
     const bz=680,bx=280,by=314;
     function rr(x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath();}
     ctx.fillStyle='#f0f4f8'; rr(bx-26,by-26,bz+52,bz+52,24); ctx.fill();
@@ -580,238 +550,255 @@ function downloadQR(){
     ctx.fillStyle='#1e2d3d'; ctx.font='bold 52px Arial'; ctx.fillText('SCAN FOR EXCITING OFFERS',620,1148);
     ctx.fillStyle='#8a94a6'; ctx.font='28px Arial'; ctx.fillText('Point your phone camera at the QR code',620,1196);
     ctx.fillStyle='#fff'; ctx.font='bold 36px Arial'; ctx.fillText('AKAI DISTRIBUTORS',620,1690);
-    const a=document.createElement('a'); a.download='QR_'+nm.replace(/\s+/g,'_')+'.png'; a.href=cv.toDataURL('image/png'); a.click();
-  }; qi.src=src;
+    const a = document.createElement('a');
+    a.download = 'QR_' + nm.replace(/\s+/g,'_') + '.png';
+    a.href = cv.toDataURL('image/png'); a.click();
+  };
+  qi.src = src;
 }
-function printQR(){
-  const src=getQRSrc(); if(!src) return; const nm=dealer.name;
-  const w=window.open('','_blank');
+
+function printQR() {
+  const src = getQRSrc(); if (!src) return;
+  const nm  = dealer.name;
+  const w   = window.open('','_blank');
   w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>QR</title><style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:sans-serif;background:#f0f4f8;display:flex;align-items:center;justify-content:center;min-height:100vh}.s{width:300px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,.15)}.b{height:5px;background:linear-gradient(90deg,#0d9e8f,#0bb8a6)}.h{background:linear-gradient(135deg,#0d9e8f,#0a8a7d);padding:16px;text-align:center}.l{font-size:9px;font-weight:700;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px}.n{font-size:17px;font-weight:800;color:#fff}.bd{padding:16px;text-align:center}.bx{background:#f0f4f8;border:1.5px solid #e2e8f0;border-radius:9px;padding:10px;display:inline-block}.bx img{width:170px;height:170px;display:block}.ft{padding:11px 14px 14px;text-align:center;background:#f7f9fc;border-top:1px solid #e2e8f0}.sm{font-size:11px;font-weight:800;color:#1e2d3d;text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}.ss{font-size:9px;color:#8a94a6}</style></head><body><div class="s"><div class="b"></div><div class="h"><div class="l">Dealer Name</div><div class="n">'+nm+'</div></div><div class="bd"><div class="bx"><img src="'+src+'"></div></div><div class="ft"><div class="sm">Scan for Exciting Offers</div><div class="ss">Point your camera at the code</div></div><div class="b"></div></div><script>window.onload=function(){setTimeout(function(){window.print();},400);};<\/script></body></html>');
   w.document.close();
 }
 
-// CONTACTS
-async function loadContacts(){
-  const btn=document.getElementById('loadBtn');
-  btn.classList.add('ld'); btn.disabled=true;
-  document.getElementById('cSub').textContent='Fetching…';
-  try{
-    const ac=new AbortController(),t=setTimeout(()=>ac.abort(),20000);
-    const r=await fetch(SHEET_API_URL+'?action=getContacts&dealer='+encodeURIComponent(dealer.id),{signal:ac.signal});
+// ── LOAD CONTACTS ─────────────────────────────────────
+async function loadContacts() {
+  const btn = document.getElementById('loadBtn');
+  btn.classList.add('ld'); btn.disabled = true;
+  document.getElementById('cSub').textContent = 'Fetching from Google Sheets…';
+  try {
+    const ac = new AbortController();
+    const t  = setTimeout(() => ac.abort(), 20000);
+    const r  = await fetch(SHEET_API_URL + '?action=getContacts&dealer=' + encodeURIComponent(dealer.id), { signal: ac.signal });
     clearTimeout(t);
-    const d=await r.json();
-    if(d&&Array.isArray(d.contacts)){
-      const ex=new Set(contacts.map(c=>c.phone)); let added=0;
-      d.contacts.forEach(c=>{ if(c.phone&&!ex.has(c.phone)){contacts.push(c);ex.add(c.phone);added++;} });
-      localStorage.setItem('cts_'+dealer.id,JSON.stringify(contacts));
+    const d  = await r.json();
+    if (d && Array.isArray(d.contacts)) {
+      const ex = new Set(contacts.map(c => c.phone));
+      let added = 0;
+      d.contacts.forEach(c => { if (c.phone && !ex.has(c.phone)) { contacts.push(c); ex.add(c.phone); added++; } });
+      localStorage.setItem('cts_' + dealer.id, JSON.stringify(contacts));
       renderContacts();
-      document.getElementById('cSub').textContent=added>0?'✅ '+added+' new added. Total: '+contacts.length:'✅ Up to date — '+contacts.length+' contacts';
-    } else { document.getElementById('cSub').textContent='⚠ Could not load. Check Apps Script.'; }
-  }catch(e){ document.getElementById('cSub').textContent=e.name==='AbortError'?'⚠ Timed out — try again':'⚠ '+e.message; }
-  btn.classList.remove('ld'); btn.disabled=false;
-}
-
-function renderContacts(){
-  const list=document.getElementById('cList');
-  document.getElementById('cCount').textContent=contacts.length+' contact'+(contacts.length===1?'':'s');
-  if(!contacts.length){ list.innerHTML='<div style="padding:14px;text-align:center;color:var(--muted);font-size:11px">No contacts yet for your dealer code.</div>'; updateChecks(); return; }
-  list.innerHTML='';
-  contacts.forEach(c=>{ const d=document.createElement('div'); d.className='c-item'; d.innerHTML='<span class="c-name">'+(c.name||'Unknown')+'</span><span class="c-phone">'+c.phone+'</span>'; list.appendChild(d); });
-  updateChecks();
-  // Tick checklist box 1
-  const chk1=document.getElementById('chk1');
-  if(chk1) chk1.innerHTML='<span style="font-size:16px">✅</span> <strong style="color:#14532d">'+contacts.length+' contacts loaded</strong>';
-  updateChk3();
-}
-
-function updateChecks(){
-  const hasC = contacts.length>0;
-  const hasI = !!imgFile;
-  const hasM = document.getElementById('msgTxt') ? document.getElementById('msgTxt').value.trim().length>0 : false;
-
-  // contacts check
-  const cRow = document.getElementById('chk-contacts');
-  const cIco = cRow ? cRow.querySelector('.chk-ico') : null;
-  const cTxt = document.getElementById('chk-contacts-txt');
-  if(cRow){ cRow.style.color = hasC ? '#14532d' : 'var(--muted)'; }
-  if(cIco) cIco.textContent = hasC ? '✅' : '⬜';
-  if(cTxt) cTxt.textContent = hasC ? contacts.length+' contacts loaded ✓' : 'Contacts not loaded — tap Load / Refresh above';
-
-  // content check
-  const nRow = document.getElementById('chk-content');
-  const nIco = nRow ? nRow.querySelector('.chk-ico') : null;
-  const nTxt = document.getElementById('chk-content-txt');
-  if(nRow){ nRow.style.color = (hasI||hasM) ? '#14532d' : 'var(--muted)'; }
-  if(nIco) nIco.textContent = hasI ? '✅' : (hasM ? '✅' : '⬜');
-  if(nTxt){
-    if(hasI && hasM) nTxt.textContent = 'Image + message ready ✓';
-    else if(hasI)    nTxt.textContent = 'Image selected: '+imgFile.name+' ✓';
-    else if(hasM)    nTxt.textContent = 'Text message typed ✓';
-    else             nTxt.textContent = 'No image or message selected';
+      document.getElementById('cSub').textContent = added > 0
+        ? '✅ ' + added + ' new contacts added. Total: ' + contacts.length
+        : '✅ Up to date — ' + contacts.length + ' contacts loaded';
+    } else {
+      document.getElementById('cSub').textContent = '⚠ Could not load. Check Apps Script deployment.';
+    }
+  } catch(e) {
+    document.getElementById('cSub').textContent = e.name === 'AbortError'
+      ? '⚠ Timed out — check internet and try again'
+      : '⚠ Error: ' + e.message;
   }
-
-  // save reminder
-  const sRow = document.getElementById('chk-save');
-  if(sRow) sRow.style.display = hasI ? 'flex' : 'none';
-
-  updateBtns();
+  btn.classList.remove('ld'); btn.disabled = false;
 }
 
-function updateBtns(){
-  const has=contacts.length>0;
-  ['btnCSV','btnVCF','btnWA'].forEach(id=>{ const b=document.getElementById(id); if(b) b.disabled=!has; });
+function renderContacts() {
+  const list = document.getElementById('cList');
+  document.getElementById('cCount').textContent = contacts.length + ' contact' + (contacts.length === 1 ? '' : 's');
+  if (!contacts.length) {
+    list.innerHTML = '<div style="padding:14px;text-align:center;color:var(--muted);font-size:11px">No contacts yet for dealer code ' + dealer.id + '</div>';
+    updateChecks(); return;
+  }
+  list.innerHTML = '';
+  contacts.forEach(c => {
+    const d = document.createElement('div'); d.className = 'c-item';
+    d.innerHTML = '<span class="c-name">' + (c.name || 'Unknown') + '</span><span class="c-phone">' + c.phone + '</span>';
+    list.appendChild(d);
+  });
   updateChecks();
 }
 
-function updateChecklist(){
-  const hasC = contacts.length > 0;
-  const hasImg = !!imgFile;
-  const hasMsg = !!(document.getElementById('msgTxt') && document.getElementById('msgTxt').value.trim());
-  const hasContent = hasImg || hasMsg;
-
-  const set = (id, ico, on, txt) => {
-    const el = document.getElementById(id);
-    const ic = document.getElementById(ico);
-    if(!el||!ic) return;
-    el.style.color = on ? '#065f46' : 'var(--muted)';
-    ic.textContent = on ? '✅' : '⬜';
-  };
-  set('chk1','chk1ico', hasC,       'Contacts loaded ('+contacts.length+')');
-  set('chk2','chk2ico', hasContent,  hasImg ? 'Image ready: '+imgFile.name : hasMsg ? 'Message typed' : 'Image uploaded OR message typed');
-  set('chk3','chk3ico', hasImg,      hasImg ? 'Image selected — save to gallery before sending' : 'No image (text only — no gallery save needed)');
-}
-
-// IMAGE
-function onImg(input){
-  if(!input.files||!input.files[0]) return;
-  imgFile=input.files[0];
-  const reader=new FileReader();
-  reader.onload=e=>{
-    document.getElementById('prevImg').src=e.target.result;
-    document.getElementById('prevWrap').style.display='block';
-    document.getElementById('prevMeta').textContent=imgFile.name+' · '+(imgFile.size/1024).toFixed(0)+' KB';
+// ── IMAGE ─────────────────────────────────────────────
+function onImg(input) {
+  if (!input.files || !input.files[0]) return;
+  imgFile = input.files[0];
+  const reader = new FileReader();
+  reader.onload = e => {
+    document.getElementById('prevImg').src = e.target.result;
+    document.getElementById('prevWrap').style.display = 'block';
+    document.getElementById('prevMeta').textContent = imgFile.name + ' · ' + (imgFile.size/1024).toFixed(0) + ' KB';
   };
   reader.readAsDataURL(imgFile);
   updateChecks();
 }
-const uz=document.getElementById('upZone');
-uz.addEventListener('dragover',e=>{e.preventDefault();uz.classList.add('drag');});
-uz.addEventListener('dragleave',()=>uz.classList.remove('drag'));
-uz.addEventListener('drop',e=>{e.preventDefault();uz.classList.remove('drag');const f=e.dataTransfer.files[0];if(f&&f.type.startsWith('image/')){document.getElementById('imgInp').files=e.dataTransfer.files;onImg(document.getElementById('imgInp'));}});
-document.addEventListener('DOMContentLoaded',()=>{
-  const mt=document.getElementById('msgTxt');
-  if(mt) mt.addEventListener('input',updateChecklist);
+
+const uz = document.getElementById('upZone');
+uz.addEventListener('dragover', e => { e.preventDefault(); uz.classList.add('drag'); });
+uz.addEventListener('dragleave', () => uz.classList.remove('drag'));
+uz.addEventListener('drop', e => {
+  e.preventDefault(); uz.classList.remove('drag');
+  const f = e.dataTransfer.files[0];
+  if (f && f.type.startsWith('image/')) {
+    document.getElementById('imgInp').files = e.dataTransfer.files;
+    onImg(document.getElementById('imgInp'));
+  }
 });
 
+document.getElementById('msgTxt').addEventListener('input', updateChecks);
 
-// ── SEND VIA WHATSAPP ────────────────────────────────
-async function sendViaWA(){
-  // ── VALIDATION ──────────────────────────────────────
-  const errBanner = document.getElementById('stepErrBanner');
+// ── CHECKLIST ─────────────────────────────────────────
+function updateChecks() {
+  const hasC = contacts.length > 0;
+  const hasI = !!imgFile;
+  const hasM = document.getElementById('msgTxt').value.trim().length > 0;
+
+  // Check 1: contacts
+  document.getElementById('chk1i').textContent = hasC ? '✅' : '⬜';
+  document.getElementById('chk1t').textContent = hasC
+    ? contacts.length + ' contacts loaded ✓'
+    : 'Contacts not loaded — tap Load / Refresh in Step 1';
+  document.getElementById('chk1t').style.color = hasC ? '#14532d' : 'var(--muted)';
+
+  // Check 2: content
+  document.getElementById('chk2i').textContent = (hasI || hasM) ? '✅' : '⬜';
+  if (hasI && hasM)      document.getElementById('chk2t').textContent = 'Image + message ready ✓';
+  else if (hasI)         document.getElementById('chk2t').textContent = 'Image selected: ' + imgFile.name + ' ✓';
+  else if (hasM)         document.getElementById('chk2t').textContent = 'Message typed ✓';
+  else                   document.getElementById('chk2t').textContent = 'No image or message — complete Step 2';
+  document.getElementById('chk2t').style.color = (hasI || hasM) ? '#14532d' : 'var(--muted)';
+
+  // Enable/disable buttons
+  const ready = hasC && (hasI || hasM);
+  document.getElementById('btnSend').disabled = !ready;
+  document.getElementById('btnVCF').disabled  = !hasC;
+}
+
+// ── SEND VIA WHATSAPP ─────────────────────────────────
+async function doSend() {
+  const errBanner = document.getElementById('errBanner');
   errBanner.style.display = 'none';
 
-  function showErr(msg){
-    errBanner.textContent = msg;
+  const hasC = contacts.length > 0;
+  const hasI = !!imgFile;
+  const hasM = document.getElementById('msgTxt').value.trim().length > 0;
+
+  // Validation
+  if (!hasC) {
+    errBanner.textContent = '⚠ No contacts loaded. Tap "Load / Refresh" in Step 1 first.';
     errBanner.style.display = 'block';
-    errBanner.scrollIntoView({behavior:'smooth', block:'center'});
+    return;
   }
-
-  // Check 1: contacts loaded
-  if(!contacts.length){
-    showErr('⚠ STEP 1 INCOMPLETE: No contacts loaded. Tap "🔄 Load / Refresh" first.');
+  if (!hasI && !hasM) {
+    errBanner.textContent = '⚠ Nothing to send. Please upload an image or type a message in Step 2.';
+    errBanner.style.display = 'block';
     return;
   }
 
-  // Check 2: image OR message must be present — NOT both skipped
-  const msgTxt = document.getElementById('msgTxt').value.trim();
-  const hasImg = !!imgFile;
-  const hasMsg = !!msgTxt;
+  const msgText = document.getElementById('msgTxt').value.trim();
 
-  if(!hasImg && !hasMsg){
-    showErr('⚠ NOTHING TO SEND: Please upload an image (Step 1) OR type a message before sending.');
-    return;
+  // Confirm what will be sent
+  let confirmMsg = '';
+  if (hasI && !hasM) {
+    confirmMsg = '📷 IMAGE ONLY
+
+Image: ' + imgFile.name + '
+No text message.
+
+Sending to ' + contacts.length + ' contacts.
+
+⚠ SAVE THE IMAGE FIRST:
+Long-press the image preview → Save to Gallery
+Then WhatsApp will open — tap 📎 → Gallery → select image → Send
+
+Ready? Tap OK to start.';
+  } else if (!hasI && hasM) {
+    confirmMsg = '📝 TEXT MESSAGE ONLY
+
+Message:
+"' + msgText.slice(0,150) + (msgText.length>150?'…':'') + '"
+
+NO IMAGE selected.
+Sending to ' + contacts.length + ' contacts.
+
+Tap OK to start sending.';
+  } else {
+    confirmMsg = '📷 IMAGE + MESSAGE
+
+Image: ' + imgFile.name + '
+Message: "' + msgText.slice(0,80) + (msgText.length>80?'…':'') + '"
+
+Sending to ' + contacts.length + ' contacts.
+
+⚠ Make sure image is saved to gallery first.
+
+Tap OK to start.';
   }
 
-  // Check 3: image selected but no message — confirm image-only send
-  if(hasImg && !hasMsg){
-    const go = confirm(
-      '📷 IMAGE ONLY SEND\n\n' +
-      'You have uploaded: ' + imgFile.name + '\n' +
-      'No text message typed.\n\n' +
-      '✅ Only the image will be sent to ' + contacts.length + ' contacts.\n\n' +
-      'IMPORTANT BEFORE YOU CONTINUE:\n' +
-      '• Long-press the image preview above\n' +
-      '• Tap "Save to Gallery" / "Save Image"\n' +
-      '• Then come back and press OK\n\n' +
-      'Have you saved the image to your gallery?'
-    );
-    if(!go) return;
-  }
+  if (!confirm(confirmMsg)) return;
 
-  // Check 4: message only — no image
-  if(!hasImg && hasMsg){
-    const go = confirm(
-      '📝 TEXT MESSAGE ONLY\n\n' +
-      'Message: "' + msgTxt.slice(0,120) + (msgTxt.length>120?'…':'') + '"\n\n' +
-      'NO IMAGE SELECTED.\n\n' +
-      'This will send the text message only to ' + contacts.length + ' contacts.\n\n' +
-      'To add an image, cancel and upload one in Step 1.\n\n' +
-      'Send text only?'
-    );
-    if(!go) return;
-  }
-
-  // Check 5: both image and message
-  if(hasImg && hasMsg){
-    const go = confirm(
-      '📷 IMAGE + MESSAGE SEND\n\n' +
-      'Image: ' + imgFile.name + '\n' +
-      'Message: "' + msgTxt.slice(0,80) + (msgTxt.length>80?'…':'') + '"\n\n' +
-      'Will send to ' + contacts.length + ' contacts.\n\n' +
-      'MAKE SURE: Image is already saved to your gallery.\n\n' +
-      'Ready to send?'
-    );
-    if(!go) return;
-  }
-
-  // ── SEND ────────────────────────────────────────────
+  // Show progress
   const pw  = document.getElementById('progWrap');
   const bar = document.getElementById('progBar');
   const txt = document.getElementById('progTxt');
   const log = document.getElementById('progLog');
-  pw.style.display='block'; log.innerHTML=''; bar.style.width='0';
-  pw.scrollIntoView({behavior:'smooth'});
+  pw.style.display = 'block';
+  log.innerHTML = '';
+  bar.style.width = '0';
+  pw.scrollIntoView({ behavior: 'smooth' });
 
-  const sendMsg = hasMsg ? msgTxt : '(Image — attach from gallery when WhatsApp opens)';
   const total = contacts.length;
+  const waMsg = hasM ? msgText : 'Hi! Please see the offer image I am sending from AKAI Distributors.';
 
-  for(let i=0; i<contacts.length; i++){
-    const c = contacts[i];
-    const phone = fmtPhone(c.phone);
-    const name  = c.name || ('Contact ' + (i+1));
+  for (let i = 0; i < contacts.length; i++) {
+    const c     = contacts[i];
+    let   phone = String(c.phone || '').replace(/\D/g, '');
+    if (phone.length === 10) phone = '91' + phone;
+    if (phone.startsWith('+')) phone = phone.slice(1);
 
-    bar.style.width = Math.round((i+1)/total*100)+'%';
-    txt.textContent = (i+1)+' / '+total+' — Opening WhatsApp for '+name+'…';
+    bar.style.width = Math.round((i+1)/total*100) + '%';
+    txt.textContent = (i+1) + ' / ' + total + ' — Opening WhatsApp for ' + (c.name || phone) + '…';
 
-    // Build WA URL
-    const waMsg = hasImg
-      ? (hasMsg ? msgTxt + '\n\n[Please also attach the image]' : 'Hi! Please see the image I am sending.')
-      : msgTxt;
-    window.open('https://wa.me/'+phone+'?text='+encodeURIComponent(waMsg), '_blank');
+    window.open('https://wa.me/' + phone + '?text=' + encodeURIComponent(waMsg), '_blank');
 
-    const li = document.createElement('div'); li.className='pli';
-    li.innerHTML = '<span class="lok">✓</span><span><strong>'+name+'</strong> · +'+phone+' — WhatsApp opened</span>';
-    log.appendChild(li); log.scrollTop=log.scrollHeight;
+    const li = document.createElement('div'); li.className = 'pli';
+    li.innerHTML = '<span class="lok">✓</span><span><strong>' + (c.name || '') + '</strong> +' + phone + ' — WhatsApp opened</span>';
+    log.appendChild(li); log.scrollTop = log.scrollHeight;
 
-    if(i < contacts.length-1){
-      // Countdown for next
-      for(let s=4; s>0; s--){
-        txt.textContent = 'Next contact in '+s+'s — send the image in WhatsApp then come back…';
-        await new Promise(r=>setTimeout(r,1000));
+    if (i < contacts.length - 1) {
+      for (let s = 4; s > 0; s--) {
+        txt.textContent = 'Send in WhatsApp then come back — next in ' + s + 's…';
+        await new Promise(r => setTimeout(r, 1000));
       }
     }
   }
-  txt.textContent = '✅ Done! Opened WhatsApp for all '+total+' contacts.';
+  txt.textContent = '✅ Done! Opened WhatsApp for all ' + total + ' contacts.';
 }
 
->
+// ── DOWNLOAD vCard ────────────────────────────────────
+function downloadVCF() {
+  if (!contacts.length) { alert('Load contacts first.'); return; }
+  let v = '';
+  contacts.forEach((c, i) => {
+    let p = String(c.phone || '').replace(/\D/g, '');
+    if (p.length === 10) p = '91' + p;
+    const n = 'AKAI ' + dealer.id + ' ' + (c.name || 'C' + (i+1));
+    v += 'BEGIN:VCARD
+VERSION:3.0
+FN:' + n + '
+TEL:+' + p + '
+END:VCARD
+';
+  });
+  const a = document.createElement('a');
+  a.href = 'data:text/vcard;charset=utf-8,' + encodeURIComponent(v);
+  a.download = 'AKAI_' + dealer.id + '_' + contacts.length + '_contacts.vcf';
+  a.click();
+}
+
+// ── PHONE GUIDE TABS ──────────────────────────────────
+function showPhone(type) {
+  document.getElementById('guide-android').style.display = type === 'android' ? 'block' : 'none';
+  document.getElementById('guide-iphone').style.display  = type === 'iphone'  ? 'block' : 'none';
+  document.getElementById('ptab-android').className = 'ptab' + (type === 'android' ? ' active-android' : '');
+  document.getElementById('ptab-iphone').className  = 'ptab' + (type === 'iphone'  ? ' active-iphone'  : '');
+}
+
+// Auto-detect iPhone
+if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) showPhone('iphone');
+</script>
+</body>
+</html>
