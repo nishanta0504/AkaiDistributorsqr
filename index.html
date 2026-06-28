@@ -139,6 +139,14 @@ textarea.msg{width:100%;height:60px;padding:9px 11px;border:1.5px solid var(--bo
 textarea.msg:focus{border-color:var(--teal);background:#fff}
 textarea.msg::placeholder{color:#c0c8d4}
 
+/* send steps */
+.send-step{margin-bottom:12px}
+.step-label{font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:7px;display:flex;align-items:center;gap:6px}
+.step-num{background:var(--teal);color:#fff;padding:2px 8px;border-radius:12px;font-size:9px;font-weight:800;letter-spacing:.5px}
+.step-or{text-align:center;font-size:11px;color:var(--muted);margin:8px 0}
+.chk-row{display:flex;align-items:flex-start;gap:8px;font-size:11px;line-height:1.4}
+.chk-ico{font-size:14px;flex-shrink:0;margin-top:1px}
+
 /* progress */
 .prog{display:none;margin-top:9px}
 .prog-bar-bg{height:7px;background:var(--border);border-radius:99px;overflow:hidden;margin-bottom:6px}
@@ -248,84 +256,72 @@ textarea.msg::placeholder{color:#c0c8d4}
     <div class="bc-card">
       <div class="bc-th">
         <div class="bc-ico">🚀</div>
-        <div><h2>Send Your Offer</h2><p>Choose image or message below</p></div>
+        <div><h2>Send Your Offer — Step by Step</h2><p>Follow each step in order</p></div>
       </div>
       <div class="bc-bd">
 
-        <!-- Upload image -->
-        <div class="upload-zone" id="upZone">
-          <input type="file" id="imgInp" accept="image/*" onchange="onImg(this)">
-          <div class="u-icon">📷</div>
-          <p><strong>Tap to choose your offer image</strong><br>from gallery or camera</p>
-        </div>
-        <div class="prev-wrap" id="prevWrap">
-          <img id="prevImg" src="" alt="">
-          <div class="prev-meta" id="prevMeta"></div>
-        </div>
-
-        <textarea class="msg" id="msgTxt" placeholder="Type your offer message here (optional — leave blank if sending image only)…"></textarea>
-
-        <!-- CHECKLIST -->
-        <div style="background:var(--bg2);border:1.5px solid var(--border);border-radius:9px;padding:10px 12px;margin-bottom:9px">
-          <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:7px">Before sending — check these:</div>
-          <div id="chk1" style="font-size:12px;color:var(--muted);margin-bottom:4px;display:flex;align-items:center;gap:7px">
-            <span id="chk1ico">⬜</span> Contacts loaded
+        <!-- ── STEP A: Image ── -->
+        <div class="send-step" id="stepA">
+          <div class="step-label"><span class="step-num">STEP 1</span> Upload Your Offer Image</div>
+          <div class="upload-zone" id="upZone">
+            <input type="file" id="imgInp" accept="image/*" onchange="onImg(this)">
+            <div class="u-icon">📷</div>
+            <p><strong>Tap here to choose your offer image</strong><br>from gallery or take a photo</p>
           </div>
-          <div id="chk2" style="font-size:12px;color:var(--muted);margin-bottom:4px;display:flex;align-items:center;gap:7px">
-            <span id="chk2ico">⬜</span> Image uploaded OR message typed
-          </div>
-          <div id="chk3" style="font-size:12px;color:var(--muted);display:flex;align-items:center;gap:7px">
-            <span id="chk3ico">⬜</span> If image — save it to your gallery first (long-press preview → Save)
-          </div>
-        </div>
-
-        <!-- STEP CHECKLIST -->
-        <div style="background:var(--bg2);border:1.5px solid var(--border);border-radius:10px;padding:11px 13px;margin-bottom:10px">
-          <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px">Before sending — check all 3:</div>
-          <div style="display:flex;flex-direction:column;gap:6px">
-            <div id="chk1" style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)">
-              <span style="font-size:16px">⬜</span> Contacts loaded (tap Load / Refresh above)
-            </div>
-            <div id="chk2" style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)">
-              <span style="font-size:16px">⬜</span> Image selected OR message typed
-            </div>
-            <div id="chk3" style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)">
-              <span style="font-size:16px">⬜</span> Ready to send
+          <div class="prev-wrap" id="prevWrap">
+            <img id="prevImg" src="" alt="">
+            <div class="prev-meta" id="prevMeta"></div>
+            <div class="info green" style="margin-top:6px">
+              ✅ Image selected. <strong>Long-press the image above → tap Save to Gallery</strong> so you can attach it in WhatsApp.
             </div>
           </div>
+          <div class="step-or">── or ──</div>
+          <textarea class="msg" id="msgTxt" placeholder="Type a text message here (only if NOT sending an image)…" oninput="updateChecks()"></textarea>
         </div>
 
-        <div class="send-section">
+        <!-- ── STEP B: Check ── -->
+        <div class="send-step">
+          <div class="step-label"><span class="step-num">STEP 2</span> Confirm Before Sending</div>
+          <div id="preCheckBox" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:9px;padding:10px 12px">
+            <div class="chk-row" id="chk-contacts"><span class="chk-ico">⬜</span><span id="chk-contacts-txt">Contacts not loaded yet — tap Load / Refresh above</span></div>
+            <div class="chk-row" id="chk-content" style="margin-top:6px"><span class="chk-ico">⬜</span><span id="chk-content-txt">No image or message selected</span></div>
+            <div class="chk-row" id="chk-save" style="margin-top:6px;display:none"><span class="chk-ico">⚠️</span><span>Save the image to your gallery first (long-press preview → Save to Gallery)</span></div>
+          </div>
+        </div>
 
-          <!-- OPTION 1: WhatsApp one by one (free, works always) -->
+        <!-- ── STEP C: Send ── -->
+        <div class="send-step">
+          <div class="step-label"><span class="step-num">STEP 3</span> Send</div>
+          <div id="stepErrBanner" style="display:none;background:#fef2f2;border:1.5px solid #fecaca;border-radius:9px;padding:10px 12px;font-size:12px;color:#b91c1c;font-weight:600;margin-bottom:8px"></div>
           <button class="btn-big btn-wa" id="btnWA" onclick="sendViaWA()" disabled>
-            📱 Send via WhatsApp — Open for Each Contact
+            📱 Send via WhatsApp — Opens for Each Contact
           </button>
-
-          <!-- OPTION 2: Download CSV for bulk sender app -->
+          <div style="height:8px"></div>
           <button class="btn-big btn-dl-csv" id="btnCSV" onclick="downloadCSV()" disabled>
-            📥 Download Contact List (.txt)
+            📥 Download Contact List (for bulk sender app)
           </button>
-
-          <!-- OPTION 3: vCard -->
+          <div style="height:8px"></div>
           <button class="btn-big btn-vcf" id="btnVCF" onclick="downloadVCF()" disabled>
-            📇 Save Contacts to Phone (vCard)
+            📇 Save All Contacts to Phone (vCard)
           </button>
-
         </div>
 
+        <!-- Progress -->
         <div id="progWrap" class="prog">
           <div class="prog-bar-bg"><div class="prog-bar" id="progBar"></div></div>
           <div class="prog-txt" id="progTxt"></div>
           <div class="prog-log" id="progLog"></div>
         </div>
 
+        <!-- Info note -->
         <div class="info teal" style="margin-top:10px">
-          <strong>📱 How "Send via WhatsApp" works:</strong>
-          Tapping the button opens WhatsApp for each customer one by one with your message pre-typed. You press Send in WhatsApp for each person. Best for smaller lists (under 50).
-          <br><br>
-          <strong>📥 For large lists (100+):</strong>
-          Download the contact list → open it in any free bulk WhatsApp app (see guide below).
+          <strong>📌 How image sending works:</strong><br>
+          1. Upload image above (Step 1)<br>
+          2. <strong>Long-press the preview → Save to Gallery</strong> on your phone<br>
+          3. Tap "Send via WhatsApp" — WhatsApp opens for each contact with your message pre-typed<br>
+          4. In WhatsApp tap 📎 → Gallery → select the saved image → press Send<br>
+          5. After sending, come back to the portal — it auto-opens the next contact<br><br>
+          <strong>For 100+ contacts:</strong> Use <strong>"📇 Save Contacts to Phone (vCard)"</strong> → import to phone → open WhatsApp Business → create a Broadcast List → send image once to the list. Completely free. See full guide below.
         </div>
 
       </div>
@@ -353,49 +349,63 @@ textarea.msg::placeholder{color:#c0c8d4}
 
         <!-- ANDROID GUIDE -->
         <div id="guide-android">
-          <div class="info amber" style="margin-bottom:10px">
-            <strong>📱 Android — WA Sender App (Free, unlimited contacts)</strong><br>
-            Download contact list from above → import into app → select image → send to everyone automatically.
+          <div class="info green" style="margin-bottom:10px">
+            <strong>📱 Android — WhatsApp Business + vCard (100% Free)</strong><br>
+            No third-party apps needed. Works for unlimited contacts. Uses your existing WhatsApp.
           </div>
           <div class="how">
+
             <div class="how-step">
               <div class="hn t">1</div>
               <div class="hb">
-                <h3>Install "WA Sender – Bulk WhatsApp" from Play Store</h3>
-                <p>Open Play Store → search <strong>WA Sender Bulk WhatsApp</strong> → Install (free, green icon). Allow all permissions when asked.</p>
+                <h3>Install WhatsApp Business from Play Store</h3>
+                <p>Open Play Store → search <strong>WhatsApp Business</strong> → Install (free). Set it up with your dealer phone number. Takes 2 minutes.</p>
               </div>
             </div>
+
             <div class="how-step">
               <div class="hn t">2</div>
               <div class="hb">
-                <h3>Download your contact numbers (tap button above)</h3>
-                <p>Tap <strong>"📥 Download Contact List"</strong> above → a .txt file saves to your phone Downloads folder with all your customer numbers.</p>
+                <h3>Save your customers to phone contacts</h3>
+                <p>In this portal → Send tab → Load contacts → tap <strong>"📇 Save Contacts to Phone (vCard)"</strong> → a .vcf file downloads → tap it → tap <strong>"Import all contacts"</strong>.<br><br>
+                All customers save as <strong>"AKAI D001 – Name"</strong> in your phone contacts.</p>
               </div>
             </div>
+
             <div class="how-step">
               <div class="hn t">3</div>
               <div class="hb">
-                <h3>Open WA Sender → Import numbers</h3>
-                <p>Open WA Sender app → tap <strong>Import Numbers</strong> → choose the .txt file from Downloads → all numbers load instantly.</p>
+                <h3>Create a Broadcast List in WhatsApp Business</h3>
+                <p>Open WhatsApp Business → tap ⋮ (3 dots top right) → tap <strong>New Broadcast</strong> → in search bar type <strong>AKAI D001</strong> → all your customers appear → select all of them → tap the green tick → list is created.<br><br>
+                <strong>Maximum 256 per list.</strong> If you have 500 contacts, create 2 lists. 1000 contacts = 4 lists.</p>
               </div>
             </div>
+
             <div class="how-step">
               <div class="hn t">4</div>
               <div class="hb">
-                <h3>Select image → tap Send → done</h3>
-                <p>Tap the image icon → choose your offer photo from gallery → tap <strong>Send</strong>. App sends to everyone automatically. You just watch the progress bar.</p>
+                <h3>Send image to everyone — 1 tap per list</h3>
+                <p>Open WhatsApp Business → tap your <strong>Broadcast List</strong> → tap 📎 (attach) → tap <strong>Gallery</strong> → select your offer image → tap <strong>Send</strong>.<br><br>
+                Everyone in the list receives it as a <strong>private message</strong> — not a group. They cannot see each other.</p>
               </div>
             </div>
+
             <div class="how-step">
               <div class="hn">🔄</div>
               <div class="hb">
-                <h3>Next time — even faster</h3>
-                <p>Come back here → Load / Refresh → Download Contact List (new numbers already added) → import into WA Sender → send. Takes under 1 minute.</p>
+                <h3>When new customers register — update the list</h3>
+                <p>Come back here → Load / Refresh → Save Contacts to Phone (vCard) again → import (duplicates skipped automatically) → open WhatsApp Business → tap and hold your Broadcast List → tap <strong>Edit</strong> → add new contacts → save. Done.</p>
               </div>
             </div>
+
           </div>
-          <div class="info green" style="margin-top:10px">
-            <strong>✅ 100% free · unlimited contacts · works on any Android phone · no monthly fee</strong>
+
+          <div class="info blue" style="margin-top:10px">
+            <strong>⚠ Important:</strong> Customers must have YOUR number saved in their contacts for the broadcast to deliver to them. When they first register, send them one message so they save your number. After that all broadcasts deliver normally.
+          </div>
+
+          <div class="info green" style="margin-top:8px">
+            <strong>✅ 100% free · unlimited contacts · no third-party app · works on all Android phones</strong>
           </div>
         </div>
 
@@ -604,20 +614,53 @@ async function loadContacts(){
 function renderContacts(){
   const list=document.getElementById('cList');
   document.getElementById('cCount').textContent=contacts.length+' contact'+(contacts.length===1?'':'s');
-  if(!contacts.length){ list.innerHTML='<div style="padding:14px;text-align:center;color:var(--muted);font-size:11px">No contacts yet for your dealer code.</div>'; updateBtns(); return; }
+  if(!contacts.length){ list.innerHTML='<div style="padding:14px;text-align:center;color:var(--muted);font-size:11px">No contacts yet for your dealer code.</div>'; updateChecks(); return; }
   list.innerHTML='';
   contacts.forEach(c=>{ const d=document.createElement('div'); d.className='c-item'; d.innerHTML='<span class="c-name">'+(c.name||'Unknown')+'</span><span class="c-phone">'+c.phone+'</span>'; list.appendChild(d); });
-  updateBtns();
+  updateChecks();
   // Tick checklist box 1
   const chk1=document.getElementById('chk1');
   if(chk1) chk1.innerHTML='<span style="font-size:16px">✅</span> <strong style="color:#14532d">'+contacts.length+' contacts loaded</strong>';
   updateChk3();
 }
 
+function updateChecks(){
+  const hasC = contacts.length>0;
+  const hasI = !!imgFile;
+  const hasM = document.getElementById('msgTxt') ? document.getElementById('msgTxt').value.trim().length>0 : false;
+
+  // contacts check
+  const cRow = document.getElementById('chk-contacts');
+  const cIco = cRow ? cRow.querySelector('.chk-ico') : null;
+  const cTxt = document.getElementById('chk-contacts-txt');
+  if(cRow){ cRow.style.color = hasC ? '#14532d' : 'var(--muted)'; }
+  if(cIco) cIco.textContent = hasC ? '✅' : '⬜';
+  if(cTxt) cTxt.textContent = hasC ? contacts.length+' contacts loaded ✓' : 'Contacts not loaded — tap Load / Refresh above';
+
+  // content check
+  const nRow = document.getElementById('chk-content');
+  const nIco = nRow ? nRow.querySelector('.chk-ico') : null;
+  const nTxt = document.getElementById('chk-content-txt');
+  if(nRow){ nRow.style.color = (hasI||hasM) ? '#14532d' : 'var(--muted)'; }
+  if(nIco) nIco.textContent = hasI ? '✅' : (hasM ? '✅' : '⬜');
+  if(nTxt){
+    if(hasI && hasM) nTxt.textContent = 'Image + message ready ✓';
+    else if(hasI)    nTxt.textContent = 'Image selected: '+imgFile.name+' ✓';
+    else if(hasM)    nTxt.textContent = 'Text message typed ✓';
+    else             nTxt.textContent = 'No image or message selected';
+  }
+
+  // save reminder
+  const sRow = document.getElementById('chk-save');
+  if(sRow) sRow.style.display = hasI ? 'flex' : 'none';
+
+  updateBtns();
+}
+
 function updateBtns(){
   const has=contacts.length>0;
   ['btnCSV','btnVCF','btnWA'].forEach(id=>{ const b=document.getElementById(id); if(b) b.disabled=!has; });
-  updateChecklist();
+  updateChecks();
 }
 
 function updateChecklist(){
@@ -649,7 +692,7 @@ function onImg(input){
     document.getElementById('prevMeta').textContent=imgFile.name+' · '+(imgFile.size/1024).toFixed(0)+' KB';
   };
   reader.readAsDataURL(imgFile);
-  updateChecklist();
+  updateChecks();
 }
 const uz=document.getElementById('upZone');
 uz.addEventListener('dragover',e=>{e.preventDefault();uz.classList.add('drag');});
@@ -663,118 +706,112 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 // ── SEND VIA WHATSAPP ────────────────────────────────
 async function sendViaWA(){
-  const errEl=document.getElementById('stepErrBanner');
-  if(errEl) errEl.remove();
+  // ── VALIDATION ──────────────────────────────────────
+  const errBanner = document.getElementById('stepErrBanner');
+  errBanner.style.display = 'none';
 
-  // CHECK 1: contacts
+  function showErr(msg){
+    errBanner.textContent = msg;
+    errBanner.style.display = 'block';
+    errBanner.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+
+  // Check 1: contacts loaded
   if(!contacts.length){
-    showStepError('⚠ No contacts loaded. Tap "🔄 Load / Refresh" first.');
+    showErr('⚠ STEP 1 INCOMPLETE: No contacts loaded. Tap "🔄 Load / Refresh" first.');
     return;
   }
 
-  // CHECK 2: image or message required
-  const msg    = document.getElementById('msgTxt').value.trim();
+  // Check 2: image OR message must be present — NOT both skipped
+  const msgTxt = document.getElementById('msgTxt').value.trim();
   const hasImg = !!imgFile;
-  const hasMsg = !!msg;
+  const hasMsg = !!msgTxt;
 
   if(!hasImg && !hasMsg){
-    showStepError('⚠ Nothing to send. Please upload an image or type a message above.');
+    showErr('⚠ NOTHING TO SEND: Please upload an image (Step 1) OR type a message before sending.');
     return;
   }
 
-  // CHECK 3: message only — warn no image
+  // Check 3: image selected but no message — confirm image-only send
+  if(hasImg && !hasMsg){
+    const go = confirm(
+      '📷 IMAGE ONLY SEND\n\n' +
+      'You have uploaded: ' + imgFile.name + '\n' +
+      'No text message typed.\n\n' +
+      '✅ Only the image will be sent to ' + contacts.length + ' contacts.\n\n' +
+      'IMPORTANT BEFORE YOU CONTINUE:\n' +
+      '• Long-press the image preview above\n' +
+      '• Tap "Save to Gallery" / "Save Image"\n' +
+      '• Then come back and press OK\n\n' +
+      'Have you saved the image to your gallery?'
+    );
+    if(!go) return;
+  }
+
+  // Check 4: message only — no image
   if(!hasImg && hasMsg){
-    const ok=confirm(
-      '📝 NO IMAGE SELECTED\n\n'+
-      'You are about to send TEXT ONLY:\n\n"'+msg.slice(0,100)+(msg.length>100?'…':'')+
-      '"\n\nNo image will be sent.\n\n'+
-      'To add an image, cancel and upload one above.\n\nSend text message only?'
+    const go = confirm(
+      '📝 TEXT MESSAGE ONLY\n\n' +
+      'Message: "' + msgTxt.slice(0,120) + (msgTxt.length>120?'…':'') + '"\n\n' +
+      'NO IMAGE SELECTED.\n\n' +
+      'This will send the text message only to ' + contacts.length + ' contacts.\n\n' +
+      'To add an image, cancel and upload one in Step 1.\n\n' +
+      'Send text only?'
     );
-    if(!ok) return;
+    if(!go) return;
   }
 
-  // CHECK 4: image — must save to gallery first
-  if(hasImg){
-    const saved=confirm(
-      '📷 IMAGE: '+imgFile.name+'\n\n'+
-      '══════════════════════════\n'+
-      'STEP 1 — SAVE IMAGE FIRST:\n'+
-      '══════════════════════════\n'+
-      '• Long-press the image preview above\n'+
-      '• Tap "Save Image" or "Save to Gallery"\n'+
-      '• Image saves to your phone gallery\n\n'+
-      'Then when WhatsApp opens for each\ncontact, you will:\n'+
-      '• Tap 📎 (attach button)\n'+
-      '• Tap Gallery\n'+
-      '• Select the saved image\n'+
-      '• Press Send\n\n'+
-      '══════════════════════════\n'+
-      'Have you saved the image to your gallery?\n'+
-      'Tap OK to continue, Cancel to save it first.'
+  // Check 5: both image and message
+  if(hasImg && hasMsg){
+    const go = confirm(
+      '📷 IMAGE + MESSAGE SEND\n\n' +
+      'Image: ' + imgFile.name + '\n' +
+      'Message: "' + msgTxt.slice(0,80) + (msgTxt.length>80?'…':'') + '"\n\n' +
+      'Will send to ' + contacts.length + ' contacts.\n\n' +
+      'MAKE SURE: Image is already saved to your gallery.\n\n' +
+      'Ready to send?'
     );
-    if(!saved) return;
+    if(!go) return;
   }
 
-  // FINAL CONFIRM
-  const total=contacts.length;
-  const bigListNote = total>20
-    ? '\n\n⚠ '+total+' contacts — WhatsApp opens one by one.\nFor large lists, use "📥 Download List" + WA Sender app instead (faster).'
-    : '';
-
-  const go=confirm(
-    '✅ READY TO SEND\n\n'+
-    '👥 Contacts: '+total+'\n'+
-    (hasImg?'📷 Image: '+imgFile.name+'\n':'')+
-    (hasMsg?'💬 Message: "'+msg.slice(0,50)+(msg.length>50?'…':'')+'"':'⚠ No message — image only')+
-    bigListNote+
-    '\n\nWhatsApp opens for each contact.\nAttach image + press Send in WhatsApp.\n\nStart?'
-  );
-  if(!go) return;
-
-  // SEND LOOP
-  const pw   = document.getElementById('progWrap');
-  const bar  = document.getElementById('progBar');
-  const pTxt = document.getElementById('progTxt');
-  const log  = document.getElementById('progLog');
+  // ── SEND ────────────────────────────────────────────
+  const pw  = document.getElementById('progWrap');
+  const bar = document.getElementById('progBar');
+  const txt = document.getElementById('progTxt');
+  const log = document.getElementById('progLog');
   pw.style.display='block'; log.innerHTML=''; bar.style.width='0';
+  pw.scrollIntoView({behavior:'smooth'});
 
-  for(let i=0;i<contacts.length;i++){
-    const contact=contacts[i];
-    const phone=fmtPhone(contact.phone);
-    bar.style.width=Math.round((i+1)/total*100)+'%';
-    pTxt.textContent='Opening '+(i+1)+' of '+total+': '+(contact.name||phone)+'…';
-    const waUrl='https://wa.me/'+phone+(msg?'?text='+encodeURIComponent(msg):'');
-    window.open(waUrl,'_blank');
-    const li=document.createElement('div'); li.className='pli';
-    li.innerHTML='<span class="lok">✓</span><span><strong>'+(contact.name||'Contact '+(i+1))+'</strong> · +'+phone+'</span>';
+  const sendMsg = hasMsg ? msgTxt : '(Image — attach from gallery when WhatsApp opens)';
+  const total = contacts.length;
+
+  for(let i=0; i<contacts.length; i++){
+    const c = contacts[i];
+    const phone = fmtPhone(c.phone);
+    const name  = c.name || ('Contact ' + (i+1));
+
+    bar.style.width = Math.round((i+1)/total*100)+'%';
+    txt.textContent = (i+1)+' / '+total+' — Opening WhatsApp for '+name+'…';
+
+    // Build WA URL
+    const waMsg = hasImg
+      ? (hasMsg ? msgTxt + '\n\n[Please also attach the image]' : 'Hi! Please see the image I am sending.')
+      : msgTxt;
+    window.open('https://wa.me/'+phone+'?text='+encodeURIComponent(waMsg), '_blank');
+
+    const li = document.createElement('div'); li.className='pli';
+    li.innerHTML = '<span class="lok">✓</span><span><strong>'+name+'</strong> · +'+phone+' — WhatsApp opened</span>';
     log.appendChild(li); log.scrollTop=log.scrollHeight;
-    if(i<contacts.length-1) await new Promise(r=>setTimeout(r,4000));
-  }
 
-  pTxt.textContent='✅ Done! WhatsApp opened for all '+total+' contacts.';
-  if(hasImg){
-    alert('✅ WhatsApp opened for all '+total+' contacts.\n\nIn each WhatsApp chat:\nTap 📎 → Gallery → select your image → Send.');
+    if(i < contacts.length-1){
+      // Countdown for next
+      for(let s=4; s>0; s--){
+        txt.textContent = 'Next contact in '+s+'s — send the image in WhatsApp then come back…';
+        await new Promise(r=>setTimeout(r,1000));
+      }
+    }
   }
+  txt.textContent = '✅ Done! Opened WhatsApp for all '+total+' contacts.';
 }
 
-
-// PHONE TYPE TABS
-function showPhone(type){
-  document.getElementById('guide-android').style.display = type==='android'?'block':'none';
-  document.getElementById('guide-iphone').style.display  = type==='iphone'?'block':'none';
-  const aBtn=document.getElementById('tab-android');
-  const iBtn=document.getElementById('tab-iphone');
-  if(type==='android'){
-    aBtn.style.cssText='flex:1;height:42px;border-radius:9px;border:2px solid #25d366;background:#f0fdf4;color:#14532d;font-size:13px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px';
-    iBtn.style.cssText='flex:1;height:42px;border-radius:9px;border:2px solid var(--border);background:var(--bg2);color:var(--muted);font-size:13px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px';
-  } else {
-    iBtn.style.cssText='flex:1;height:42px;border-radius:9px;border:2px solid #3b82f6;background:#eff6ff;color:#1e40af;font-size:13px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px';
-    aBtn.style.cssText='flex:1;height:42px;border-radius:9px;border:2px solid var(--border);background:var(--bg2);color:var(--muted);font-size:13px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px';
-  }
-}
-
-// Auto-detect iPhone on page load
-(function(){ if(/iPhone|iPad|iPod/i.test(navigator.userAgent)) showPhone('iphone'); })();
-</script>
-</body>
-</html>
+>
