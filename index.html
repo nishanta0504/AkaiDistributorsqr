@@ -44,8 +44,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;backgrou
 .l-input{width:100%;height:46px;padding:0 12px 0 40px;border:1.5px solid var(--border);border-radius:10px;font-size:18px;font-weight:700;color:var(--navy);background:var(--bg2);outline:none;letter-spacing:2px;text-transform:uppercase;-webkit-appearance:none}
 .l-input:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,158,143,.1);background:#fff}
 .l-input.err{border-color:var(--red)}
-.l-err{font-size:11px;color:var(--red);margin-bottom:8px;display:none;text-align:left}
+.l-err{font-size:13px;font-weight:700;color:#fff;background:var(--red);border-radius:9px;padding:10px 13px;margin-bottom:10px;display:none;text-align:center;line-height:1.5;animation:shake .4s ease}
 .l-err.show{display:block}
+@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
 .l-hint{font-size:11px;color:var(--muted);margin-bottom:16px}
 .btn-login{width:100%;height:46px;background:var(--teal);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 14px rgba(13,158,143,.3);-webkit-appearance:none}
 .btn-login:active{transform:scale(.98)}
@@ -262,13 +263,43 @@ textarea.msg::placeholder{color:#c0c8d4}
           <div class="prev-meta" id="prevMeta"></div>
         </div>
 
-        <textarea class="msg" id="msgTxt" placeholder="Type your offer message here (optional)…"></textarea>
+        <textarea class="msg" id="msgTxt" placeholder="Type your offer message here (optional — leave blank if sending image only)…"></textarea>
+
+        <!-- CHECKLIST -->
+        <div style="background:var(--bg2);border:1.5px solid var(--border);border-radius:9px;padding:10px 12px;margin-bottom:9px">
+          <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:7px">Before sending — check these:</div>
+          <div id="chk1" style="font-size:12px;color:var(--muted);margin-bottom:4px;display:flex;align-items:center;gap:7px">
+            <span id="chk1ico">⬜</span> Contacts loaded
+          </div>
+          <div id="chk2" style="font-size:12px;color:var(--muted);margin-bottom:4px;display:flex;align-items:center;gap:7px">
+            <span id="chk2ico">⬜</span> Image uploaded OR message typed
+          </div>
+          <div id="chk3" style="font-size:12px;color:var(--muted);display:flex;align-items:center;gap:7px">
+            <span id="chk3ico">⬜</span> If image — save it to your gallery first (long-press preview → Save)
+          </div>
+        </div>
+
+        <!-- STEP CHECKLIST -->
+        <div style="background:var(--bg2);border:1.5px solid var(--border);border-radius:10px;padding:11px 13px;margin-bottom:10px">
+          <div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px">Before sending — check all 3:</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div id="chk1" style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)">
+              <span style="font-size:16px">⬜</span> Contacts loaded (tap Load / Refresh above)
+            </div>
+            <div id="chk2" style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)">
+              <span style="font-size:16px">⬜</span> Image selected OR message typed
+            </div>
+            <div id="chk3" style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)">
+              <span style="font-size:16px">⬜</span> Ready to send
+            </div>
+          </div>
+        </div>
 
         <div class="send-section">
 
           <!-- OPTION 1: WhatsApp one by one (free, works always) -->
           <button class="btn-big btn-wa" id="btnWA" onclick="sendViaWA()" disabled>
-            📱 Send via WhatsApp (Free)
+            📱 Send via WhatsApp — Open for Each Contact
           </button>
 
           <!-- OPTION 2: Download CSV for bulk sender app -->
@@ -445,22 +476,56 @@ function switchTab(t,el){
 // LOGIN
 async function doLogin(){
   const code=document.getElementById('codeInput').value.trim().toUpperCase();
-  if(!code) return;
+  const errEl=document.getElementById('loginErr');
+
+  // Empty check
+  if(!code){
+    errEl.textContent='⚠ Please enter your dealer code first.';
+    errEl.classList.add('show');
+    document.getElementById('codeInput').classList.add('err');
+    return;
+  }
+
   const btn=document.getElementById('loginBtn');
   btn.classList.add('ld'); btn.disabled=true;
-  document.getElementById('loginErr').classList.remove('show');
+  errEl.classList.remove('show');
+
+  // Cache check — instant on repeat login
   const cached=localStorage.getItem('dc_'+code);
-  if(cached){ try{ dealer=JSON.parse(cached); afterLogin(); btn.classList.remove('ld'); btn.disabled=false; return; }catch(e){} }
+  if(cached){
+    try{
+      dealer=JSON.parse(cached);
+      afterLogin();
+      btn.classList.remove('ld'); btn.disabled=false;
+      return;
+    }catch(e){ localStorage.removeItem('dc_'+code); }
+  }
+
   try{
-    const ac=new AbortController(),t=setTimeout(()=>ac.abort(),18000);
+    const ac=new AbortController();
+    const t=setTimeout(()=>ac.abort(),18000);
     const r=await fetch(SHEET_API_URL+'?action=getDealer&code='+encodeURIComponent(code),{signal:ac.signal});
     clearTimeout(t);
     const d=await r.json();
-    if(d&&d.dealer){ dealer=d.dealer; localStorage.setItem('dc_'+code,JSON.stringify(dealer)); afterLogin(); }
-    else{ document.getElementById('loginErr').classList.add('show'); document.getElementById('codeInput').classList.add('err'); }
+    if(d&&d.dealer){
+      dealer=d.dealer;
+      localStorage.setItem('dc_'+code,JSON.stringify(dealer));
+      afterLogin();
+    } else {
+      // Code not found — clear, loud, unmissable
+      errEl.textContent='❌ Dealer code "'+code+'" not found. Please check your code and try again.';
+      errEl.classList.add('show');
+      document.getElementById('codeInput').classList.add('err');
+      document.getElementById('codeInput').value='';
+      document.getElementById('codeInput').focus();
+    }
   }catch(e){
-    document.getElementById('loginErr').textContent=e.name==='AbortError'?'⚠ Server slow — try again.':'⚠ Network error.';
-    document.getElementById('loginErr').classList.add('show');
+    if(e.name==='AbortError'){
+      errEl.textContent='⚠ Connection timed out. Please check your internet and try again.';
+    } else {
+      errEl.textContent='⚠ Network error: '+e.message+'. Please try again.';
+    }
+    errEl.classList.add('show');
   }
   btn.classList.remove('ld'); btn.disabled=false;
 }
@@ -543,11 +608,34 @@ function renderContacts(){
   list.innerHTML='';
   contacts.forEach(c=>{ const d=document.createElement('div'); d.className='c-item'; d.innerHTML='<span class="c-name">'+(c.name||'Unknown')+'</span><span class="c-phone">'+c.phone+'</span>'; list.appendChild(d); });
   updateBtns();
+  // Tick checklist box 1
+  const chk1=document.getElementById('chk1');
+  if(chk1) chk1.innerHTML='<span style="font-size:16px">✅</span> <strong style="color:#14532d">'+contacts.length+' contacts loaded</strong>';
+  updateChk3();
 }
 
 function updateBtns(){
   const has=contacts.length>0;
   ['btnCSV','btnVCF','btnWA'].forEach(id=>{ const b=document.getElementById(id); if(b) b.disabled=!has; });
+  updateChecklist();
+}
+
+function updateChecklist(){
+  const hasC = contacts.length > 0;
+  const hasImg = !!imgFile;
+  const hasMsg = !!(document.getElementById('msgTxt') && document.getElementById('msgTxt').value.trim());
+  const hasContent = hasImg || hasMsg;
+
+  const set = (id, ico, on, txt) => {
+    const el = document.getElementById(id);
+    const ic = document.getElementById(ico);
+    if(!el||!ic) return;
+    el.style.color = on ? '#065f46' : 'var(--muted)';
+    ic.textContent = on ? '✅' : '⬜';
+  };
+  set('chk1','chk1ico', hasC,       'Contacts loaded ('+contacts.length+')');
+  set('chk2','chk2ico', hasContent,  hasImg ? 'Image ready: '+imgFile.name : hasMsg ? 'Message typed' : 'Image uploaded OR message typed');
+  set('chk3','chk3ico', hasImg,      hasImg ? 'Image selected — save to gallery before sending' : 'No image (text only — no gallery save needed)');
 }
 
 // IMAGE
@@ -555,62 +643,120 @@ function onImg(input){
   if(!input.files||!input.files[0]) return;
   imgFile=input.files[0];
   const reader=new FileReader();
-  reader.onload=e=>{ document.getElementById('prevImg').src=e.target.result; document.getElementById('prevWrap').style.display='block'; document.getElementById('prevMeta').textContent=imgFile.name+' · '+(imgFile.size/1024).toFixed(0)+' KB'; };
+  reader.onload=e=>{
+    document.getElementById('prevImg').src=e.target.result;
+    document.getElementById('prevWrap').style.display='block';
+    document.getElementById('prevMeta').textContent=imgFile.name+' · '+(imgFile.size/1024).toFixed(0)+' KB';
+  };
   reader.readAsDataURL(imgFile);
+  updateChecklist();
 }
 const uz=document.getElementById('upZone');
 uz.addEventListener('dragover',e=>{e.preventDefault();uz.classList.add('drag');});
 uz.addEventListener('dragleave',()=>uz.classList.remove('drag'));
 uz.addEventListener('drop',e=>{e.preventDefault();uz.classList.remove('drag');const f=e.dataTransfer.files[0];if(f&&f.type.startsWith('image/')){document.getElementById('imgInp').files=e.dataTransfer.files;onImg(document.getElementById('imgInp'));}});
+document.addEventListener('DOMContentLoaded',()=>{
+  const mt=document.getElementById('msgTxt');
+  if(mt) mt.addEventListener('input',updateChecklist);
+});
 
-// PHONE FORMAT
-function fmtPhone(raw){ let p=String(raw||''). replace(/\D/g,''); if(p.length===10) p='91'+p; if(p.startsWith('+')) p=p.slice(1); return p; }
 
-// SEND VIA WA (one by one — free, works for small lists)
+// ── SEND VIA WHATSAPP ────────────────────────────────
 async function sendViaWA(){
-  if(!contacts.length){alert('Load contacts first.');return;}
-  const msg=document.getElementById('msgTxt').value.trim()||'Check out our latest offer from AKAI Distributors! 🎁';
-  if(contacts.length>30){
-    if(!confirm('You have '+contacts.length+' contacts. WhatsApp will open one by one.\nFor large lists, use "Download Contact List" + WA Web Plus (see guide below).\n\nContinue for '+contacts.length+' contacts?')){return;}
+  const errEl=document.getElementById('stepErrBanner');
+  if(errEl) errEl.remove();
+
+  // CHECK 1: contacts
+  if(!contacts.length){
+    showStepError('⚠ No contacts loaded. Tap "🔄 Load / Refresh" first.');
+    return;
   }
-  const pw=document.getElementById('progWrap');
-  const bar=document.getElementById('progBar'),txt=document.getElementById('progTxt'),log=document.getElementById('progLog');
-  pw.style.display='block'; log.innerHTML='';
+
+  // CHECK 2: image or message required
+  const msg    = document.getElementById('msgTxt').value.trim();
+  const hasImg = !!imgFile;
+  const hasMsg = !!msg;
+
+  if(!hasImg && !hasMsg){
+    showStepError('⚠ Nothing to send. Please upload an image or type a message above.');
+    return;
+  }
+
+  // CHECK 3: message only — warn no image
+  if(!hasImg && hasMsg){
+    const ok=confirm(
+      '📝 NO IMAGE SELECTED\n\n'+
+      'You are about to send TEXT ONLY:\n\n"'+msg.slice(0,100)+(msg.length>100?'…':'')+
+      '"\n\nNo image will be sent.\n\n'+
+      'To add an image, cancel and upload one above.\n\nSend text message only?'
+    );
+    if(!ok) return;
+  }
+
+  // CHECK 4: image — must save to gallery first
+  if(hasImg){
+    const saved=confirm(
+      '📷 IMAGE: '+imgFile.name+'\n\n'+
+      '══════════════════════════\n'+
+      'STEP 1 — SAVE IMAGE FIRST:\n'+
+      '══════════════════════════\n'+
+      '• Long-press the image preview above\n'+
+      '• Tap "Save Image" or "Save to Gallery"\n'+
+      '• Image saves to your phone gallery\n\n'+
+      'Then when WhatsApp opens for each\ncontact, you will:\n'+
+      '• Tap 📎 (attach button)\n'+
+      '• Tap Gallery\n'+
+      '• Select the saved image\n'+
+      '• Press Send\n\n'+
+      '══════════════════════════\n'+
+      'Have you saved the image to your gallery?\n'+
+      'Tap OK to continue, Cancel to save it first.'
+    );
+    if(!saved) return;
+  }
+
+  // FINAL CONFIRM
   const total=contacts.length;
+  const bigListNote = total>20
+    ? '\n\n⚠ '+total+' contacts — WhatsApp opens one by one.\nFor large lists, use "📥 Download List" + WA Sender app instead (faster).'
+    : '';
+
+  const go=confirm(
+    '✅ READY TO SEND\n\n'+
+    '👥 Contacts: '+total+'\n'+
+    (hasImg?'📷 Image: '+imgFile.name+'\n':'')+
+    (hasMsg?'💬 Message: "'+msg.slice(0,50)+(msg.length>50?'…':'')+'"':'⚠ No message — image only')+
+    bigListNote+
+    '\n\nWhatsApp opens for each contact.\nAttach image + press Send in WhatsApp.\n\nStart?'
+  );
+  if(!go) return;
+
+  // SEND LOOP
+  const pw   = document.getElementById('progWrap');
+  const bar  = document.getElementById('progBar');
+  const pTxt = document.getElementById('progTxt');
+  const log  = document.getElementById('progLog');
+  pw.style.display='block'; log.innerHTML=''; bar.style.width='0';
+
   for(let i=0;i<contacts.length;i++){
-    const c=contacts[i]; const phone=fmtPhone(c.phone);
+    const contact=contacts[i];
+    const phone=fmtPhone(contact.phone);
     bar.style.width=Math.round((i+1)/total*100)+'%';
-    txt.textContent=(i+1)+'/'+total+' — opening WhatsApp for '+(c.name||phone)+'…';
-    window.open('https://wa.me/'+phone+'?text='+encodeURIComponent(msg),'_blank');
+    pTxt.textContent='Opening '+(i+1)+' of '+total+': '+(contact.name||phone)+'…';
+    const waUrl='https://wa.me/'+phone+(msg?'?text='+encodeURIComponent(msg):'');
+    window.open(waUrl,'_blank');
     const li=document.createElement('div'); li.className='pli';
-    li.innerHTML='<span class="lok">✓</span><span>'+(c.name||'')+' · +'+phone+'</span>';
+    li.innerHTML='<span class="lok">✓</span><span><strong>'+(contact.name||'Contact '+(i+1))+'</strong> · +'+phone+'</span>';
     log.appendChild(li); log.scrollTop=log.scrollHeight;
-    if(i<contacts.length-1) await new Promise(r=>setTimeout(r,3500));
+    if(i<contacts.length-1) await new Promise(r=>setTimeout(r,4000));
   }
-  txt.textContent='✅ Done! Opened WhatsApp for all '+total+' contacts.';
+
+  pTxt.textContent='✅ Done! WhatsApp opened for all '+total+' contacts.';
+  if(hasImg){
+    alert('✅ WhatsApp opened for all '+total+' contacts.\n\nIn each WhatsApp chat:\nTap 📎 → Gallery → select your image → Send.');
+  }
 }
 
-// DOWNLOAD CONTACT LIST (numbers only — for bulk sender apps)
-function downloadCSV(){
-  if(!contacts.length){alert('Load contacts first.');return;}
-  // Plain number list — works with WA Web Plus and most bulk sender apps
-  let txt=contacts.map(c=>'+'+fmtPhone(c.phone)).join('\n');
-  const a=document.createElement('a');
-  a.href='data:text/plain;charset=utf-8,'+encodeURIComponent(txt);
-  a.download='Contacts_'+dealer.id+'_'+contacts.length+'_numbers.txt';
-  a.click();
-}
-
-// DOWNLOAD VCARD (saves contacts to phone)
-function downloadVCF(){
-  if(!contacts.length){alert('Load contacts first.');return;}
-  let v='';
-  contacts.forEach((c,i)=>{ const p=fmtPhone(c.phone); const n='AKAI '+dealer.id+' '+(c.name||'C'+(i+1)); v+='BEGIN:VCARD\nVERSION:3.0\nFN:'+n+'\nTEL:+'+p+'\nEND:VCARD\n'; });
-  const a=document.createElement('a');
-  a.href='data:text/vcard;charset=utf-8,'+encodeURIComponent(v);
-  a.download='AKAI_'+dealer.id+'_contacts.vcf';
-  a.click();
-}
 
 // PHONE TYPE TABS
 function showPhone(type){
